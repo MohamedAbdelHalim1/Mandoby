@@ -28,14 +28,15 @@ use App\Http\Controllers\HomeController;
 Auth::routes();
 
 
-Route::get('/nationalities', [NationalityController::class, 'index'])->name('nationalities.index');
+//Route::get('/nationalities', [NationalityController::class, 'index'])->name('nationalities.index');
         // ->middleware(['auth', 'admin'])
         
 
 
-//Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/',[HomeController::class , 'index']);
     //Nationalities routes
+    Route::get('/nationalities', [NationalityController::class, 'index'])->name('nationalities.index');
     Route::post('/nationalities', [NationalityController::class, 'store'])->name('nationality.store');
     Route::get('/nationalities/{id}/edit', [NationalityController::class, 'edit']);
     Route::put('/nationalities/{id}', [NationalityController::class, 'update']);
@@ -109,7 +110,7 @@ Route::get('/nationalities', [NationalityController::class, 'index'])->name('nat
     Route::put('/news/{id}', [NewsController::class, 'update']);
     Route::delete('/news/{id}', [NewsController::class, 'delete']);
 
-//});
+});
 
 
 
