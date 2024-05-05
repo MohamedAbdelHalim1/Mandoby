@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>university-details</title>
-    <link rel="website icon" type="png" href="assets/images/logoo.png">
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
-    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="website icon" type="png" href="{{ asset('assets/images/logoo.png') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/index.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
     <script src="https://kit.fontawesome.com/cbcafb1e3c.js" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
 </head>
 
 <body>
@@ -25,7 +22,7 @@
                 <nav class="navbar nav-mob" style="background-color: #3736AF;">
                     <div class="container-fluid">
                         <a class="navbar-brand" href="index.html">
-                            <img src="assets/images/logo-white.png" style="width: 140px;">
+                            <img src="{{asset('assets/images/logo-white.png')}}" style="width: 140px;">
                         </a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
@@ -44,7 +41,7 @@
                                  <nav class="menu">
                                     <ul>
                                         <li class="mb-4">
-                                            <a href="Nationalities.html" class="main-nav">
+                                            <a href="{{route('nationalities.index')}}" class="main-nav">
                                                 <i class="fa-regular fa-flag ms-3 fw-semibold"></i>جنسيات
                                             </a>
                                         </li>
@@ -56,12 +53,12 @@
                                             <nav id="menu-ser-small" class="menu-ser-small mt-3">
                                                 <ul class="me-3">
                                                     <li class="mb-2">
-                                                        <a href="main-service.html">
+                                                        <a href="{{route('basic.service.index')}}">
                                                             <i class="fa-solid fa-square ms-2"></i>خدمات رئيسية
                                                         </a>
                                                     </li>
                                                     <li class="mb-4">
-                                                        <a href="sub-service.html">
+                                                        <a href="{{route('sub.service.index')}}">
                                                             <i class="fa-solid fa-square ms-2"></i>خدمات فرعية
                                                         </a>
                                                     </li>
@@ -80,12 +77,12 @@
                                             <nav id="menu-unv-small" class="menu-unv-small mt-3">
                                                 <ul class="me-3">
                                                     <li class="mb-2">
-                                                        <a href="add-university.html">
+                                                        <a href="{{route('university.index')}}">
                                                             <i class="fa-solid fa-square ms-2"></i>أضافة جامعة
                                                         </a>
                                                     </li>
                                                     <li class="mb-4">
-                                                        <a href="university-details.html" style="color: #22219A; font-weight: bolder; font-size: 14px;">
+                                                        <a href="{{route('university.index')}}" style="color: #22219A; font-weight: bolder; font-size: 14px;">
                                                             <i class="fa-solid fa-square ms-2"></i>تفاصيل جامعة
                                                         </a>
                                                     </li>
@@ -131,7 +128,7 @@
                 <div class="col-xl-2 col-lg-3 col-md-3 p-3 nav-pc" style="background-color: #3736AF;">
                     <div class="d-flex justify-content-center">
                         <a href="index.html">
-                            <img src="assets/images/logo-white.png" style="width: 140px;">
+                            <img src="asset('assets/images/logo-white.png')}}" style="width: 140px;">
                         </a>
                     </div>
                 </div>
@@ -157,7 +154,7 @@
                             </h3>
                         </div>
                         <div class="circle mt-2">
-                            <img src="assets/images/IMG_20220205_105633_659.jpg">
+                            <img src="{{asset('assets/images/IMG_20220205_105633_659.jpg')}}">
                         </div>
                     </div>
                 </div>
@@ -181,7 +178,7 @@
                         <nav class="menu">
                             <ul>
                                 <li class="mb-4">
-                                    <a href="Nationalities.html" class="main-nav">
+                                    <a href="{{route('nationalities.index')}}" class="main-nav">
                                         <i class="fa-regular fa-flag ms-3 fw-semibold"></i>جنسيات
                                     </a>
                                 </li>
@@ -193,12 +190,12 @@
                                     <nav id="menu-ser" class="menu-ser mt-3">
                                         <ul class="me-3">
                                             <li class="mb-2">
-                                                <a href="main-service.html">
+                                                <a href="{{route('basic.service.index')}}">
                                                     <i class="fa-solid fa-square ms-2"></i>خدمات رئيسية
                                                 </a>
                                             </li>
                                             <li class="mb-4">
-                                                <a href="sub-service.html">
+                                                <a href="{{route('sub.service.index')}}">
                                                     <i class="fa-solid fa-square ms-2"></i>خدمات فرعية
                                                 </a>
                                             </li>
@@ -217,12 +214,12 @@
                                     <nav class="mt-3">
                                         <ul class="me-3">
                                             <li class="mb-2">
-                                                <a href="add-university.html" style="font-size: 14px;">
+                                                <a href="{{route('university.index')}}" style="font-size: 14px;">
                                                     <i class="fa-solid fa-square ms-2"></i>أضافة جامعة
                                                 </a>
                                             </li>
                                             <li class="mb-4">
-                                                <a href="university-details.html" style="color: #22219A; font-weight: bolder; font-size: 14px;">
+                                                <a href="{{route('university.index')}}" style="color: #22219A; font-weight: bolder; font-size: 14px;">
                                                     <i class="fa-solid fa-square ms-2"></i>تفاصيل جامعة
                                                 </a>
                                             </li>
@@ -293,7 +290,8 @@
                                         <i class="fa-solid fa-plus ms-2"></i>أضافة تفاصيل جامعة
                                     </button>
                                 </div>
-
+                                <form id="universityForm" action="{{ route('university.store.details' , ['id' => $university->id]) }}" method="POST" enctype="multipart/form-data">
+                                     @csrf
                                 <!-- Modal -->
                                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
                                     data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
@@ -304,22 +302,14 @@
                                                 <div class="container">
                                                     <div class="row justify-content-center">
                                                         <div class="form col-xl-12 col-lg-12">
-                                                            <div class="mb-3">
-                                                                <label for="disabledSelect"
-                                                                    class="form-label text-dark">اختر الجامعة
-                                                                </label>
-                                                                <select id="disabledSelect" class="form-select">
-                                                                    <option value>اخترالجامعة </option>
-                                                                    <option> جامعة القاهرة</option>
-                                                                </select>
-                                                            </div>
+        
                                                             <div class="mb-3">
                                                                 <label for="exampleInputEmail1"
                                                                     class="form-label text-dark">
                                                                     اكتب تفاصيل الجامعة</label>
                                                                 <textarea class="form-control p-3"
                                                                     aria-label="With textarea"
-                                                                    placeholder="اكتب هنا تفاصيل الجامعة...."></textarea>
+                                                                    placeholder="اكتب هنا تفاصيل الجامعة...." name="details"></textarea>
                                                             </div>
                                                             <!-- Dropzone area -->
                                                             <div>
@@ -329,7 +319,7 @@
                                                             </div>
                                                             <!-- Input for selecting images -->
                                                             <input type="file" id="fileInput" accept="image/*"
-                                                                style="display: none;">
+                                                                style="display: none;" name="photo">
                                                             <div class="dropzone" id="previewContainer"
                                                                 onclick="document.getElementById('fileInput').click();">
                                                                 <div class="mt-3">
@@ -346,7 +336,7 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn text-white"
+                                                <button type="submit" class="btn text-white"
                                                     style="background-color: #066569;">اضافة</button>
                                                 <button type="button" class="btn text-white"
                                                     style="background-color: #7A1C1C;"
@@ -355,6 +345,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -362,15 +353,19 @@
                         <div class="row justify-content-center">
                             <div class="col-xl-3 col-lg-3 mb-3">
                                 <div class="card" style="width: 100%;">
-                                <img src="{{ asset('storage/' . $university->photo) }}"
-                                                        alt="{{ $university->name }}"
-                                                        style="width: 68px; height: 41px;">                                    <div class="card-body">
+                                @if ($university->photo)
+                                    <img src="{{ asset('storage/' . $university->photo) }}"
+                                        alt="{{ $university->name }} photo"
+                                        class="card-img-top">
+                                @endif
+                                        <div class="card-body">
                                         <h2 class="text-end fs-6 fw-bolder mb-3">{{$university->name}}</h2>
+                                        <h4 class="text-end fs-6 mb-3">{{$university->details}}</h4>
                                         <div class="d-flex justify-content-end">
                                             <button type="button" class="btn text-white ms-2"
                                             style="background-color: #066569;">تعديل</button>
                                         <button type="button" class="btn text-white"
-                                            style="background-color: #7A1C1C;"
+                                            style="background-color: #7A1C1C;" onclick="deleteUniversity({{ $university->id }})"
                                             data-bs-dismiss="modal">مسح</button>
                                         </div>
                                     </div>
@@ -384,9 +379,49 @@
     </section>
 
     <!-- script tags -->
-    <script src="assets/js/bootstrap.js"></script>
-    <script src="assets/js/index.js"></script>
+    <script src="{{ asset('assets/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('assets/js/index.js') }}"></script>
+    
 
+<script>
+    function deleteUniversity(university_id) {
+
+    if (confirm('Are you sure you want to delete this university?')) {
+        // Send AJAX request to delete the university
+        fetch('/university/' + university_id, {
+            method: 'DELETE',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => {
+            if (response.ok) {
+                // Check if response is JSON
+                if (response.headers.get('content-type').includes('application/json')) {
+                    return response.json(); // Parse JSON response
+                } else {
+                    throw new Error('Response is not JSON');
+                }
+            } else {
+                throw new Error('Failed to delete university');
+            }
+        })
+        .then(data => {
+            // Assuming data contains a 'redirect_url' property
+            if (data.redirect_url) {
+                window.location.href = data.redirect_url; // Redirect to the specified URL
+            } else {
+                throw new Error('Redirect URL not found in response data');
+            }
+        })
+        .catch(error => {
+            console.error('Error deleting university:', error);
+            alert('An error occurred while deleting the university. Please try again.');
+        });
+    }
+    }
+</script>
 </body>
 
 </html>

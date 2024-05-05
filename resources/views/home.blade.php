@@ -55,12 +55,12 @@
                                             <nav id="menu-ser-small" class="menu-ser-small mt-3">
                                                 <ul class="me-3">
                                                     <li class="mb-2">
-                                                        <a href="main-service.html">
+                                                        <a href="{{ route('basic.service.index') }}">
                                                             <i class="fa-solid fa-square ms-2"></i>خدمات رئيسية
                                                         </a>
                                                     </li>
                                                     <li class="mb-4">
-                                                        <a href="sub-service.html">
+                                                        <a href="{{ route('sub.service.index') }}">
                                                             <i class="fa-solid fa-square ms-2"></i>خدمات فرعية
                                                         </a>
                                                     </li>
@@ -75,12 +75,12 @@
                                             <nav id="menu-unv-small" class="menu-unv-small mt-3">
                                                 <ul class="me-3">
                                                     <li class="mb-2">
-                                                        <a href="add-university.html">
+                                                        <a href="{{ route('university.index') }}">
                                                             <i class="fa-solid fa-square ms-2"></i>أضافة جامعة
                                                         </a>
                                                     </li>
                                                     <li class="mb-4">
-                                                        <a href="university-details.html">
+                                                        <a href="{{ route('university.index') }}">
                                                             <i class="fa-solid fa-square ms-2"></i>تفاصيل جامعة
                                                         </a>
                                                     </li>
@@ -188,12 +188,12 @@
                                     <nav id="menu-ser" class="menu-ser mt-3">
                                         <ul class="me-3">
                                             <li class="mb-2">
-                                                <a href="main-service.html">
+                                                <a href="{{ route('basic.service.index') }}">
                                                     <i class="fa-solid fa-square ms-2"></i>خدمات رئيسية
                                                 </a>
                                             </li>
                                             <li class="mb-4">
-                                                <a href="sub-service.html">
+                                                <a href="{{ route('sub.service.index') }}">
                                                     <i class="fa-solid fa-square ms-2"></i>خدمات فرعية
                                                 </a>
                                             </li>
@@ -208,12 +208,12 @@
                                     <nav id="menu-unv" class="menu-unv mt-3">
                                         <ul class="me-3">
                                             <li class="mb-2">
-                                                <a href="add-university.html">
+                                                <a href="{{route('university.index') }}">
                                                     <i class="fa-solid fa-square ms-2"></i>أضافة جامعة
                                                 </a>
                                             </li>
                                             <li class="mb-4">
-                                                <a href="university-details.html">
+                                                <a href="{{ route('university.index') }}">
                                                     <i class="fa-solid fa-square ms-2"></i>تفاصيل جامعة
                                                 </a>
                                             </li>
@@ -407,12 +407,12 @@
                                    
                                         @foreach ($nationalities as $nationality)
                                             <tr>
-                                                <th scope="row">{{$index++}}</th>
+                                                <th scope="row">{{$loop->index+1}}</th>
                                                 <td>{{ $nationality->name }}</td>
                                                 <td>{{ $nationality->members->count() }}</td>
                                                 <td>
                                                 @if ($nationality->photo)
-                                                    <img src="{{ asset('storage/Photos' . $nationality->photo) }}"
+                                                    <img src="{{ asset('storage/' . $nationality->photo) }}"
                                                         alt="{{ $nationality->name }} Photo"
                                                         style="width: 68px; height: 41px;">
                                                 @endif

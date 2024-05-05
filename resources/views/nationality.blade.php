@@ -44,7 +44,7 @@
                                  <nav class="menu">
                                     <ul>
                                         <li class="mb-4">
-                                            <a href="Nationalities.html" class="main-nav"
+                                            <a href="{{ route('nationalities.index')  }}" class="main-nav"
                                                 style="  color: #3736AF; font-weight: bolder;">
                                                 <i class="fa-regular fa-flag ms-3 fw-semibold"></i>جنسيات
                                             </a>
@@ -57,12 +57,12 @@
                                             <nav id="menu-ser-small" class="menu-ser-small mt-3">
                                                 <ul class="me-3">
                                                     <li class="mb-2">
-                                                        <a href="main-service.html">
+                                                        <a href="{{ route('basic.service.index') }}">
                                                             <i class="fa-solid fa-square ms-2"></i>خدمات رئيسية
                                                         </a>
                                                     </li>
                                                     <li class="mb-4">
-                                                        <a href="sub-service.html">
+                                                        <a href="{{ route('sub.service.index') }}">
                                                             <i class="fa-solid fa-square ms-2"></i>خدمات فرعية
                                                         </a>
                                                     </li>
@@ -77,12 +77,12 @@
                                             <nav id="menu-unv-small" class="menu-unv-small mt-3">
                                                 <ul class="me-3">
                                                     <li class="mb-2">
-                                                        <a href="add-university.html">
+                                                        <a href="{{ route('university.index') }}">
                                                             <i class="fa-solid fa-square ms-2"></i>أضافة جامعة
                                                         </a>
                                                     </li>
                                                     <li class="mb-4">
-                                                        <a href="university-details.html">
+                                                        <a href="{{ route('university.index') }}">
                                                             <i class="fa-solid fa-square ms-2"></i>تفاصيل جامعة
                                                         </a>
                                                     </li>
@@ -179,7 +179,7 @@
                         <nav class="menu">
                             <ul>
                                 <li class="mb-4">
-                                    <a href="Nationalities.html" class="main-nav"
+                                    <a href="{{ route('nationalities.index')  }}" class="main-nav"
                                     style="  color: #3736AF; font-weight: bolder;">
                                         <i class="fa-regular fa-flag ms-3 fw-semibold"></i>جنسيات
                                     </a>
@@ -192,12 +192,12 @@
                                     <nav id="menu-ser" class="menu-ser mt-3">
                                         <ul class="me-3">
                                             <li class="mb-2">
-                                                <a href="main-service.html">
+                                                <a href="{{ route('basic.service.index') }}">
                                                     <i class="fa-solid fa-square ms-2"></i>خدمات رئيسية
                                                 </a>
                                             </li>
                                             <li class="mb-4">
-                                                <a href="sub-service.html">
+                                                <a href="{{ route('sub.service.index') }}">
                                                     <i class="fa-solid fa-square ms-2"></i>خدمات فرعية
                                                 </a>
                                             </li>
@@ -212,12 +212,12 @@
                                     <nav id="menu-unv" class="menu-unv mt-3">
                                         <ul class="me-3">
                                             <li class="mb-2">
-                                                <a href="add-university.html">
+                                                <a href="{{route('university.index') }}">
                                                     <i class="fa-solid fa-square ms-2"></i>أضافة جامعة
                                                 </a>
                                             </li>
                                             <li class="mb-4">
-                                                <a href="university-details.html">
+                                                <a href="{{ route('university.index') }}">
                                                     <i class="fa-solid fa-square ms-2"></i>تفاصيل جامعة
                                                 </a>
                                             </li>
@@ -287,7 +287,7 @@
                                         <i class="fa-solid fa-plus ms-2"></i>أضافة جنسية جديدة
                                     </button>
                                 </div>
-                                <form id="nationalityForm" action="{{ route('nationality.store') }}" method="POST" enctype="multipart/form-data">
+                                <form id="nationalityForm" action="{{ route('nationality.store')  }}" method="POST" enctype="multipart/form-data">
                                      @csrf
                                     <!-- Modal -->
                                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"

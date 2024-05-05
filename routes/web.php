@@ -28,12 +28,12 @@ use App\Http\Controllers\HomeController;
 Auth::routes();
 
 
-Route::get('/nationalities', [NationalityController::class, 'index'])
-        ->middleware(['auth', 'admin'])
-        ->name('nationalities.index');
+Route::get('/nationalities', [NationalityController::class, 'index'])->name('nationalities.index');
+        // ->middleware(['auth', 'admin'])
+        
 
 
-Route::middleware(['auth'])->group(function () {
+//Route::middleware(['auth'])->group(function () {
     Route::get('/',[HomeController::class , 'index']);
     //Nationalities routes
     Route::post('/nationalities', [NationalityController::class, 'store'])->name('nationality.store');
@@ -64,7 +64,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/university/{id}/edit', [UniversityController::class, 'update']);
     Route::delete('/university/{id}', [UniversityController::class, 'delete']);
     Route::get('/university-details', [UniversityController::class, 'create_details']);
-    Route::post('/university-details/{id}', [UniversityController::class, 'store_details']);
+    Route::post('/university-details/{id}', [UniversityController::class, 'store_details'])->name('university.store.details');
 
 
     //faculty routes
@@ -109,7 +109,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/news/{id}', [NewsController::class, 'update']);
     Route::delete('/news/{id}', [NewsController::class, 'delete']);
 
-});
+//});
 
 
 

@@ -44,7 +44,7 @@
                                 <nav class="menu">
                                     <ul>
                                         <li class="mb-4">
-                                            <a href="Nationalities.html" class="main-nav">
+                                            <a href="{{ route('nationalities.index')  }}" class="main-nav">
                                                 <i class="fa-regular fa-flag ms-3 fw-semibold"></i>جنسيات
                                             </a>
                                         </li>
@@ -56,12 +56,12 @@
                                             <nav id="menu-ser-small" class="menu-ser-small mt-3">
                                                 <ul class="me-3">
                                                     <li class="mb-2">
-                                                        <a href="main-service.html">
+                                                        <a href="{{ route('basic.service.index') }}">
                                                             <i class="fa-solid fa-square ms-2"></i>خدمات رئيسية
                                                         </a>
                                                     </li>
                                                     <li class="mb-4">
-                                                        <a href="sub-service.html">
+                                                        <a href="{{ route('sub.service.index') }}">
                                                             <i class="fa-solid fa-square ms-2"></i>خدمات فرعية
                                                         </a>
                                                     </li>
@@ -80,13 +80,13 @@
                                             <nav id="menu-unv-small" class="menu-unv-small mt-3">
                                                 <ul class="me-3">
                                                     <li class="mb-2">
-                                                        <a href="add-university.html"
+                                                        <a href="{{ route('university.index') }}"
                                                             style="color: #22219A; font-weight: bolder; font-size: 14px;">
                                                             <i class="fa-solid fa-square ms-2"></i>أضافة جامعة
                                                         </a>
                                                     </li>
                                                     <li class="mb-4">
-                                                        <a href="university-details.html">
+                                                        <a href="{{ route('university.index') }}">
                                                             <i class="fa-solid fa-square ms-2"></i>تفاصيل جامعة
                                                         </a>
                                                     </li>
@@ -182,7 +182,7 @@
                         <nav class="menu">
                             <ul>
                                 <li class="mb-4">
-                                    <a href="Nationalities.html" class="main-nav">
+                                    <a href="{{ route('nationalities.index')  }}" class="main-nav">
                                         <i class="fa-regular fa-flag ms-3 fw-semibold"></i>جنسيات
                                     </a>
                                 </li>
@@ -194,12 +194,12 @@
                                     <nav id="menu-ser" class="menu-ser mt-3">
                                         <ul class="me-3">
                                             <li class="mb-2">
-                                                <a href="main-service.html">
+                                                <a href="{{ route('basic.service.index') }}">
                                                     <i class="fa-solid fa-square ms-2"></i>خدمات رئيسية
                                                 </a>
                                             </li>
                                             <li class="mb-4">
-                                                <a href="sub-service.html">
+                                                <a href="{{ route('sub.service.index') }}">
                                                     <i class="fa-solid fa-square ms-2"></i>خدمات فرعية
                                                 </a>
                                             </li>
@@ -218,13 +218,13 @@
                                     <nav class="mt-3">
                                         <ul class="me-3">
                                             <li class="mb-2">
-                                                <a href="add-university.html"
+                                                <a href="{{route('university.index') }}"
                                                     style="color: #22219A; font-weight: bolder; font-size: 14px;">
                                                     <i class="fa-solid fa-square ms-2"></i>أضافة جامعة
                                                 </a>
                                             </li>
                                             <li class="mb-4">
-                                                <a href="university-details.html" style="font-size: 14px;">
+                                                <a href="{{ route('university.index') }}" style="font-size: 14px;">
                                                     <i class="fa-solid fa-square ms-2"></i>تفاصيل جامعة
                                                 </a>
                                             </li>
@@ -382,7 +382,7 @@
                                                 <td>
                                                     <div class="d-flex justify-content-center">
                                                         <div class="ms-2">
-                                                            <a href="{{ route('university.show', ['id' => $university->id]) }}" type="button" class="btn text-white"
+                                                            <a href="{{ route('university.show' , ['id' => $university->id]) }}" type="button" class="btn text-white"
                                                                 style="background-color: blue;">تفاصيل</a>
                                                         </div>
                                                         <div class="ms-2">

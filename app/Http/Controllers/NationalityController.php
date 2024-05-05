@@ -52,10 +52,10 @@ class NationalityController extends Controller
 
     public function store(Request $request)
     {
+       // dd($request);
         $messages = [
             'name.required' => 'Please enter name*',
         ];
-
 
         $validator = Validator::make($request->all(), [
             'name' => ['required','string'], 
@@ -82,9 +82,6 @@ class NationalityController extends Controller
         $nationality->save();
 
         return redirect()->route('nationalities.index');
-
-        
-        
     }
 
 

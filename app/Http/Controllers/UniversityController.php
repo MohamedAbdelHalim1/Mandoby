@@ -92,7 +92,7 @@ class UniversityController extends Controller
         if ($request->hasFile('logo')) {
             $logo = $request->file('logo');
             $extension = $logo->getClientOriginalExtension();
-            $logoPath = $logo->storeAs('logos', 'university_logo_' . time() . '.' . $extension, 'public'); // Store the file in the 'public/logos' directory
+            $logoPath = $logo->storeAs('Photos', 'university_logo_' . time() . '.' . $extension, 'public'); // Store the file in the 'public/logos' directory
             $university->logo = $logoPath;
         }
         $university->save();
@@ -103,7 +103,7 @@ class UniversityController extends Controller
     }
 
 
-  
+ 
 
     
     public function edit($id){
@@ -186,22 +186,9 @@ class UniversityController extends Controller
     public function delete($id)
     {
         $university = University::find($id);
-
-        if ($university == null) {
-            return response()->json([
-                'status' => 'failed',
-                'message' => 'University not found',
-                'data' => []
-            ], 404);
-        }
-
         $university->delete();
+        return response()->json(['redirect_url' => route('university.index')]);
 
-        return response()->json([
-            'status' => 'success',
-            'message' => 'University deleted successfully',
-            'data' => []
-        ], 200);
     }
 
 
@@ -209,8 +196,6 @@ class UniversityController extends Controller
      public function show($id){
         $university = University::find($id);
         return view('university-details',compact('university'));
-
-
     }
 
     //will get this university using id and fill the null data in photo and details
@@ -224,11 +209,7 @@ class UniversityController extends Controller
             $university->photo = $photoPath;
         }
         $university->save();
-        return response()->json([
-            'status' => 'success',
-            'message' => 'University details added successfully',
-            'data' => $university
-        ], 201);
+        return redirect()->back();
 
     }
 

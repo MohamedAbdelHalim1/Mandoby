@@ -66,7 +66,7 @@ public function uploadrequirements(Request $request){
         foreach ($photos as $photo) {
             $filename = 'requirement_photo_' . time() . '_' . uniqid() . '.' . $photo->getClientOriginalExtension();
     
-            $path = $photo->storeAs('requirement_photos', $filename, 'public');
+            $path = $photo->storeAs('Photos', $filename, 'public');
     
             $orderRequirementPhoto = new OrderRequirementPhoto();
             $orderRequirementPhoto->order_id = $order->id; 
