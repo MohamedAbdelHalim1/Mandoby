@@ -28,15 +28,9 @@ class NationalityController extends Controller
     }
     public function get_universities_nationality($id){
         $nationality = Nationality::find($id);
-        if($universities == null){
-            return response()->json([
-                'status' => 'failed',
-                'message' => 'No Nationalities found!',
-                'data' => []
-            ], 404);
-        }
+       
         $universities = $nationality->universities;
-        if($universities == null){
+        if($universities->isEmpty()){
             return response()->json([
                 'status' => 'failed',
                 'message' => 'No Universities for this nationality!',
