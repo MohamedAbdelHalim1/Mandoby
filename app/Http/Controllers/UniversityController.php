@@ -232,4 +232,24 @@ class UniversityController extends Controller
 
     }
 
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $universities = University::where('name', 'like', "%$query%")->get();
+        if(!$universities->isEmpty()){
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Universities retrieved successfully',
+                'data' => $universities
+            ], 200);
+        }
+        return response()->json([
+            'status' => 'failed',
+            'message' => 'No Universities Found!',
+            'data' => []
+        ], 404);
+
+    }
+
 }

@@ -11,16 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('members', function (Blueprint $table) {
+        Schema::create('nationality_universities', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('nationality_id')->nullable();
+            $table->unsignedBigInteger('nationality_id');
             $table->foreign('nationality_id')->references('id')->on('nationalities')->onDelete('cascade');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('phone')->unique();
-            $table->string('device_token');
-            $table->string('password')->default(bcrypt('123456'));
-            $table->rememberToken();
+            $table->unsignedBigInteger('university_id')->nullable();
+            $table->foreign('university_id')->references('id')->on('universities')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('members');
+        Schema::dropIfExists('nationality_universities');
     }
 };

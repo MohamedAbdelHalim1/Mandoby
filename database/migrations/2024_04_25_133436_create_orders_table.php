@@ -24,6 +24,7 @@ return new class extends Migration
             $table->tinyInteger('order_accepted')->default(0);
             $table->enum('package', ['silver', 'premium', 'gold'])->nullable();
             $table->boolean('attached_card')->default(false);
+            $table->enum('order_type',['تعليم جامعي' , 'تعليم الثانوي' , 'تعليم بعد الجامعي'])->default('تعليم جامعي');
             $table->timestamps();
         });
     }

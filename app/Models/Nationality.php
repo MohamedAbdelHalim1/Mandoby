@@ -16,4 +16,9 @@ class Nationality extends Model
     public function members(){
         return $this->hasMany(Member::class , 'nationality_id');
     }
+
+    public function universities()
+    {
+        return $this->hasManyThrough(University::class, NationalityUniversity::class, 'nationality_id', 'id', 'id', 'university_id');
+    }
 }

@@ -16,4 +16,9 @@ class University extends Model
     public function faculties(){
         return $this->hasMany(Faculty::class , 'university_id');
     }
+
+    public function nationalities()
+    {
+        return $this->hasManyThrough(Nationality::class, NationalityUniversity::class, 'university_id', 'id', 'id', 'nationality_id');
+    }
 }

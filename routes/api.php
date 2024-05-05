@@ -45,6 +45,8 @@ Route::get('/bs/{id}/sub-service', [SubServiceController::class, 'get_sub_servic
 //University Apis
 Route::get('/university', [UniversityController::class, 'get_universities']);
 Route::get('/university/{id}', [UniversityController::class, 'university_details']);
+Route::get('/university-search', [UniversityController::class, 'search']);
+
 
 //faculty Apis
 Route::get('u/{id}/faculty', [FacultyController::class, 'get_faculties']);
