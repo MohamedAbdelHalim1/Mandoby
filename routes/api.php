@@ -35,6 +35,7 @@ Route::post('logout', [LogoutController::class, 'user_logout']);
 
 //Nationalities Apis
 Route::get('/nationalities', [NationalityController::class, 'get_nationalities']);
+Route::get('/u/nationality/{id}', [NationalityController::class, 'get_universities_nationality']);
 
 //Bacic Services Apis
 Route::get('/basic-service', [BasicServiceController::class, 'get_basic_services']);

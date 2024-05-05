@@ -26,6 +26,23 @@ class NationalityController extends Controller
         ], 200);
         
     }
+    public function get_universities_nationality($id){
+        $nationality = Nationality::find($id);
+        $universities = $nationality->universities;
+        if($universities == null){
+            return response()->json([
+                'status' => 'failed',
+                'message' => 'No Nationalities Yet!',
+                'data' => []
+            ], 200);
+        }
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Universities retrieved successfully',
+            'data' => $universities
+        ], 200);
+        
+    }
 //////////////////////////////////////////
 
     public function index(){
