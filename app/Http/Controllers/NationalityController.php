@@ -32,7 +32,7 @@ class NationalityController extends Controller
         if($universities == null){
             return response()->json([
                 'status' => 'failed',
-                'message' => 'No Nationalities Yet!',
+                'message' => 'No Universities for this nationality!',
                 'data' => []
             ], 200);
         }
