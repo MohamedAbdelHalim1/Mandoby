@@ -354,7 +354,7 @@
                             <div class="col-xl-3 col-lg-3 mb-3">
                                 <div class="card" style="width: 100%;">
                                 @if ($university->photo)
-                                    <img src="{{ asset('storage/' . $university->photo) }}"
+                                    <img src="{{ $university->photo }}"
                                         alt="{{ $university->name }} photo"
                                         class="card-img-top">
                                 @endif

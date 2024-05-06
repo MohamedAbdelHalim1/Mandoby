@@ -68,7 +68,8 @@ class SubServiceController extends Controller
             $photo = $request->file('photo');
             $extension = $photo->getClientOriginalExtension();
             $photoPath = $photo->storeAs('Photos', 'sub_service_photo_' . time() . '.' . $extension, 'public'); // Store the file in the 'public/photos' directory
-            $SubService->photo = $photoPath;
+            $photoUrl = url('storage/' . $photoPath);
+            $SubService->photo = $photoUrl; 
         }
         $SubService->save();
 
@@ -128,7 +129,8 @@ class SubServiceController extends Controller
             $photo = $request->file('photo');
             $extension = $photo->getClientOriginalExtension();
             $photoPath = $photo->storeAs('Photos', 'sub_service_photo_' . time() . '.' . $extension, 'public');
-            $SubService->photo = $photoPath;
+            $photoUrl = url('storage/' . $photoPath);
+            $SubService->photo = $photoUrl; 
         }
     
         $SubService->save();

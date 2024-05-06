@@ -52,7 +52,8 @@ class NewsController extends Controller
             $photo = $request->file('photo');
             $extension = $photo->getClientOriginalExtension();
             $photoPath = $photo->storeAs('Photos', 'news_photo_' . time() . '.' . $extension, 'public'); // Store the file in the 'public/photos' directory
-            $news->photo = $photoPath;
+            $photoUrl = url('storage/' . $photoPath);
+            $news->photo = $photoUrl; 
         }
         $news->save();
 

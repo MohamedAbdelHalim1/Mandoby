@@ -70,7 +70,8 @@ public function uploadrequirements(Request $request){
     
             $orderRequirementPhoto = new OrderRequirementPhoto();
             $orderRequirementPhoto->order_id = $order->id; 
-            $orderRequirementPhoto->photo = $path;
+            $photoUrl = url('storage/' . $path);
+            $orderRequirementPhoto->photo = $photoUrl; 
             if ($orderRequirementPhoto->save()) {
                 $successfulInsertions++;
             }

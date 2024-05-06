@@ -374,7 +374,7 @@
                                             <td>{{$basicService->name}}</td>
                                             <td>
                                             @if ($basicService->photo)
-                                                    <img src="{{ asset('storage/' . $basicService->photo) }}"
+                                                    <img src="{{ $basicService->photo }}"
                                                         alt="{{ $basicService->name }} Photo"
                                                         style="width: 68px; height: 41px;">
                                                 @endif

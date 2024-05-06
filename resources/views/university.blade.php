@@ -374,7 +374,7 @@
                                                 <td>{{$university->name}}</td>
                                                 <td>
                                                 @if ($university->logo)
-                                                    <img src="{{ asset('storage/' . $university->logo) }}"
+                                                    <img src="{{ $university->logo }}"
                                                         alt="{{ $university->name }} logo"
                                                         style="width: 68px; height: 41px;">
                                                 @endif

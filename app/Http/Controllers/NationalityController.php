@@ -84,7 +84,8 @@ class NationalityController extends Controller
             $photo = $request->file('photo');
             $extension = $photo->getClientOriginalExtension();
             $photoPath = $photo->storeAs('Photos', 'nationality_photo_' . time() . '.' . $extension, 'public'); // Store the file in the 'public/photos' directory
-            $nationality->photo = $photoPath;
+            $photoUrl = url('storage/' . $photoPath); // Construct the full URL of the stored photo
+            $nationality->photo = $photoUrl; // Store the URL in the 'photo_url' column
         }
         $nationality->save();
 
@@ -142,8 +143,9 @@ class NationalityController extends Controller
             $photo = $request->file('photo');
             $extension = $photo->getClientOriginalExtension();
             $photoPath = $photo->storeAs('Photos', 'nationality_photo_' . time() . '.' . $extension, 'public');
-            $nationality->photo = $photoPath;
-        }
+            $photoUrl = url('storage/' . $photoPath);
+            $nationality->photo = $photoUrl; 
+                }
     
         $nationality->save();
         if ($nationality->exists){

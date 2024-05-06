@@ -65,7 +65,8 @@ class BasicServiceController extends Controller
             $photo = $request->file('photo');
             $extension = $photo->getClientOriginalExtension();
             $photoPath = $photo->storeAs('Photos', 'basic_service_photo_' . time() . '.' . $extension, 'public'); // Store the file in the 'public/photos' directory
-            $BasicService->photo = $photoPath;
+            $photoUrl = url('storage/' . $photoPath);
+            $BasicService->photo = $photoUrl; 
         }
         $BasicService->save();
 
@@ -125,7 +126,8 @@ class BasicServiceController extends Controller
             $photo = $request->file('photo');
             $extension = $photo->getClientOriginalExtension();
             $photoPath = $photo->storeAs('Photos', 'basic_service_photo_' . time() . '.' . $extension, 'public');
-            $BasicService->photo = $photoPath;
+            $photoUrl = url('storage/' . $photoPath);
+            $BasicService->photo = $photoUrl; 
         }
     
         $BasicService->save();

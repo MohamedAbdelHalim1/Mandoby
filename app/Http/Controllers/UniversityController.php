@@ -93,7 +93,8 @@ class UniversityController extends Controller
             $logo = $request->file('logo');
             $extension = $logo->getClientOriginalExtension();
             $logoPath = $logo->storeAs('Photos', 'university_logo_' . time() . '.' . $extension, 'public'); // Store the file in the 'public/logos' directory
-            $university->logo = $logoPath;
+            $logoUrl = url('storage/' . $logoPath);
+            $university->logo = $logoUrl; 
         }
         $university->save();
 
@@ -156,14 +157,16 @@ class UniversityController extends Controller
         if ($request->hasFile('logo')) {
             $logo = $request->file('logo');
             $extension = $logo->getClientOriginalExtension();
-            $logoPath = $logo->storeAs('logos', 'university_logo_' . time() . '.' . $extension, 'public');
-            $university->logo = $logoPath;
+            $logoPath = $logo->storeAs('Photos', 'university_logo_' . time() . '.' . $extension, 'public');
+            $logoUrl = url('storage/' . $logoPath);
+            $university->logo = $logoUrl; 
         }
         if ($request->hasFile('photo')) {
             $photo = $request->file('photo');
             $extension = $photo->getClientOriginalExtension();
             $photoPath = $photo->storeAs('Photos', 'university_photo_' . time() . '.' . $extension, 'public'); // Store the file in the 'public/photos' directory
-            $university->photo = $photoPath;
+            $photoUrl = url('storage/' . $photoPath);
+            $university->photo = $photoUrl; 
         }
     
         $university->save();
@@ -206,7 +209,8 @@ class UniversityController extends Controller
             $photo = $request->file('photo');
             $extension = $photo->getClientOriginalExtension();
             $photoPath = $photo->storeAs('Photos', 'university_photo_' . time() . '.' . $extension, 'public'); // Store the file in the 'public/photos' directory
-            $university->photo = $photoPath;
+            $photoUrl = url('storage/' . $photoPath);
+            $university->photo = $photoUrl; 
         }
         $university->save();
         return redirect()->back();
