@@ -381,6 +381,10 @@
                                             </td>
                                             <td>
                                                 <div class="d-flex justify-content-center">
+                                                         <div class="ms-2">
+                                                            <a href="{{ route('nationality.show' , ['id' => $nationality->id]) }}" type="button" class="btn text-white"
+                                                                style="background-color: blue;">الجامعات</a>
+                                                        </div>
                                                     <div class="ms-2">
                                                         <button type="button" class="btn text-white" data-nationality-id="{{ $nationality->id }}"
                                                             style="background-color: #1C7A36;">تعديل</button>

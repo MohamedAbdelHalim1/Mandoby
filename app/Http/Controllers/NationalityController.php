@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\University;
 use App\Models\Nationality;
 use Illuminate\Support\Facades\Validator;
 
@@ -90,6 +91,27 @@ class NationalityController extends Controller
         $nationality->save();
 
         return redirect()->route('nationalities.index');
+    }
+
+    public function show($id){
+        $nationality = Nationality::find($id);
+        $Nationality_universities = $nationality->universities;
+         // Get all universities except those already attached to the nationality
+        $universities = University::whereNotIn('id', $Nationality_universities->pluck('id'))->get();
+        return view('nationality-details' , compact('Nationality_universities','universities','id'));
+    }
+
+    public function store_universities(Request $request , $id){
+        //dd($request);
+        $nationality = Nationality::find($id);
+        $request->validate([
+            'universities' => 'required|array', 
+            'universities.*' => 'integer|exists:universities,id', // Ensure each university ID exists in the database
+        ]);
+
+    $nationality->universities()->attach($request->universities);
+    return redirect()->back()->with('success', 'Universities attached to nationality successfully');
+        
     }
 
 

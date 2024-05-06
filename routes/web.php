@@ -40,6 +40,8 @@ Route::middleware(['auth'])->group(function () {
     //Nationalities routes
     Route::get('/nationalities', [NationalityController::class, 'index'])->name('nationalities.index');
     Route::post('/nationalities', [NationalityController::class, 'store'])->name('nationality.store');
+    Route::get('/nationality/{id}', [NationalityController::class, 'show'])->name('nationality.show');
+    Route::post('/nationality/{id}', [NationalityController::class, 'store_universities'])->name('nationality.university.store');
     Route::get('/nationalities/{id}/edit', [NationalityController::class, 'edit']);
     Route::put('/nationalities/{id}', [NationalityController::class, 'update']);
     Route::delete('/nationalities/{id}', [NationalityController::class, 'delete']);
