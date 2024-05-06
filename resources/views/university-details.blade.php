@@ -302,7 +302,7 @@
                                                 <div class="container">
                                                     <div class="row justify-content-center">
                                                         <div class="form col-xl-12 col-lg-12">
-        
+                                                        <span id="nameError" class="text-danger"></span>
                                                             <div class="mb-3">
                                                                 <label for="exampleInputEmail1"
                                                                     class="form-label text-dark">
@@ -384,6 +384,46 @@
     
 
 <script>
+
+document.getElementById('universityForm').addEventListener('submit', function(event) {
+event.preventDefault();
+var formData = new FormData(this);
+
+// Submit the form data using Ajax
+fetch(this.action, {
+    method: 'POST',
+    body: formData
+})
+.then(response => {
+    if (response.ok) {
+        // Clear all error messages when form is submitted successfully
+        var errorElements = document.querySelectorAll('.text-danger');
+        errorElements.forEach(function(element) {
+            element.textContent = '';
+        });
+        window.location.reload();
+    } else {
+        response.json().then(data => {
+            // Loop through each field with errors
+            for (var key in data.errors) {
+                if (Object.prototype.hasOwnProperty.call(data.errors, key)) {
+                    var errorMessages = data.errors[key]; // Get the error messages array
+                    var errorElement = document.getElementById(key + 'Error'); // Assuming ID format is fieldNameError
+                    if (errorElement) {
+                        // Join all error messages and display them
+                        errorElement.textContent = errorMessages.join(' ');
+                    }
+                }
+            }
+        });
+    }
+})
+.catch(error => {
+    console.error('Error:', error);
+});
+});
+
+
     function deleteUniversity(university_id) {
 
     if (confirm('Are you sure you want to delete this university?')) {

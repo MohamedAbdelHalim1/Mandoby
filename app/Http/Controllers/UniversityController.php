@@ -66,14 +66,13 @@ class UniversityController extends Controller
     {
 
         $messages = [
-            'name.required' => 'Please enter name*',
+            'name.required' => 'Please enter All Data*',
         ];
 
 
         $validator = Validator::make($request->all(), [
             'name' => ['required','string'], 
-            'logo' => ['nullable','image','mimes:jpeg,png,jpg,gif'], 
-            'details'=>['nullable'],
+            'logo' => ['required','image','mimes:jpeg,png,jpg,gif'], 
            ],$messages);
 
            if ($validator->fails()) {
@@ -87,7 +86,6 @@ class UniversityController extends Controller
 
         $university = new University;
         $university->name = $request->name;
-        $university->details = $request->details;
 
         if ($request->hasFile('logo')) {
             $logo = $request->file('logo');
@@ -203,6 +201,26 @@ class UniversityController extends Controller
 
     //will get this university using id and fill the null data in photo and details
     public function store_details(Request $request , $id){
+
+        $messages = [
+            'details.required' => 'Please enter All Data*',
+        ];
+
+
+        $validator = Validator::make($request->all(), [
+            'details' => ['required','string'], 
+            'photo' => ['required','image','mimes:jpeg,png,jpg,gif'], 
+           ],$messages);
+
+           if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Validation failed',
+                'errors' => $validator->errors(),
+            ], 422);
+        }
+
+
         $university = University::find($id);
         $university->details = $request->details;
         if ($request->hasFile('photo')) {

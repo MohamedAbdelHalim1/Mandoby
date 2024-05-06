@@ -43,12 +43,12 @@ class SubServiceController extends Controller
     {
 
         $messages = [
-            'name.required' => 'Please enter all Data. Name and Basic services is Required*',
+            'name.required' => 'Please enter all Data*',
         ];
 
         $validator = Validator::make($request->all(), [
             'name' => ['required','string'], 
-            'photo' => ['nullable','image','mimes:jpeg,png,jpg,gif'], 
+            'photo' => ['required','image','mimes:jpeg,png,jpg,gif'], 
             'basic_service' => ['required'],
            ], $messages);
 

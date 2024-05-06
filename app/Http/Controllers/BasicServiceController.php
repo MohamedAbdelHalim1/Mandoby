@@ -40,13 +40,13 @@ class BasicServiceController extends Controller
     {
 
         $messages = [
-            'name.required' => 'Please enter name*',
+            'name.required' => 'Please enter All Data*',
         ];
 
 
         $validator = Validator::make($request->all(), [
             'name' => ['required','string'], 
-            'photo' => ['nullable','image','mimes:jpeg,png,jpg,gif'], 
+            'photo' => ['required','image','mimes:jpeg,png,jpg,gif'], 
            ],$messages);
 
            if ($validator->fails()) {
@@ -108,7 +108,7 @@ class BasicServiceController extends Controller
     
         $validator = Validator::make($request->all(), [
             'name' => ['required','string'], 
-            'photo' => ['nullable','image','mimes:jpeg,png,jpg,gif'], 
+            'photo' => ['required','image','mimes:jpeg,png,jpg,gif'], 
            ]);
 
         if ($validator->fails()) {
