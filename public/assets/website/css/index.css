@@ -1,0 +1,235 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.rtl {
+    direction: rtl;
+}
+
+body {
+    background-color: #E9E9F2;
+    font-family: 'Cairo', sans-serif !important;
+    scroll-behavior: smooth;
+    overflow-x: hidden !important;
+}
+
+/**/
+
+header {
+    background-color: #2d2da4;
+    margin-bottom: 6%;
+}
+
+
+/**/
+h1,
+h2 {
+    color: black;
+    font-size: 28px;
+    font-weight: bolder;
+}
+
+p {
+    color: #3a3b3c;
+    width: 90%;
+    font-size: 18px;
+    line-height: 30px;
+}
+
+h3 {
+    color: black;
+    line-height: 40px;
+    font-weight: bolder;
+}
+
+ul {
+    list-style: disc;
+    margin-right: 30px !important;
+}
+
+li {
+    font-weight: bolder;
+    color: black;
+    margin-bottom: 5px;
+}
+
+h4 {
+    font-weight: bold;
+    color: white;
+    font-size: 30px;
+}
+
+/**/
+
+.client-say {
+    background-color: #3736AF;
+    height: 45vh;
+    width: 70vw;
+    padding: 50px;
+}
+
+.client-say p {
+    line-height: 43px;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    text-align: center;
+    align-items: center;
+    font-weight: lighter;
+    width: 100%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-image: none;
+}
+
+.carousel-control-prev-icon img,
+.carousel-control-next-icon img {
+    width: 58px;
+    height: 46px;
+}
+
+/**/
+
+footer {
+    padding: 30px;
+}
+
+footer h6 {
+    font-size: 20px;
+    color: #3a3b3c;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-right: 20px;
+}
+
+footer ul {
+    list-style: none;
+}
+
+footer li a {
+    color: black;
+    font-weight: lighter;
+    font-size: 16px;
+    line-height: 30px;
+    text-decoration: none !important;
+}
+
+/*button-up*/
+
+.button-up {
+    position: fixed;
+    left: 28px;
+    bottom: 4%;
+    cursor: pointer;
+    transition: 0.4s;
+    overflow-y: hidden !important;
+    height: 45px;
+    width: 170px;
+    color: white;
+    background-color: #066569;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.button-up:hover {
+    background-color: #3736AF;
+    color: white;
+}
+
+.button-up.show {
+    right: 3%;
+}
+
+/*******/
+
+@media screen and (max-width:1000px) {
+    * {
+        overflow-x: hidden !important;
+    }
+
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .carousel-item,
+    li,
+    a {
+        overflow-y: hidden !important;
+    }
+
+   
+
+    p {
+        color: #3a3b3c;
+        width: 100%;
+        font-size: 15px;
+        line-height: 30px;
+    }
+
+    h3 {
+        color: black;
+        line-height: 35px;
+        font-weight: bolder;
+        font-size: 20px;
+    }
+
+    .box {
+        flex-direction: column-reverse;
+    }
+
+
+    .button-up {
+        position: fixed;
+        left: 20px;
+        bottom: 5%;
+        cursor: pointer;
+        transition: 0.4s;
+        overflow-y: hidden !important;
+        height: 45px;
+        width: 170px;
+        color: white;
+        background-color: #066569;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .client-say {
+        background-color: #3736AF;
+        height: 45vh;
+        width: 90vw;
+        padding: 50px;
+    }
+
+    .client-say p {
+        line-height: 33px;
+        color: rgb(255, 255, 255);
+        font-size: 15px;
+        text-align: center;
+        align-items: center;
+        font-weight: lighter;
+        width: 100%;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        background-image: none;
+    }
+
+    .carousel-control-prev-icon img,
+    .carousel-control-next-icon img {
+        width: 0px;
+        height: 0px;
+    }
+
+
+
+}

@@ -31,10 +31,12 @@ Auth::routes();
 //Route::get('/nationalities', [NationalityController::class, 'index'])->name('nationalities.index');
         // ->middleware(['auth', 'admin'])
         
-
+Route::get('/', function () {
+    return view('index');
+});
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/',[HomeController::class , 'index']);
+    Route::get('/dashboard',[HomeController::class , 'index']);
     //Nationalities routes
     Route::get('/nationalities', [NationalityController::class, 'index'])->name('nationalities.index');
     Route::post('/nationalities', [NationalityController::class, 'store'])->name('nationality.store');
