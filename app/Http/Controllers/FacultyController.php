@@ -10,9 +10,6 @@ use App\Models\University;
 class FacultyController extends Controller
 {
 
-    private function get_universities(){
-        return University::all();
-    }
 
     //for mobile
     public function get_faculties($id){
@@ -39,89 +36,42 @@ class FacultyController extends Controller
        
     
    public function index(){
-    $universities = $this->get_universities();
-    if(!$universities->isEmpty()){
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Universities retrieved successfully',
-            'data' => $universities
-        ], 200);
-    }
-    return response()->json([
-        'status' => 'faild',
-        'message' => 'No Universities Yet!',
-        'data' => []
-    ], 200);
+    $universities = University::all();
+    $faculties = Faculty::all();
+    return view('faculty' , compact('universities' , 'faculties'));
+
    }
 
-   public function show_faculty($id){
-    $faculties = Faculty::where('university_id','=',$id)->get();
-    if(!$faculties->isEmpty()){
-        return response()->json([
-            'status' => 'success',
-            'message' => 'faculties retrieved successfully',
-            'data' => $faculties
-        ], 200);
-    }
-    return response()->json([
-        'status' => 'faild',
-        'message' => 'No faculties Yet!',
-        'data' => []
-    ], 200);
-   }
-
-   public function create(){
-    $universities = $this->get_universities();
-    if(!$universities->isEmpty()){
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Universities retrieved successfully',
-            'data' => $universities
-        ], 200);
-    }
-    return response()->json([
-        'status' => 'faild',
-        'message' => 'No Universities Yet!',
-        'data' => []
-    ], 200);
-   }
+  
 
    public function store(Request $request)
     {
+        $messages = [
+            'name.required' => 'Please enter All Data*',
+        ];
 
         $validator = Validator::make($request->all(), [
             'name' => ['required','string'], 
-            'degree' => ['nullable'], 
-            'university_id' => ['required'],
-           ]);
+            'degree' => ['required'], 
+            'university' => ['required'],
+           ], $messages);
 
-        if ($validator->fails()) {
-           return response()->json([
-               'success'=>false,
-               'message'=>"There exist one or more errors",
-               'data'=>$validator->messages(),
-           ],400);
-       }
+           if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Validation failed',
+                'errors' => $validator->errors(),
+            ], 422);
+        }
     
 
         $faculty = new Faculty;
         $faculty->name = $request->name;
-        $faculty->university_id = $request->university_id;
+        $faculty->university_id = $request->university;
         $faculty->degree = $request->degree;     
         $faculty->save();
 
-        if ($faculty->exists){
-            return response()->json([
-                'status' => 'success',
-                'message' => 'Faculty added successfully',
-                'data' => $faculty
-            ], 201);
-        }
-            return response()->json([
-                'status' => 'failed',
-                'message' => 'Something went wrong , Try Again!',
-                'data' => []
-            ], 500);
+      return redirect()->back();
     }
 
     public function edit($id){
@@ -182,22 +132,19 @@ class FacultyController extends Controller
     public function delete($id)
     {
         $faculty = Faculty::find($id);
-
-        if ($faculty == null) {
-            return response()->json([
-                'status' => 'failed',
-                'message' => 'faculty not found',
-                'data' => []
-            ], 404);
-        }
-
         $faculty->delete();
 
-        return response()->json([
-            'status' => 'success',
-            'message' => 'faculty deleted successfully',
-            'data' => []
-        ], 200);
+    }
+
+    public function filterData(Request $request)
+    {
+        //dd($request);
+        $universityId = $request->input('university_id');
+
+        $filteredData = Faculty::where('university_id','=',$universityId)->get();
+
+        
+        return view('filtered-table', compact('filteredData'));
     }
 
 }

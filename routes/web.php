@@ -73,13 +73,13 @@ Route::middleware(['auth'])->group(function () {
 
 
     //faculty routes
-    Route::get('/faculty', [FacultyController::class, 'index']);
-    Route::get('/u/{id}/faculty', [FacultyController::class, 'show_faculty']);
-    Route::get('/u/{id}/faculty/create', [FacultyController::class, 'create']);
-    Route::post('/u/{id}/faculty/create', [FacultyController::class, 'store']);
+    Route::get('/faculty', [FacultyController::class, 'index'])->name('faculty.index');
+    Route::post('/faculty/create', [FacultyController::class, 'store'])->name('faculty.store');
     Route::get('/faculty/{id}/edit', [FacultyController::class, 'edit']);
     Route::put('/faculty/{id}/edit', [FacultyController::class, 'update']);
     Route::delete('/faculty/{id}', [FacultyController::class, 'delete']);
+    Route::post('/faculty-filter', [FacultyController::class, 'filterData'])->name('filter.data');
+
 
 
     //Major routes

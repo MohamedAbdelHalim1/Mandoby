@@ -93,7 +93,7 @@
                                             </nav>
                                         </li>
                                         <li class="mb-4">
-                                            <a href="faculty.html" class="main-nav">
+                                            <a href="{{route('faculty.index')}}" class="main-nav">
                                                 <i class="fa-solid fa-graduation-cap ms-3 fw-semibold"></i>كليات
                                             </a>
                                         </li>
@@ -230,7 +230,7 @@
                                     </nav>
                                 </li>
                                 <li class="mb-4">
-                                    <a href="faculty.html" class="main-nav">
+                                    <a href="{{route('faculty.index')}}" class="main-nav">
                                         <i class="fa-solid fa-graduation-cap ms-3 fw-semibold"></i>كليات
                                     </a>
                                 </li>
