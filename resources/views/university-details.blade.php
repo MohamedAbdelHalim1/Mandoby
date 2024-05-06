@@ -309,7 +309,7 @@
                                                                     اكتب تفاصيل الجامعة</label>
                                                                 <textarea class="form-control p-3"
                                                                     aria-label="With textarea"
-                                                                    placeholder="اكتب هنا تفاصيل الجامعة...." name="details"></textarea>
+                                                                    placeholder="اكتب هنا تفاصيل الجامعة...." name="details" required></textarea>
                                                             </div>
                                                             <!-- Dropzone area -->
                                                             <div>
@@ -319,7 +319,7 @@
                                                             </div>
                                                             <!-- Input for selecting images -->
                                                             <input type="file" id="fileInput" accept="image/*"
-                                                                style="display: none;" name="photo">
+                                                                style="display: none;" name="photo" required>
                                                             <div class="dropzone" id="previewContainer"
                                                                 onclick="document.getElementById('fileInput').click();">
                                                                 <div class="mt-3">

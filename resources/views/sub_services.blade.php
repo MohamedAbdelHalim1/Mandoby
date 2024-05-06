@@ -310,14 +310,14 @@
                                                                     class="form-label text-dark">اسم
                                                                     الخدمة الرئيسية</label>
                                                                 <input type="text" class="form-control"
-                                                                    placeholder="اكتب هنا اسم الخدمة" name="name">
+                                                                    placeholder="اكتب هنا اسم الخدمة" name="name" requried>
                                                             </div>
 
                                                             <div class="mb-3">
                                                                 <label for="disabledSelect"
                                                                     class="form-label text-dark">اختر الخدمة الرئيسية
                                                                     التبعه لها</label>
-                                                                <select id="disabledSelect" class="form-select" name="basic_service">
+                                                                <select id="disabledSelect" class="form-select" name="basic_service" required>
                                                                     <option value>اختر الخدمة الرئيسية </option>
                                                                     @foreach($basicServices as $basicService)
                                                                     <option value="{{$basicService->id}}">{{$basicService->name}}</option>
@@ -333,7 +333,7 @@
                                                             </div>
                                                             <!-- Input for selecting images -->
                                                             <input type="file" id="fileInput" accept="image/*"
-                                                                style="display: none;"  name="photo">
+                                                                style="display: none;"  name="photo" required>
                                                             <div class="dropzone" id="previewContainer"
                                                                 onclick="document.getElementById('fileInput').click();">
                                                                 <div class="mt-3">

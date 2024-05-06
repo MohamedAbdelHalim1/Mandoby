@@ -311,7 +311,7 @@
                                                                     class="form-label text-dark">اسم
                                                                     الخدمة الرئيسية</label>
                                                                 <input type="text" class="form-control"
-                                                                    placeholder="اكتب هنا اسم الخدمة" name="name">
+                                                                    placeholder="اكتب هنا اسم الخدمة" name="name" required>
                                                             </div>
                                                             <!-- Dropzone area -->
                                                             <div>
@@ -321,7 +321,7 @@
                                                             </div>
                                                             <!-- Input for selecting images -->
                                                             <input type="file" id="fileInput" accept="image/*"
-                                                                style="display: none;"  name="photo">
+                                                                style="display: none;"  name="photo" required>
                                                             <div class="dropzone" id="previewContainer"
                                                                 onclick="document.getElementById('fileInput').click();">
                                                                 <div class="mt-3">

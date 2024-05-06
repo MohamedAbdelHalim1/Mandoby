@@ -306,7 +306,7 @@
                                                                         class="form-label text-dark fw-semibold">اسم
                                                                         الجنسية</label>
                                                                     <input type="text" class="form-control"
-                                                                        placeholder="اكتب هنا اسم الجنسية" name="name">
+                                                                        placeholder="اكتب هنا اسم الجنسية" name="name" requried>
                                                                 </div>
                                                                 <!-- Display error message if exists -->
                                                                 @error('name')
@@ -320,7 +320,7 @@
                                                                 </div>
                                                                 <!-- Input for selecting images -->
                                                                 <input type="file" id="fileInput" accept="image/*"
-                                                                    style="display: none;" name="photo">
+                                                                    style="display: none;" name="photo" required>
                                                                 <div class="dropzone" id="previewContainer"
                                                                     onclick="document.getElementById('fileInput').click();">
                                                                     <div class="mt-3">
