@@ -36,6 +36,7 @@ class RegisterController extends Controller
 
         $order = new Order();
         $order->member_id = $member->id;
+        //order name returned from json
         //major id returned from json
         $order->save();
 

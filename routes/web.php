@@ -79,16 +79,19 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/faculty/{id}/edit', [FacultyController::class, 'update']);
     Route::delete('/faculty/{id}', [FacultyController::class, 'delete']);
     Route::post('/faculty-filter', [FacultyController::class, 'filterData'])->name('filter.data');
+    Route::post('/getFaculties' , [FacultyController::class, 'getFaculties']);
 
 
 
     //Major routes
-    Route::get('/major', [MajorController::class, 'index']);
+    Route::get('/major', [MajorController::class, 'index'])->name('major.index');
     Route::get('/major/get-faculty',  [MajorController::class, 'get_faculties']); //university_id sent via AJAX in Request
-    Route::post('/major/create',  [MajorController::class, 'store']);
+    Route::post('/major/create',  [MajorController::class, 'store'])->name('major.store');
     Route::get('/major/{id}/edit',  [MajorController::class, 'edit']);
     Route::put('/major/{id}/edit',  [MajorController::class, 'update']);
     Route::delete('/major/{id}',  [MajorController::class, 'delete']);
+    Route::post('/major-filter', [MajorController::class, 'filterData'])->name('filter.major.data');
+
 
     //Member routes
     Route::get('/member', [MemberController::class, 'index']);
@@ -98,9 +101,9 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/member/{id}', [MemberController::class, 'delete']);
 
     //Order routes
-    Route::get('/order', [OrderController::class, 'index']);
-    Route::get('/order/{id}', [OrderController::class, 'show']);
-
+    Route::get('/order', [OrderController::class, 'index'])->name('order.index');
+    Route::get('/order/{id}', [OrderController::class, 'show'])->name('order.show');
+    Route::post('/updateRequirementStatus', [OrderController::class, 'updateRequirementStatus'])->name('update.req');
 
     //User routes
     Route::get('/user', [UserController::class, 'index']);

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard-Mandoby</title>
+    <title>orders</title>
     <link rel="website icon" type="png" href="assets/images/logoo.png">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="stylesheet" href="assets/css/index.css">
@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
     <script src="https://kit.fontawesome.com/cbcafb1e3c.js" crossorigin="anonymous"></script>
-    
+
 </head>
 
 <body>
@@ -48,19 +48,19 @@
                                             </a>
                                         </li>
                                         <li class="mb-4">
-                                            <a class="button-ser-small" id="menuButton-ser-small">
+                                            <a class="button-ser-small" id="menubutton-ser-small">
                                                 <i class="fa-solid fa-bars ms-3 fw-semibold"></i>خدمات
                                                 <i class="fa-solid fa-caret-down me-3"></i>
                                             </a>
                                             <nav id="menu-ser-small" class="menu-ser-small mt-3">
                                                 <ul class="me-3">
                                                     <li class="mb-2">
-                                                        <a href="{{ route('basic.service.index') }}">
+                                                        <a href="{{route('basic.service.index')}}">
                                                             <i class="fa-solid fa-square ms-2"></i>خدمات رئيسية
                                                         </a>
                                                     </li>
                                                     <li class="mb-4">
-                                                        <a href="{{ route('sub.service.index') }}">
+                                                        <a href="{{route('sub.service.index')}}">
                                                             <i class="fa-solid fa-square ms-2"></i>خدمات فرعية
                                                         </a>
                                                     </li>
@@ -75,12 +75,12 @@
                                             <nav id="menu-unv-small" class="menu-unv-small mt-3">
                                                 <ul class="me-3">
                                                     <li class="mb-2">
-                                                        <a href="{{ route('university.index') }}">
+                                                        <a href="{{route('university.index')}}">
                                                             <i class="fa-solid fa-square ms-2"></i>أضافة جامعة
                                                         </a>
                                                     </li>
                                                     <li class="mb-4">
-                                                        <a href="{{ route('university.index') }}">
+                                                        <a href="{{route('university.index')}}">
                                                             <i class="fa-solid fa-square ms-2"></i>تفاصيل جامعة
                                                         </a>
                                                     </li>
@@ -98,7 +98,8 @@
                                             </a>
                                         </li>
                                         <li class="mb-4">
-                                            <a href="{{route('order.index')}}" class="main-nav">
+                                            <a href="{{route('order.index')}}" class="main-nav"
+                                                style="  color: #3736AF; font-weight: bolder;">
                                                 <i class="fa-solid fa-list-check ms-3 fw-semibold"></i>طلبات
                                             </a>
                                         </li>
@@ -144,10 +145,10 @@
                             </div>
                         </div>
                         <div class="text-white ms-2 mt-3">
-                            <h3>{{Auth::user()->name}}
+                            <h3>وداد اشرف
                                 <br>
                                 <span class="fw-lighter">
-                                    {{Auth::user()->email}}
+                                    @wedad.ash
                                 </span>
                             </h3>
                         </div>
@@ -159,6 +160,7 @@
             </div>
         </div>
     </header>
+
 
     <section class="rtl">
         <div class="container-fluid">
@@ -188,12 +190,12 @@
                                     <nav id="menu-ser" class="menu-ser mt-3">
                                         <ul class="me-3">
                                             <li class="mb-2">
-                                                <a href="{{ route('basic.service.index') }}">
+                                                <a href="{{route('basic.service.index')}}">
                                                     <i class="fa-solid fa-square ms-2"></i>خدمات رئيسية
                                                 </a>
                                             </li>
                                             <li class="mb-4">
-                                                <a href="{{ route('sub.service.index') }}">
+                                                <a href="{{route('sub.service.index')}}">
                                                     <i class="fa-solid fa-square ms-2"></i>خدمات فرعية
                                                 </a>
                                             </li>
@@ -208,12 +210,12 @@
                                     <nav id="menu-unv" class="menu-unv mt-3">
                                         <ul class="me-3">
                                             <li class="mb-2">
-                                                <a href="{{route('university.index') }}">
+                                                <a href="{{route('university.index')}}">
                                                     <i class="fa-solid fa-square ms-2"></i>أضافة جامعة
                                                 </a>
                                             </li>
                                             <li class="mb-4">
-                                                <a href="{{ route('university.index') }}">
+                                                <a href="{{route('university.index')}}">
                                                     <i class="fa-solid fa-square ms-2"></i>تفاصيل جامعة
                                                 </a>
                                             </li>
@@ -231,7 +233,8 @@
                                     </a>
                                 </li>
                                 <li class="mb-4">
-                                    <a href="{{route('order.index')}}" class="main-nav">
+                                    <a href="{{route('order.index')}}" class="main-nav"
+                                    style="  color: #3736AF; font-weight: bolder;">
                                         <i class="fa-solid fa-list-check ms-3 fw-semibold"></i>طلبات
                                     </a>
                                 </li>
@@ -253,175 +256,62 @@
                             </ul>
                         </nav>
                     </div>
-                </div>
 
+                </div>
                 <div class="col-xl-10 col-lg-9 col-md-3 mb-5">
                     <div class="row">
-                        <div class="col-12 p-4" style="background-color: #3736AF;">
-                            <p class="my-auto">
-                                <span class="text-white fw-bold fs-5">
-                                    <i class="fa-solid fa-house text-white ms-1"></i> لوحة التحكم
-                                </span>
-                                <small class="text-white fw-lighter me-1">مرحبا بعودتك, وداد اشرف!</small>
-                            </p>
+                        <div class="col-12 p-3" style="background-color: white;">
+                            <h2 class="fw-light fs-4">الطلبات</h2>
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a href="index.html" class="text-decoration-none" style="color: #22219A;">
+                                            <i class="fa-solid fa-house ms-1 pb-1"
+                                                style="font-size: 13px; color: gray;"></i>الرئيسية
+                                        </a>
+                                    </li>
+                                    <li class="breadcrumb-item" style="color: #22219A;" aria-current="page">الطلبات
+                                    </li>
+                                </ol>
+                            </nav>
                         </div>
                     </div>
-                    <div class="container mt-5">
-                        <div class="row justify-content-around">
-                            <div class="col-xl-4 col-lg-5 col-md-5 bg-white rounded-3 p-3 on-mob">
-                                <div class="mt-3">
-                                    <p class="fw-bolder fs-4 my-auto" style="color: #22219A;">
-                                        نحن نقدم اكثر من <span class="rounded-2 text-white ps-1 pe-1"
-                                            style="background-color: #FAAB2E;">60</span> خدمة على مستوى العالم
-                                    </p>
-                                    <!-- Button trigger modal -->
-                                    <div class="d-flex justify-content-end mt-5 mb-xl-3">
-                                        <button type="button" class="btn button-modal" data-bs-toggle="modal"
-                                            data-bs-target="#staticBackdrop">
-                                            <i class="fa-solid fa-plus ms-2"></i>أضافة خدمة جديدة
-                                        </button>
-                                    </div>
 
-
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
-                                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                        aria-hidden="true">
-                                        <div class=" modal-dialog modal-dialog-centered">
-                                            <div class="modal-content p-3">
-                                                <div class="modal-body">
-                                                    <div class="container">
-                                                        <div class="row justify-content-center">
-                                                            <div class="form col-xl-12 col-lg-12">
-                                                                <div class="mb-3">
-                                                                    <label for="exampleInputEmail1"
-                                                                        class="form-label text-dark">اسم
-                                                                        الخدمة الرئيسية</label>
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="اكتب هنا اسم الخدمة">
-                                                                </div>
-                                                                <!-- Dropzone area -->
-                                                                <div>
-                                                                    <label for="exampleInputEmail1"
-                                                                        class="form-label text-dark ">ارفاق
-                                                                        الايقون الخاصة بخدمة</label>
-                                                                </div>
-                                                                <!-- Input for selecting images -->
-                                                                <input type="file" id="fileInput" accept="image/*"
-                                                                    style="display: none;">
-                                                                <div class="dropzone" id="previewContainer"
-                                                                    onclick="document.getElementById('fileInput').click();">
-                                                                    <div class="mt-3"
-                                                                        style="overflow-y: hidden !important;">
-                                                                        <span><i class="fa-solid fa-cloud-arrow-up"
-                                                                                style="color: rgba(2, 58, 170, 0.8);"></i></span>
-                                                                        <br>
-                                                                        <span
-                                                                            class="my-auto mx-auto text-dark fw-semibold">قم
-                                                                            بإسقاط الصورة هنا أو انقر للتحميل .</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn text-white"
-                                                        style="background-color: #066569;">اضافة</button>
-                                                    <button type="button" class="btn text-white"
-                                                        style="background-color: #7A1C1C;"
-                                                        data-bs-dismiss="modal">الغاء</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-6 col-md-6 bg-white rounded-3 p-4">
-                                <div class="d-flex justify-content-between">
-                                    <div style="width: 50%;">
-                                        <div class="d-flex justify-content-between">
-                                            <div class="square-color" style="background-color: #2C42F0;"></div>
-                                            <div class="fw-semibold" style="font-size: 13px; width:80%;">
-                                                جامعة عين شمس
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-between">
-                                            <div class="square-color" style="background-color: #64EDB5;"></div>
-                                            <div class="fw-semibold" style="font-size: 13px; width:80%;">
-                                                جامعة القاهرة
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-between">
-                                            <div class="square-color" style="background-color: #64CBED;"></div>
-                                            <div class="fw-semibold" style="font-size: 13px; width:80%;">
-                                                جامعة الاسكندرية
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-between">
-                                            <div class="square-color" style="background-color: #649FED;"></div>
-                                            <div class="fw-semibold" style="font-size: 13px; width:80%;">
-                                                جامعة المنصورة
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-between">
-                                            <div class="square-color" style="background-color: #64EDE4;"></div>
-                                            <div class="fw-semibold" style="font-size: 13px; width:80%;">
-                                                جامعة مصر
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-between">
-                                            <div class="square-color" style="background-color: #B3DEED;"></div>
-                                            <div class="fw-semibold" style="font-size: 13px; width:80%;">
-                                                جامعة الفيوم
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="width: 50%;">
-                                        <img src="assets/images/sl_062023_60260_07-[Converted].png"
-                                            style="width: 100%;">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="container text-center mt-5">
                         <div class="row justify-content-center">
-                            <div class="col-xl-10 col-lg-11 col-md-11 bg-white rounded-3 pt-3 pb-3">
-                                <div class="col-xl-12 mb-3">
-                                    <h2 class="fw-bold text-dark fs-5 text-end">البلاد</h2>
-                                    <p class="fw-lighter text-end" style="color: #22219A; font-size: 12px;">الجنسيات
-                                        المتاحة معنا</p>
-                                </div>
-                                <div class="table-responsive">
-                                    <table class="table table align-middle">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col" style="background-color: #E9E9F2;">#</th>
-                                                <th scope="col" style="background-color: #E9E9F2;">الجنسيات</th>
-                                                <th scope="col" style="background-color: #E9E9F2;">عدد الاعضاء</th>
-                                                <th scope="col" style="background-color: #E9E9F2;">العلم</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                   
-                                        @foreach ($nationalities as $nationality)
-                                            <tr>
-                                                <th scope="row">{{$loop->index+1}}</th>
-                                                <td>{{ $nationality->name }}</td>
-                                                <td>{{ $nationality->members->count() }}</td>
-                                                <td>
-                                                @if ($nationality->photo)
-                                                    <img src="{{ asset('storage/' . $nationality->photo) }}"
-                                                        alt="{{ $nationality->name }} Photo"
-                                                        style="width: 68px; height: 41px;">
-                                                @endif
-                                                </td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
+                            <div class="col-xl-10 col-lg-10 table-responsive bg-white rounded-3 pt-3 pb-3">
+                                <table class="table table align-middle">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" style="background-color: #E9E9F2;">#</th>
+                                            <th scope="col" style="background-color: #E9E9F2;">الطلب</th>
+                                            <th scope="col" style="background-color: #E9E9F2;">الوقت</th>
+                                            <th scope="col" style="background-color: #E9E9F2;">الاسم</th>
+                                            <th scope="col" style="background-color: #E9E9F2;">التليفون</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if(!$orders->isEmpty())
+                                        @foreach($orders as $order)
+                                        <tr>
+                                            <th scope="row">{{$loop->index+1}}</th>
+                                            <td>
+                                                <a class="text-decoration-none" href="{{route('order.show' , ['id'=>$order->id])}}">{{$order->name}}</a>
+                                            </td>
+                                            <td>{{ \Carbon\Carbon::parse($order->created_at)->format('j-n-Y') }}</td>
+                                            <td>
+                                                {{$order->member->first_name}} {{$order->member->last_name}}
+                                            </td>
+                                            <td>
+                                                {{$order->member->phone}}
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                        @else
+                                        <h2>No orders Added Yet!</h2>
+                                        @endif
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

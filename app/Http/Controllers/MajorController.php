@@ -61,9 +61,14 @@ class MajorController extends Controller
     ///////////////////////////////////////////////////
 
 
+    public function index(){
+        $majors = Major::all();
+        $universities = University::all();
+        return view('major' , compact('majors' , 'universities'));
+    }
 
 
-    public function index(Request $request){
+    public function index_filter(Request $request){
 
         try{
             $majors = Major::orderBy('id', 'desc');
@@ -125,13 +130,25 @@ class MajorController extends Controller
 
        public function store(Request $request){
 
+        $messages = [
+            'name.required' => 'Please enter All Data*',
+        ];
+
         $validator = Validator::make($request->all(), [
             'university_id' => ['required','string'], 
             'faculty_id' => ['required','string'], 
             'name' => ['required','string'],
-            'qualification' => ['nullable','array'],
-            'requirement' =>['nullable','string'],
+            'qualification' => ['required','array'],
+            'requirement' =>['required','string'],
            ]);
+
+           if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Validation failed',
+                'errors' => $validator->errors(),
+            ], 422);
+        }
 
            $universityId = $request->input('university_id');
            $facultyId = $request->input('faculty_id');
@@ -144,7 +161,7 @@ class MajorController extends Controller
            
                 $qualificationString = is_array($qualification) ? implode(',', $qualification) : $qualification;
 
-                YourModel::create([
+                Major::create([
                     'university_id' => $universityId,
                     'faculty_id' => $facultyId,
                     'name' => $name,
@@ -152,18 +169,10 @@ class MajorController extends Controller
                     'requirement' => $requirement,
                 ]);
        
-               return response()->json([
-                   'success' => true,
-                   'message' => 'Major inserted successfully',
-               ], 200);
+               return redirect()->back();
            }catch (\Exception $e) {
              
                \Log::error($e);
-       
-               return response()->json([
-                   'success' => false,
-                   'message' => 'An error occurred while inserting data',
-               ], 500);
            }
 
        }
@@ -236,18 +245,21 @@ class MajorController extends Controller
 
        public function delete($id){
         $major = Major::find($id);
-        if($major == null){
-            return response()->json([
-                'status' => 'failed',
-                'message' => 'Something went wrong!',
-                'data' => []
-            ], 500);
-        }
         $major->delete();
-        return response()->json([
-            'status' => 'success',
-            'message' => 'major deleted successfully',
-        ], 200);
+      
+       }
+
+
+
+       public function filterData(Request $request)
+       {
+           //dd($request);
+           $facultyId = $request->input('faculty_id');
+   
+           $filteredData = Major::where('faculty_id','=',$facultyId)->get();
+   
+           
+           return view('filter-majors', compact('filteredData'));
        }
 
 }

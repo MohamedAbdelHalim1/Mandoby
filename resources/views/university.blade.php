@@ -99,12 +99,12 @@
                                             </a>
                                         </li>
                                         <li class="mb-4">
-                                            <a href="majors.html" class="main-nav">
+                                            <a href="{{route('major.index')}}" class="main-nav">
                                                 <i class="fa-solid fa-angles-down  ms-3 fw-semibold"></i>تخصصات
                                             </a>
                                         </li>
                                         <li class="mb-4">
-                                            <a href="orders.html" class="main-nav">
+                                            <a href="{{route('order.index')}}" class="main-nav">
                                                 <i class="fa-solid fa-list-check ms-3 fw-semibold"></i>طلبات
                                             </a>
                                         </li>
@@ -237,12 +237,12 @@
                                     </a>
                                 </li>
                                 <li class="mb-4">
-                                    <a href="majors.html" class="main-nav">
+                                    <a href="{{route('major.index')}}" class="main-nav">
                                         <i class="fa-solid fa-angles-down  ms-3 fw-semibold"></i>تخصصات
                                     </a>
                                 </li>
                                 <li class="mb-4">
-                                    <a href="orders.html" class="main-nav">
+                                    <a href="{{route('order.index')}}" class="main-nav">
                                         <i class="fa-solid fa-list-check ms-3 fw-semibold"></i>طلبات
                                     </a>
                                 </li>

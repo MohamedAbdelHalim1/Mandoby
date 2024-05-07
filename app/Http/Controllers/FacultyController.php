@@ -147,4 +147,11 @@ class FacultyController extends Controller
         return view('filtered-table', compact('filteredData'));
     }
 
+    public function getFaculties(Request $request){
+        $faculties = Faculty::where('university_id','=',$request->university_id)->get();
+        return response()->json([
+            'faculties' => $faculties
+        ]);
+    }
+
 }

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>faculty</title>
+    <title>majors</title>
     <link rel="website icon" type="png" href="assets/images/logoo.png">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="stylesheet" href="assets/css/index.css">
@@ -273,7 +273,7 @@
                                                 style="font-size: 13px; color: gray;"></i>الرئيسية
                                         </a>
                                     </li>
-                                    <li class="breadcrumb-item" style="color: #22219A;" aria-current="page"> اضافة كلية
+                                    <li class="breadcrumb-item" style="color: #22219A;" aria-current="page"> اضافة تخصص
                                     </li>
                                 </ol>
                             </nav>
@@ -286,12 +286,12 @@
                                 <div class="d-flex justify-content-end ms-xl-5 ms-lg-5 ms-md-5">
                                     <button type="button" class="btn button-modal2" data-bs-toggle="modal"
                                         data-bs-target="#staticBackdrop">
-                                        <i class="fa-solid fa-plus ms-2"></i>أضافة كلية
+                                        <i class="fa-solid fa-plus ms-2"></i>أضافة تخصص
                                     </button>
                                 </div>
 
                                 <!-- Modal -->
-                                <form id="facultyForm" action="{{ route('faculty.store') }}" method="POST" enctype="multipart/form-data">
+                                <form id="majorForm" action="{{ route('major.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
@@ -305,30 +305,77 @@
                                                         <div class="form col-xl-12 col-lg-12">
                                                         <span id="nameError" class="text-danger"></span>
 
-                                                            <div class="mb-3">
-                                                                <label for="disabledSelect"
-                                                                    class="form-label text-dark">اختر الجامعة
-                                                                     </label>
-                                                                <select id="disabledSelect" class="form-select" name="university">
+                                                        <div class="mt-3">
+                                                        <div class="row justify-content-center">
+                                                            <div class="col-xl-6 col-lg-6">
+                                                                <select id="universitySelect" class="form-select" name="university_id">
                                                                     <option value>اختر الجامعة </option>
                                                                     @foreach($universities as $university)
                                                                     <option value="{{$university->id}}">{{$university->name}}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
-                                                            <div class="mb-3">
-                                                                <label for="exampleInputEmail1"
-                                                                    class="form-label text-dark">اكتب الكلية
-                                                                     </label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="اكتب اسم الكلية " name="name">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="mt-3">
+                                                        <div class="row justify-content-center">
+                                                            <div class="col-xl-6 col-lg-6">
+                                                                <select id="facultySelect" class="form-select common_selector" name="faculty_id" disabled>
+                                                                    <option value>اختر الكليه </option>
+                                                                </select>
                                                             </div>
-                                                            <div>
-                                                                <label for="exampleInputEmail1"
-                                                                    class="form-label text-dark">اكتب نسبة القبول فى الكلية
-                                                                     </label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="اكتب نسبة القبول هنا " name="degree">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                    <label for="exampleInputEmail1"
+                                                        class="form-label text-dark">اكتب التخصص
+                                                    </label>
+                                                    <input type="text" class="form-control"
+                                                        placeholder="اكتب اسم التخصص " name="name">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="exampleInputEmail1"
+                                                        class="form-label text-dark"> اكتب متطلبات
+                                                        المؤهل<small class="fw-bolder me-1"
+                                                            style="font-size: 10px;">(أفصل بين كل متطلب واخر
+                                                            بفصله)</small>
+                                                    </label>
+                                                    <textarea class="form-control p-3"
+                                                        aria-label="With textarea"
+                                                        placeholder="اكتب هنا متطلبات المؤهل...." name="requirement"></textarea>
+                                                </div>
+                                                <div>
+                                                    <label for="exampleInputEmail1"
+                                                        class="form-label text-dark">اختر المؤهلات
+                                                    </label>
+                                                    <div class="border border-1 p-3">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                value="بكالريوس" id="flexCheckDefault" name="qualification[]">
+                                                            <label class="form-check-label"
+                                                                for="flexCheckDefault">
+                                                                بكالريوس
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                value="ماجستير" id="flexCheckChecked" name="qualification[]">
+                                                            <label class="form-check-label"
+                                                                for="flexCheckChecked">
+                                                                ماجستير
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                value="دكتوراه" id="flexCheckChecked" name="qualification[]">
+                                                            <label class="form-check-label"
+                                                                for="flexCheckChecked">
+                                                                دكتوراه
+                                                            </label>
+                                                        </div>
+                                                    </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -348,10 +395,11 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="container mt-4">
                         <div class="row justify-content-center">
                             <div class="col-xl-6 col-lg-6">
-                                <select id="disabledSelect" class="form-select p-2 common_selector">
+                                <select id="universitySelectsec" class="form-select p-2">
                                     <option value>اختر الجامعة </option>
                                     @foreach($universities as $university)
                                     <option value="{{$university->id}}">{{$university->name}}</option>
@@ -360,6 +408,17 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="container mt-4">
+                        <div class="row justify-content-center">
+                            <div class="col-xl-6 col-lg-6">
+                                <select id="facultySelectsec" class="form-select p-2 common_selector" disabled>
+                                    <option value>اختر الكليه </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="container text-center mt-4" id="table-container">
                         <div class="row justify-content-center">
                             <div class="col-xl-10 col-lg-10 table-responsive bg-white rounded-3 pt-3 pb-3">
@@ -367,20 +426,22 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">اسم الكلية</th>
-                                            <th scope="col">اسم الجامعه</th>
-                                            <th scope="col">نسبة القبول</th>
+                                            <th scope="col">اسم التخصص</th>
+                                            <th scope="col">الكليه</th>
+                                            <th scope="col">الجامعه</th>
+                                            <th scope="col">المؤهلات</th>
                                             <th scope="col">اخري</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($faculties as $faculty)
+                                        @foreach($majors as $major)
                                         <tr>
                                             <th scope="row">{{$loop->index+1}}</th>
-                                            <td>{{$faculty->name}} </td>
-                                            <td>{{$faculty->university->name}} </td>
+                                            <td>{{$major->name}} </td>
+                                            <td>{{$major->faculty->name}} </td>
+                                            <td>{{$major->faculty->university->name}}</td>
                                             <td>
-                                                {{$faculty->degree}} %
+                                                {{$major->qualification}}
                                             </td>
                                             <td>
                                                 <div class="d-flex justify-content-center">
@@ -389,7 +450,7 @@
                                                             style="background-color: #1C7A36;">تعديل</button>
                                                     </div>
                                                     <div>
-                                                        <button type="button" class="btn text-white" onclick="deleteFaculty({{ $faculty->id }})"
+                                                        <button type="button" class="btn text-white" onclick="deleteMajor({{ $major->id }})"
                                                             style="background-color: #7A1C1C;">مسح</button>
                                                     </div>
                                                 </div>
@@ -417,7 +478,7 @@
         }
     });
   
-        document.getElementById('facultyForm').addEventListener('submit', function(event) {
+        document.getElementById('majorForm').addEventListener('submit', function(event) {
         event.preventDefault();
         var formData = new FormData(this);
 
@@ -457,10 +518,10 @@
 
 
 
-       function deleteFaculty(faculty_id) {
+       function deleteMajor(major_id) {
 
-        if (confirm('Are you sure you want to delete this Faculty?')) {
-            fetch('/faculty/' + faculty_id, {
+        if (confirm('Are you sure you want to delete this Major?')) {
+            fetch('/major/' + major_id, {
                 method: 'DELETE',
                 headers: {
                     'X-CSRF-TOKEN': '{{ csrf_token() }}',
@@ -472,13 +533,13 @@
                     window.location.reload();
                 } else {
                     // Handle error response
-                    console.error('Error deleting Faculty:', response.statusText);
-                    alert('Failed to delete Faculty. Please try again.');
+                    console.error('Error deleting Major:', response.statusText);
+                    alert('Failed to delete Major. Please try again.');
                 }
             })
             .catch(error => {
-                console.error('Error deleting Faculty:', error);
-                alert('An error occurred while deleting the Faculty. Please try again.');
+                console.error('Error deleting Major:', error);
+                alert('An error occurred while deleting the Major. Please try again.');
             });
         }
     }
@@ -490,14 +551,14 @@
 
     function filter_data(selectElement){
       //  console.log('Select changed'); // Check
-         var selectedUniversityId = $(selectElement).val(); 
+         var selectedFacultyId = $(selectElement).val(); 
 
     // Send AJAX request to filter data
         jQuery.ajax({
-            url: '{{ route("filter.data") }}',
+            url: '{{ route("filter.major.data") }}',
             type: 'POST',
             data: {
-                university_id: selectedUniversityId
+                faculty_id: selectedFacultyId
             },
             success: function(response) {
                 // Replace the table with the filtered view
@@ -510,6 +571,86 @@
     }
 
 
+
+
+    $(document).ready(function() {
+    $('#universitySelect').change(function() {
+        var universityId = $(this).val();
+        if (universityId) {
+            // Enable the faculty select element
+            $('#facultySelect').prop('disabled', false);
+            // Fetch faculties based on selected university
+            $.ajax({
+                url: '/getFaculties', // Replace with your route for fetching faculties
+                type: 'POST',
+                data: {
+                    university_id: universityId
+                },
+                success: function(response) {
+                    // Clear previous options
+                    $('#facultySelect').empty();
+                    $('#facultySelect').append('<option value="">اختر الكلية</option>');
+
+                    // Append new options
+                    $.each(response.faculties, function(index, faculty) {
+                        $('#facultySelect').append('<option value="' + faculty.id + '">' + faculty.name + '</option>');
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        } else {
+            // If no university is selected, disable the faculty select element
+            $('#facultySelect').prop('disabled', true);
+            // Clear previous options
+            $('#facultySelect').empty();
+            // Add default option
+            $('#facultySelect').append('<option value="">اختر الكلية</option>');
+        }
+    });
+});
+
+
+
+
+
+$(document).ready(function() {
+    $('#universitySelectsec').change(function() {
+        var universityId = $(this).val();
+        if (universityId) {
+            // Enable the faculty select element
+            $('#facultySelectsec').prop('disabled', false);
+            // Fetch faculties based on selected university
+            $.ajax({
+                url: '/getFaculties', // Replace with your route for fetching faculties
+                type: 'POST',
+                data: {
+                    university_id: universityId
+                },
+                success: function(response) {
+                    // Clear previous options
+                    $('#facultySelectsec').empty();
+                    $('#facultySelectsec').append('<option value="">اختر الكلية</option>');
+                    // Append new options
+                    $.each(response.faculties, function(index, faculty) {
+                        $('#facultySelectsec').append('<option value="' + faculty.id + '">' + faculty.name + '</option>');
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        } else {
+            // If no university is selected, disable the faculty select element
+            $('#facultySelectsec').prop('disabled', true);
+            // Clear previous options
+            $('#facultySelectsec').empty();
+            // Add default option
+            $('#facultySelectsec').append('<option value="">اختر الكلية</option>');
+        }
+    });
+});
 
 
     </script>
