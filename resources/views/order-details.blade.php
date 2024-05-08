@@ -72,25 +72,10 @@
                                             </nav>
                                         </li>
                                         <li class="mb-4">
-                                            <a class="button-unv-small" id="menuButton-unv-small">
-                                                <i class="fa-solid fa-building-columns ms-3 fw-semibold"></i>جامعات
-                                                <i class="fa-solid fa-caret-down me-3"></i>
-                                            </a>
-                                            <nav id="menu-unv-small" class="menu-unv-small mt-3">
-                                                <ul class="me-3">
-                                                    <li class="mb-2">
-                                                        <a href="add-university.html">
-                                                            <i class="fa-solid fa-square ms-2"></i>أضافة جامعة
-                                                        </a>
-                                                    </li>
-                                                    <li class="mb-4">
-                                                        <a href="university-details.html">
-                                                            <i class="fa-solid fa-square ms-2"></i>تفاصيل جامعة
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
-                                        </li>
+                                    <a href="{{route('university.index')}}" class="main-nav">
+                                    <i class="fa-solid fa-building-columns ms-3 fw-semibold"></i>جامعات
+                                    </a>
+                                </li>
                                         <li class="mb-4">
                                             <a href="faculty.html" class="main-nav">
                                                 <i class="fa-solid fa-graduation-cap ms-3 fw-semibold"></i>كليات
@@ -206,24 +191,9 @@
                                     </nav>
                                 </li>
                                 <li class="mb-4">
-                                    <a class="button-unv" id="menuButton-unv">
-                                        <i class="fa-solid fa-building-columns ms-3 fw-semibold"></i>جامعات
-                                        <i class="fa-solid fa-caret-down me-3"></i>
+                                    <a href="{{route('university.index')}}" class="main-nav">
+                                    <i class="fa-solid fa-building-columns ms-3 fw-semibold"></i>جامعات
                                     </a>
-                                    <nav id="menu-unv" class="menu-unv mt-3">
-                                        <ul class="me-3">
-                                            <li class="mb-2">
-                                                <a href="add-university.html">
-                                                    <i class="fa-solid fa-square ms-2"></i>أضافة جامعة
-                                                </a>
-                                            </li>
-                                            <li class="mb-4">
-                                                <a href="university-details.html">
-                                                    <i class="fa-solid fa-square ms-2"></i>تفاصيل جامعة
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </nav>
                                 </li>
                                 <li class="mb-4">
                                     <a href="faculty.html" class="main-nav">
@@ -362,7 +332,6 @@
         });
         
         try {
-    console.log("Document ready!"); 
 
     
     $('.common_selector').on('change', function() {
@@ -370,13 +339,12 @@
     });
 
     function add_req(checkbox) {
-        console.log("selected");
-        var requirementId = checkbox.val();
-        var orderId = checkbox.data('order-id');
-        var isChecked = checkbox.prop('checked');
+        var requirementId = checkbox.value;
+        var orderId = checkbox.dataset.orderId;
+        var isChecked = checkbox.checked;
         
         // Send AJAX request to update the requirement status
-        $.ajax({
+        jQuery.ajax({
             url: "{{ route('update.req') }}", // Replace with your route for updating the requirement status
             type: 'POST',
             data: {
@@ -396,7 +364,10 @@
     console.error("An error occurred:", error);
 }
 
-<script>
+
+
+
+</script>
 
 </body>
 

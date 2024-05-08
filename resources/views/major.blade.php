@@ -71,33 +71,19 @@
                                             </nav>
                                         </li>
                                         <li class="mb-4">
-                                            <a class="button-unv-small" id="menuButton-unv-small">
-                                                <i class="fa-solid fa-building-columns ms-3 fw-semibold"></i>جامعات
-                                                <i class="fa-solid fa-caret-down me-3"></i>
-                                            </a>
-                                            <nav id="menu-unv-small" class="menu-unv-small mt-3">
-                                                <ul class="me-3">
-                                                    <li class="mb-2">
-                                                        <a href="{{route('university.index')}}">
-                                                            <i class="fa-solid fa-square ms-2"></i>أضافة جامعة
-                                                        </a>
-                                                    </li>
-                                                    <li class="mb-4">
-                                                        <a href="{{route('university.index')}}">
-                                                            <i class="fa-solid fa-square ms-2"></i>تفاصيل جامعة
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
-                                        </li>
+                                    <a href="{{route('university.index')}}" class="main-nav">
+                                    <i class="fa-solid fa-building-columns ms-3 fw-semibold"></i>جامعات
+                                    </a>
+                                </li>
                                         <li class="mb-4">
                                             <a href="{{route('faculty.index')}}" class="main-nav"
-                                                style="  color: #3736AF; font-weight: bolder;">
+                                              >
                                                 <i class="fa-solid fa-graduation-cap ms-3 fw-semibold"></i>كليات
                                             </a>
                                         </li>
                                         <li class="mb-4">
-                                            <a href="{{route('major.index')}}" class="main-nav">
+                                            <a href="{{route('major.index')}}" class="main-nav"
+                                            style="  color: #3736AF; font-weight: bolder;">
                                                 <i class="fa-solid fa-angles-down  ms-3 fw-semibold"></i>تخصصات
                                             </a>
                                         </li>
@@ -206,33 +192,19 @@
                                     </nav>
                                 </li>
                                 <li class="mb-4">
-                                    <a class="button-unv" id="menuButton-unv">
-                                        <i class="fa-solid fa-building-columns ms-3 fw-semibold"></i>جامعات
-                                        <i class="fa-solid fa-caret-down me-3"></i>
+                                    <a href="{{route('university.index')}}" class="main-nav">
+                                    <i class="fa-solid fa-building-columns ms-3 fw-semibold"></i>جامعات
                                     </a>
-                                    <nav id="menu-unv" class="menu-unv mt-3">
-                                        <ul class="me-3">
-                                            <li class="mb-2">
-                                                <a href="{{route('university.index')}}">
-                                                    <i class="fa-solid fa-square ms-2"></i>أضافة جامعة
-                                                </a>
-                                            </li>
-                                            <li class="mb-4">
-                                                <a href="{{route('university.index')}}">
-                                                    <i class="fa-solid fa-square ms-2"></i>تفاصيل جامعة
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </nav>
                                 </li>
                                 <li class="mb-4">
                                     <a href="{{route('faculty.index')}}" class="main-nav"
-                                    style="  color: #3736AF; font-weight: bolder;">
+                                   >
                                         <i class="fa-solid fa-graduation-cap ms-3 fw-semibold"></i>كليات
                                     </a>
                                 </li>
                                 <li class="mb-4">
-                                    <a href="{{route('major.index')}}" class="main-nav">
+                                    <a href="{{route('major.index')}}" class="main-nav"
+                                    style="  color: #3736AF; font-weight: bolder;">
                                         <i class="fa-solid fa-angles-down  ms-3 fw-semibold"></i>تخصصات
                                     </a>
                                 </li>
@@ -284,7 +256,7 @@
                             <div>
                                 <!-- Button trigger modal -->
                                 <div class="d-flex justify-content-end ms-xl-5 ms-lg-5 ms-md-5">
-                                    <button type="button" class="btn button-modal2" data-bs-toggle="modal"
+                                    <button type="button" class="btn button-modal2 p-3" data-bs-toggle="modal"
                                         data-bs-target="#staticBackdrop">
                                         <i class="fa-solid fa-plus ms-2"></i>أضافة تخصص
                                     </button>
@@ -305,27 +277,25 @@
                                                         <div class="form col-xl-12 col-lg-12">
                                                         <span id="nameError" class="text-danger"></span>
 
-                                                        <div class="mt-3">
-                                                        <div class="row justify-content-center">
-                                                            <div class="col-xl-6 col-lg-6">
+                                                        <div class="mb-3">
+                                                     
+                                                          <label for="disabledSelect" class="form-label text-dark">اختر الجامعة</label>
                                                                 <select id="universitySelect" class="form-select" name="university_id">
                                                                     <option value>اختر الجامعة </option>
                                                                     @foreach($universities as $university)
                                                                     <option value="{{$university->id}}">{{$university->name}}</option>
                                                                     @endforeach
                                                                 </select>
-                                                            </div>
-                                                        </div>
+                                                 
                                                     </div>
 
-                                                    <div class="mt-3">
-                                                        <div class="row justify-content-center">
-                                                            <div class="col-xl-6 col-lg-6">
+                                                    <div class="mb-3">
+                                                    <label for="disabledSelect" class="form-label text-dark">اختر الكلية </label>
+
                                                                 <select id="facultySelect" class="form-select common_selector" name="faculty_id" disabled>
                                                                     <option value>اختر الكليه </option>
                                                                 </select>
-                                                            </div>
-                                                        </div>
+                                                       
                                                     </div>
 
                                                     <div class="mb-3">
@@ -445,10 +415,12 @@
                                             </td>
                                             <td>
                                                 <div class="d-flex justify-content-center">
-                                                    <div class="ms-2">
-                                                        <button type="button" class="btn text-white" 
+                                                <div class="ms-2">
+                                                        <button type="button" class="btn text-white button-modal2"
+                                                            data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
                                                             style="background-color: #1C7A36;">تعديل</button>
                                                     </div>
+
                                                     <div>
                                                         <button type="button" class="btn text-white" onclick="deleteMajor({{ $major->id }})"
                                                             style="background-color: #7A1C1C;">مسح</button>
@@ -459,6 +431,30 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                                <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
+                                    aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-body text-end">
+                                                <div class="container">
+                                                    <div class="row justify-content-center">
+                                                        <div class="form col-xl-12 col-lg-12">                                                         
+                                                           
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn text-white"
+                                                    style="background-color: #066569;" id="saveButton">حفظ</button>
+                                                <button type="button" class="btn text-white"
+                                                    style="background-color: #7A1C1C;"
+                                                    data-bs-dismiss="modal">الغاء</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

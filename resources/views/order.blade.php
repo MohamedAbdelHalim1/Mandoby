@@ -68,25 +68,10 @@
                                             </nav>
                                         </li>
                                         <li class="mb-4">
-                                            <a class="button-unv-small" id="menuButton-unv-small">
-                                                <i class="fa-solid fa-building-columns ms-3 fw-semibold"></i>جامعات
-                                                <i class="fa-solid fa-caret-down me-3"></i>
-                                            </a>
-                                            <nav id="menu-unv-small" class="menu-unv-small mt-3">
-                                                <ul class="me-3">
-                                                    <li class="mb-2">
-                                                        <a href="{{route('university.index')}}">
-                                                            <i class="fa-solid fa-square ms-2"></i>أضافة جامعة
-                                                        </a>
-                                                    </li>
-                                                    <li class="mb-4">
-                                                        <a href="{{route('university.index')}}">
-                                                            <i class="fa-solid fa-square ms-2"></i>تفاصيل جامعة
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
-                                        </li>
+                                    <a href="{{route('university.index')}}" class="main-nav">
+                                    <i class="fa-solid fa-building-columns ms-3 fw-semibold"></i>جامعات
+                                    </a>
+                                </li>
                                         <li class="mb-4">
                                             <a href="{{route('faculty.index')}}" class="main-nav">
                                                 <i class="fa-solid fa-graduation-cap ms-3 fw-semibold"></i>كليات
@@ -203,24 +188,9 @@
                                     </nav>
                                 </li>
                                 <li class="mb-4">
-                                    <a class="button-unv" id="menuButton-unv">
-                                        <i class="fa-solid fa-building-columns ms-3 fw-semibold"></i>جامعات
-                                        <i class="fa-solid fa-caret-down me-3"></i>
+                                    <a href="{{route('university.index')}}" class="main-nav">
+                                    <i class="fa-solid fa-building-columns ms-3 fw-semibold"></i>جامعات
                                     </a>
-                                    <nav id="menu-unv" class="menu-unv mt-3">
-                                        <ul class="me-3">
-                                            <li class="mb-2">
-                                                <a href="{{route('university.index')}}">
-                                                    <i class="fa-solid fa-square ms-2"></i>أضافة جامعة
-                                                </a>
-                                            </li>
-                                            <li class="mb-4">
-                                                <a href="{{route('university.index')}}">
-                                                    <i class="fa-solid fa-square ms-2"></i>تفاصيل جامعة
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </nav>
                                 </li>
                                 <li class="mb-4">
                                     <a href="{{route('faculty.index')}}" class="main-nav">
@@ -296,7 +266,7 @@
                                         <tr>
                                             <th scope="row">{{$loop->index+1}}</th>
                                             <td>
-                                                <a class="text-decoration-none" href="{{route('order.show' , ['id'=>$order->id])}}">{{$order->name}}</a>
+                                                <a class="text-decoration-none" href="{{route('order.show' , ['id'=>$order->id])}}">{{$order->major->qualification}}</a>
                                             </td>
                                             <td>{{ \Carbon\Carbon::parse($order->created_at)->format('j-n-Y') }}</td>
                                             <td>

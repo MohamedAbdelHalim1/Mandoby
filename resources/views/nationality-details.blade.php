@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>Nationalities</title>
     <link rel="website icon" type="png" href="{{ asset('assets/images/logoo.png') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
@@ -89,25 +91,10 @@
                                             </nav>
                                         </li>
                                         <li class="mb-4">
-                                            <a class="button-unv-small" id="menuButton-unv-small">
-                                                <i class="fa-solid fa-building-columns ms-3 fw-semibold"></i>جامعات
-                                                <i class="fa-solid fa-caret-down me-3"></i>
-                                            </a>
-                                            <nav id="menu-unv-small" class="menu-unv-small mt-3">
-                                                <ul class="me-3">
-                                                    <li class="mb-2">
-                                                        <a href="{{ route('university.index') }}">
-                                                            <i class="fa-solid fa-square ms-2"></i>أضافة جامعة
-                                                        </a>
-                                                    </li>
-                                                    <li class="mb-4">
-                                                        <a href="{{ route('university.index') }}">
-                                                            <i class="fa-solid fa-square ms-2"></i>تفاصيل جامعة
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
-                                        </li>
+                                    <a href="{{route('university.index')}}" class="main-nav">
+                                    <i class="fa-solid fa-building-columns ms-3 fw-semibold"></i>جامعات
+                                    </a>
+                                </li>
                                         <li class="mb-4">
                                             <a href="{{route('faculty.index')}}" class="main-nav">
                                                 <i class="fa-solid fa-graduation-cap ms-3 fw-semibold"></i>كليات
@@ -224,24 +211,9 @@
                                     </nav>
                                 </li>
                                 <li class="mb-4">
-                                    <a class="button-unv" id="menuButton-unv">
-                                        <i class="fa-solid fa-building-columns ms-3 fw-semibold"></i>جامعات
-                                        <i class="fa-solid fa-caret-down me-3"></i>
+                                    <a href="{{route('university.index')}}" class="main-nav">
+                                    <i class="fa-solid fa-building-columns ms-3 fw-semibold"></i>جامعات
                                     </a>
-                                    <nav id="menu-unv" class="menu-unv mt-3">
-                                        <ul class="me-3">
-                                            <li class="mb-2">
-                                                <a href="{{route('university.index') }}">
-                                                    <i class="fa-solid fa-square ms-2"></i>أضافة جامعة
-                                                </a>
-                                            </li>
-                                            <li class="mb-4">
-                                                <a href="{{ route('university.index') }}">
-                                                    <i class="fa-solid fa-square ms-2"></i>تفاصيل جامعة
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </nav>
                                 </li>
                                 <li class="mb-4">
                                     <a href="{{route('faculty.index')}}" class="main-nav">
@@ -290,57 +262,99 @@
                                                 style="font-size: 13px; color: gray;"></i>الرئيسية
                                         </a>
                                     </li>
-                                    <li class="breadcrumb-item" style="color: #22219A;" aria-current="page"> اضافة جنسية
+                                    <li class="breadcrumb-item" style="color: #22219A;" aria-current="page">
+                                    <a href="{{route('nationalities.index')}}" class="text-decoration-none" style="color: #22219A;">
+                                            
+                                                جنسيات
+                                        </a>
+                                    
+                                   </li>
+                                    <li class="breadcrumb-item" style="color: #22219A;" aria-current="page">الجامعات المتاحه
                                     </li>
                                 </ol>
                             </nav>
                         </div>
                     </div>
              
-                    <form action="{{ route('nationality.university.store' , ['id'=>$id]) }}" method="POST" id="universityForm">
-                        @csrf
-                        <div class="dropdown">
-                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                Select Universities
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                @foreach ($universities as $university)
-                                    <li>
-                                        <input type="checkbox" name="universities[]" value="{{ $university->id }}" id="university{{ $university->id }}">
-                                        <label for="university{{ $university->id }}" class="dropdown-item">{{ $university->name }}</label>
-                                    </li>
-                                @endforeach
-                                <li class="dropdown-item">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </li>
-                            </ul>
-                        </div>
-                    </form>
+                    <div class="container nation-details">
+                                <div class="row justify-content-center mb-2 mt-4">
+                                    <form action="{{ route('nationality.university.store' , ['id'=>$id]) }}" method="POST" id="universityForm">
+                                        @csrf
+                                        <div class="col-xl-6 col-lg-6">
+                                                <div class="dropdown">
+                                                    <button class="btn dropdown-toggle w-50 text-white" style="background-color: rgba(2, 58, 170, 0.8);" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    الجامعات
+                                                    </button>
+                                                    <ul class="dropdown-menu p-3" style="width: 50%;">
+                                                    @foreach ($universities as $university)
+                                        <li>
+                                        <div class="form-check" style="width: 55%;">
+                                            <input class="form-check-input" type="checkbox" name="universities[]" value="{{ $university->id }}" id="university{{ $university->id }}">
+                                            <label for="university{{ $university->id }}" class="form-check-label" >{{ $university->name }}</label>
+                                            </div>
+                                        </li>
+                                    @endforeach                                                                                                
+                                                    <button type="submit" class="btn text-white" style="background-color: rgba(2, 58, 170, 0.8);">اضافة</button>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                    </form>    
+                                    
+                                    @if(session('success'))
 
-                    @if(session('success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        {{ session('success') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
+                                <div class="row justify-content-center rtl">
+                                <div class="col-3 alert alert-success alert-dismissible fade show" role="alert">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <span class="me-3">
+                                {{ session('success') }}
+                                </span>
+                                       
+                                    </div>
+                                </div>
+                  
                     @endif
-
-                    <div class="container text-center mt-5" style="width:1000px;">
-                        <div class="row justify-content-center">
-                            <div class="col-xl-10 col-lg-10 table-responsive bg-white rounded-3 pt-3 pb-3">
-                               <!-- List of universities -->
-                               @if($Nationality_universities->isEmpty())
-                                    <h2>No Universities attached to this Nationality Yet</h2>
+                                </div>
+                                <div class="row justify-content-center mt-5">
+                                    <div class="col-xl-6 col-lg-6 col-md-12 bg-white rounded-3 pt-3 pb-3">
+                                        <div class="col-xl-12 mb-3">
+                                        @if($Nationality_universities->isEmpty())
+                                    <h2  class="fw-bold text-dark fs-5 text-center">لا تتوفر جامعات لتلك الجنسية</h2>
                                @else
-                               <h2>Attached Universities</h2>
-                                <ul>
-                                    @foreach($Nationality_universities as $university)
-                                        <li style="font-size:25px;">{{ $university->name }} -</li>
-                                    @endforeach
-                                </ul>
-                               @endif
-                            </div>
+                                            <h2 class="fw-bold text-dark fs-5 text-end">الجامعات الملتحقة</h2>
+                                            <p class="fw-lighter text-end" style="color: #22219A; font-size: 9px;">
+                                                الجامعات المتاحة لكل جنسية
+                                                 </p>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="table table align-middle text-center">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col" style="background-color: #E9E9F2;">#</th>
+                                                        <th scope="col" style="background-color: #E9E9F2;">الجامعات</th>
+                                                        <th scope="col" style="background-color: #E9E9F2;">
+                                                            اخرى
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                @foreach($Nationality_universities as $university)
+                                                    <tr>
+                                                        <th scope="row">{{$loop->index+1}}</th>
+                                                        <td>{{ $university->name }}</td>
+                                                        <td>
+                                                        <button type="button" class="btn text-white" onclick="deleteUniversity({{ $university->pivot->nationality_id }}, {{ $university->pivot->university_id }})"
+                                                            style="background-color: #7A1C1C;">مسح</button>
+                                                        </td>
+                                                    </tr>
+
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -352,57 +366,12 @@
 
     <script>
 
-    // Add event listener to submit button
-    document.querySelector('#universityForm button[type="submit"]').addEventListener('click', function(event) {
-        event.stopPropagation(); // Prevent dropdown menu from closing
-    });
+   
 
 
-    document.getElementById('nationalityForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        var formData = new FormData(this);
-
-        // Submit the form data using Ajax
-        fetch(this.action, {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => {
-            if (response.ok) {
-                // Clear all error messages when form is submitted successfully
-                var errorElements = document.querySelectorAll('.text-danger');
-                errorElements.forEach(function(element) {
-                    element.textContent = '';
-                });
-                window.location.reload();
-            } else {
-                response.json().then(data => {
-                    // Loop through each field with errors
-                    for (var key in data.errors) {
-                        if (Object.prototype.hasOwnProperty.call(data.errors, key)) {
-                            var errorMessages = data.errors[key]; // Get the error messages array
-                            var errorElement = document.getElementById(key + 'Error'); // Assuming ID format is fieldNameError
-                            if (errorElement) {
-                                // Join all error messages and display them
-                                errorElement.textContent = errorMessages.join(' ');
-                            }
-                        }
-                    }
-                });
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-    });
-
-
-
-       function deleteNationality(nationality_id) {
-
-        if (confirm('Are you sure you want to delete this nationality?')) {
-            // Send AJAX request to delete the nationality
-            fetch('/nationalities/' + nationality_id, {
+       function deleteUniversity(nationality_id, university_id) {
+        if (confirm('Are you sure you want to delete this University?')) {
+            fetch('/nationality/university/' + nationality_id + '/' + university_id, {
                 method: 'DELETE',
                 headers: {
                     'X-CSRF-TOKEN': '{{ csrf_token() }}',
@@ -414,16 +383,17 @@
                     window.location.reload();
                 } else {
                     // Handle error response
-                    console.error('Error deleting nationality:', response.statusText);
-                    alert('Failed to delete nationality. Please try again.');
+                    console.error('Error deleting university:', response.statusText);
+                    alert('Failed to delete university. Please try again.');
                 }
             })
             .catch(error => {
-                console.error('Error deleting nationality:', error);
-                alert('An error occurred while deleting the nationality. Please try again.');
+                console.error('Error deleting university:', error);
+                alert('An error occurred while deleting the university. Please try again.');
             });
         }
     }
+
     </script>
 
 </body>

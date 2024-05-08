@@ -69,30 +69,11 @@
                                             </nav>
                                         </li>
                                         <li class="mb-4">
-                                            <a class="button-unv-small" id="menuButton-unv-small" style=" color: white!important;
-                                            border: rgba(2, 58, 170, 0.8) solid 2px;
-                                            background-color: rgba(2, 58, 170, 0.8);
-                                            border-radius: 7px;
-                                            padding: 0px 13px;">
-                                                <i class="fa-solid fa-building-columns ms-3 fw-semibold"></i>جامعات
-                                                <i class="fa-solid fa-caret-down me-3"></i>
-                                            </a>
-                                            <nav id="menu-unv-small" class="menu-unv-small mt-3">
-                                                <ul class="me-3">
-                                                    <li class="mb-2">
-                                                        <a href="{{ route('university.index') }}"
-                                                            style="color: #22219A; font-weight: bolder; font-size: 14px;">
-                                                            <i class="fa-solid fa-square ms-2"></i>أضافة جامعة
-                                                        </a>
-                                                    </li>
-                                                    <li class="mb-4">
-                                                        <a href="{{ route('university.index') }}">
-                                                            <i class="fa-solid fa-square ms-2"></i>تفاصيل جامعة
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
-                                        </li>
+                                    <a href="{{route('university.index')}}" class="main-nav"
+                                    style="  color: #3736AF; font-weight: bolder;">
+                                    <i class="fa-solid fa-building-columns ms-3 fw-semibold"></i>جامعات
+                                    </a>
+                                </li>
                                         <li class="mb-4">
                                             <a href="{{route('faculty.index')}}" class="main-nav">
                                                 <i class="fa-solid fa-graduation-cap ms-3 fw-semibold"></i>كليات
@@ -207,29 +188,10 @@
                                     </nav>
                                 </li>
                                 <li class="mb-4">
-                                    <a class="button-unv" id="menuButton-unv" style=" color: white!important;
-                                    border: rgba(2, 58, 170, 0.8) solid 2px;
-                                    background-color: rgba(2, 58, 170, 0.8);
-                                    border-radius: 7px;
-                                    padding: 0px 13px;">
-                                        <i class="fa-solid fa-building-columns ms-3 fw-semibold"></i>جامعات
-                                        <i class="fa-solid fa-caret-down me-3"></i>
+                                    <a href="{{route('university.index')}}" class="main-nav"
+                                    style="  color: #3736AF; font-weight: bolder;">
+                                    <i class="fa-solid fa-building-columns ms-3 fw-semibold"></i>جامعات
                                     </a>
-                                    <nav class="mt-3">
-                                        <ul class="me-3">
-                                            <li class="mb-2">
-                                                <a href="{{route('university.index') }}"
-                                                    style="color: #22219A; font-weight: bolder; font-size: 14px;">
-                                                    <i class="fa-solid fa-square ms-2"></i>أضافة جامعة
-                                                </a>
-                                            </li>
-                                            <li class="mb-4">
-                                                <a href="{{ route('university.index') }}" style="font-size: 14px;">
-                                                    <i class="fa-solid fa-square ms-2"></i>تفاصيل جامعة
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </nav>
                                 </li>
                                 <li class="mb-4">
                                     <a href="{{route('faculty.index')}}" class="main-nav">
@@ -289,7 +251,7 @@
                             <div>
                                 <!-- Button trigger modal -->
                                 <div class="d-flex justify-content-end ms-xl-5 ms-lg-5 ms-md-5">
-                                    <button type="button" class="btn button-modal2" data-bs-toggle="modal"
+                                    <button type="button" class="btn button-modal2 p-3" data-bs-toggle="modal"
                                         data-bs-target="#staticBackdrop">
                                         <i class="fa-solid fa-plus ms-2"></i>أضافة جامعة
                                     </button>
@@ -383,12 +345,14 @@
                                                     <div class="d-flex justify-content-center">
                                                         <div class="ms-2">
                                                             <a href="{{ route('university.show' , ['id' => $university->id]) }}" type="button" class="btn text-white"
-                                                                style="background-color: blue;">تفاصيل</a>
+                                                                style="background-color: rgba(2, 58, 170, 0.8);">تفاصيل</a>
                                                         </div>
                                                         <div class="ms-2">
-                                                            <button type="button" class="btn text-white"
-                                                                style="background-color: #1C7A36;">تعديل</button>
-                                                        </div>
+                                                        <button type="button" class="btn text-white button-modal2"
+                                                            data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
+                                                            style="background-color: #1C7A36;">تعديل</button>
+                                                    </div>
+
                                                         <div>
                                                             <button type="button" class="btn text-white" onclick="deleteUniversity({{ $university->id }})"
                                                                 style="background-color: #7A1C1C;">مسح</button>
@@ -399,6 +363,43 @@
                                             @endforeach
                                         </tbody>
                                     </table>
+                                    <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
+                                    aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-body text-end">
+                                                <div class="container">
+                                                    <div class="row justify-content-center">
+                                                        <div class="form col-xl-12 col-lg-12">                                                         
+                                                               <div class="mb-3">
+                                                                    <label for="exampleInputEmail1"
+                                                                        class="form-label text-dark">اسم
+                                                                        الجامعة </label>
+                                                                    <input type="text" class="form-control"
+                                                                       name="name" required>
+                                                                </div>
+                                                            <div>
+                                                                <label for="imageNational"
+                                                                    class="form-label text-dark fw-semibold">
+                                                                    ارفاق اللوجو الخاص بالجامعة
+                                                                     </label>
+                                                                <input type="file" class="form-control" id="imageName"
+                                                                    name="imageName">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn text-white"
+                                                    style="background-color: #066569;" id="saveButton">حفظ</button>
+                                                <button type="button" class="btn text-white"
+                                                    style="background-color: #7A1C1C;"
+                                                    data-bs-dismiss="modal">الغاء</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 </div>
                             </div>
                         </div>

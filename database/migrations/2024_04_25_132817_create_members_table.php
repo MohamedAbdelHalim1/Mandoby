@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('phone')->unique();
             $table->string('device_token');
-            $table->string('password')->default(bcrypt('123456'));
+            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });

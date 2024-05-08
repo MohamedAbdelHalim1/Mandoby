@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\University;
 use App\Models\Nationality;
+use App\Models\NationalityUniversity;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
+
 
 
 class NationalityController extends Controller
@@ -110,41 +113,38 @@ class NationalityController extends Controller
         ]);
 
     $nationality->universities()->attach($request->universities);
-    return redirect()->back()->with('success', 'Universities attached to nationality successfully');
+    return redirect()->back()->with('success', 'تم اضافه الجامعة بنجاح');
         
     }
+
+    public function delete_university($nationalityId , $universityId){
+        try {
+            $pivotRecord = NationalityUniversity::where('nationality_id', $nationalityId)
+                                                ->where('university_id', $universityId)
+                                                ->firstOrFail();
+
+            $pivotRecord->delete();
+
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Failed to delete pivot record: ' . $e->getMessage()], 500);
+        }
+    }
+    
 
 
     public function edit($id){
         $nationality = Nationality::find($id);
-        if($nationality !== null){
-            return response()->json([
-                'status' => 'success',
-                'message' => '',
-                'data' => $nationality
-            ], 200);
-        }
-        return response()->json([
-            'status' => 'failed',
-            'message' => 'Something went wrong!',
-            'data' => []
-        ], 500);
+        return response()->json($nationality);
     }
 
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $nationality = Nationality::find($id);
-    
-        if ($nationality == null) {
-            return response()->json([
-                'status' => 'failed',
-                'message' => 'Nationality not found',
-                'data' => []
-            ], 404);
-        }
-    
+        $messages = [
+            'name.required' => 'Please enter All Data*',
+        ];
+        $nationality = Nationality::findOrFail($request->nationality_id);
         $validator = Validator::make($request->all(), [
             'name' => ['required','string'], 
             'photo' => ['nullable','image','mimes:jpeg,png,jpg,gif'], 
@@ -169,19 +169,8 @@ class NationalityController extends Controller
             $nationality->photo = $photoUrl; 
                 }
     
-        $nationality->save();
-        if ($nationality->exists){
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Nationality updated successfully',
-            'data' => $nationality
-        ], 200);
-        }
-        return response()->json([
-            'status' => 'failed',
-            'message' => 'Something went wrong',
-            'data' => ""
-        ], 500);
+        $nationality->save();   
+        return redirect()->back();  
     }
 
 

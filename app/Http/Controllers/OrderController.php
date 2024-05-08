@@ -138,43 +138,30 @@ public function updatepackage(Request $request, $id)
 
    //method handle ajax onchange request for checkboxes
    public function updateRequirementStatus(Request $request){
-    $order = Order::where('id' , '=' , $request->order_id)->first();
-    if($request->requirement_id == 1){
-        if($order->apply_order == 1){
-            $order->apply_order = 0;
-        }else{
-            $order->apply_order = 1;
-        }
+    $order = Order::findOrFail($request->order_id);
+//^= XOR bitwise switch between 0 and 1 without need of check their current value
+    switch ($request->requirement_id) {
+        case 1:
+            $order->apply_order ^= 1;
+            break;
+        case 2:
+            $order->receiving_all_papers ^= 1;
+            break;
+        case 3:
+            $order->paid_link ^= 1;
+            break;
+        case 4:
+            $order->apply_at_university ^= 1;
+            break;
+        case 5:
+            $order->order_accepted ^= 1;
+            break;
+        default:
+            break;
     }
-    elseif($request->requirement_id == 2){
-        if($order->receiving_all_papers == 1){
-            $order->receiving_all_papers = 0;
-        }else{
-            $order->receiving_all_papers = 1;
-        }
-    }
-    elseif($request->requirement_id == 3){
-        if($order->paid_link == 1){
-            $order->paid_link = 0;
-        }else{
-            $order->paid_link = 1;
-        }
-    }
-    elseif($request->requirement_id == 4){
-        if($order->apply_at_university == 1){
-            $order->apply_at_university = 0;
-        }else{
-            $order->apply_at_university = 1;
-        }
-    }
-    elseif($request->requirement_id == 5){
-        if($order->order_accepted == 1){
-            $order->order_accepted = 0;
-        }else{
-            $order->order_accepted = 1;
-        }
-    }
+
     $order->save();
-   }
+}
+
    
 }

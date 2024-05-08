@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>Nationalities</title>
     <link rel="website icon" type="png" href="assets/images/logoo.png">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
@@ -70,25 +72,10 @@
                                             </nav>
                                         </li>
                                         <li class="mb-4">
-                                            <a class="button-unv-small" id="menuButton-unv-small">
-                                                <i class="fa-solid fa-building-columns ms-3 fw-semibold"></i>جامعات
-                                                <i class="fa-solid fa-caret-down me-3"></i>
-                                            </a>
-                                            <nav id="menu-unv-small" class="menu-unv-small mt-3">
-                                                <ul class="me-3">
-                                                    <li class="mb-2">
-                                                        <a href="{{ route('university.index') }}">
-                                                            <i class="fa-solid fa-square ms-2"></i>أضافة جامعة
-                                                        </a>
-                                                    </li>
-                                                    <li class="mb-4">
-                                                        <a href="{{ route('university.index') }}">
-                                                            <i class="fa-solid fa-square ms-2"></i>تفاصيل جامعة
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
-                                        </li>
+                                    <a href="{{route('university.index')}}" class="main-nav">
+                                    <i class="fa-solid fa-building-columns ms-3 fw-semibold"></i>جامعات
+                                    </a>
+                                </li>
                                         <li class="mb-4">
                                             <a href="{{route('faculty.index')}}" class="main-nav">
                                                 <i class="fa-solid fa-graduation-cap ms-3 fw-semibold"></i>كليات
@@ -205,24 +192,9 @@
                                     </nav>
                                 </li>
                                 <li class="mb-4">
-                                    <a class="button-unv" id="menuButton-unv">
-                                        <i class="fa-solid fa-building-columns ms-3 fw-semibold"></i>جامعات
-                                        <i class="fa-solid fa-caret-down me-3"></i>
+                                    <a href="{{route('university.index')}}" class="main-nav">
+                                    <i class="fa-solid fa-building-columns ms-3 fw-semibold"></i>جامعات
                                     </a>
-                                    <nav id="menu-unv" class="menu-unv mt-3">
-                                        <ul class="me-3">
-                                            <li class="mb-2">
-                                                <a href="{{route('university.index') }}">
-                                                    <i class="fa-solid fa-square ms-2"></i>أضافة جامعة
-                                                </a>
-                                            </li>
-                                            <li class="mb-4">
-                                                <a href="{{ route('university.index') }}">
-                                                    <i class="fa-solid fa-square ms-2"></i>تفاصيل جامعة
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </nav>
                                 </li>
                                 <li class="mb-4">
                                     <a href="{{route('faculty.index')}}" class="main-nav">
@@ -282,7 +254,7 @@
                             <div>
                                 <!-- Button trigger modal -->
                                 <div class="d-flex justify-content-end ms-xl-5 ms-lg-5 ms-md-5">
-                                    <button type="button" class="btn button-modal2" data-bs-toggle="modal"
+                                    <button type="button" class="btn button-modal2 p-3" data-bs-toggle="modal"
                                         data-bs-target="#staticBackdrop">
                                         <i class="fa-solid fa-plus ms-2"></i>أضافة جنسية جديدة
                                     </button>
@@ -364,6 +336,7 @@
                                             <th scope="col">الجنسية</th>
                                             <th scope="col">صورة البلد</th>
                                             <th scope="col">اخري</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -383,12 +356,14 @@
                                                 <div class="d-flex justify-content-center">
                                                          <div class="ms-2">
                                                             <a href="{{ route('nationality.show' , ['id' => $nationality->id]) }}" type="button" class="btn text-white"
-                                                                style="background-color: blue;">الجامعات</a>
+                                                                style="background-color: rgba(2, 58, 170, 0.8);">الجامعات</a>
                                                         </div>
-                                                    <div class="ms-2">
-                                                        <button type="button" class="btn text-white" data-nationality-id="{{ $nationality->id }}"
-                                                            style="background-color: #1C7A36;">تعديل</button>
+                                                        <div class="ms-2">
+                                                        <button type="button" class="btn text-white button-modal2"
+                                                            data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
+                                                            style="background-color: #1C7A36;" onclick="openEditModal({{ $nationality->id }})">تعديل</button>
                                                     </div>
+
                                                     <div>
                                                         <button type="button" class="btn text-white" onclick="deleteNationality({{ $nationality->id }})"
                                                             style="background-color: #7A1C1C;">مسح</button>
@@ -400,6 +375,50 @@
 
                                     </tbody>
                                 </table>
+                                <form id="editForm" action="{{ route('nationality.upload')  }}" method="POST" enctype="multipart/form-data">
+                                     @csrf
+                                     <input type="hidden" id="nationalityId" name="nationality_id"> 
+                                <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
+                                    aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-body text-end">
+                                                <div class="container">
+                                                  
+                                                    <div class="row justify-content-center">
+                                                        <div class="form col-xl-12 col-lg-12">                                                         
+                                                            <div class="mb-3">
+                                                                <label for="nationalName"
+                                                                    class="form-label text-dark fw-semibold">اسم
+                                                                    الجنسية</label>
+                                                                <input type="text" class="form-control"
+                                                                id="nationalityName" name="name">
+                                                            </div>
+                                                            <div>
+                                                                <label for="imageNational"
+                                                                    class="form-label text-dark fw-semibold">ارفاق
+                                                                    صورة
+                                                                    علم البلد</label>
+                                                                <input type="file" class="form-control" id="imageName"
+                                                                    name="photo">
+                                                            </div>
+                                                            <div id="nationalityImagePreview" style="width:150px; height:150px;"></div>
+                                                        </div>
+                                                
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn text-white"
+                                                    style="background-color: #066569;" id="saveButton">حفظ</button>
+                                                <button type="button" class="btn text-white"
+                                                    style="background-color: #7A1C1C;"
+                                                    data-bs-dismiss="modal">الغاء</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                 </form>
                             </div>
                         </div>
                     </div>
@@ -413,7 +432,11 @@
     <script src="assets/js/index.js"></script>
 
     <script>
-
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
 
 document.getElementById('nationalityForm').addEventListener('submit', function(event) {
         event.preventDefault();
@@ -481,6 +504,48 @@ document.getElementById('nationalityForm').addEventListener('submit', function(e
             });
         }
     }
+
+    function openEditModal(nationalityId) {
+    jQuery.ajax({
+        url: '/nationalities/' + nationalityId + '/edit', // Replace with your route for fetching nationality data
+        type: 'GET',
+        success: function(response) {
+            //console.log(response.nationality);
+            // Populate form fields with nationality data
+            $('#nationalityId').val(response.id);
+            $('#nationalityName').val(response.name);
+             // Set image source if photo exists
+             if (response.photo) {
+                $('#nationalityImagePreview').html('<img src="' + response.photo + '" class="img-fluid">');
+            } else {
+                $('#nationalityImagePreview').text('No image selected');
+            }
+            $('#editNationalityModal').modal('show');
+
+        },
+        error: function(xhr, status, error) {
+            console.error(error);
+        }
+    });
+}
+
+function updateNationality() {
+        // Send updated data to server via AJAX
+        var formData = $('#editForm').serialize();
+        $.ajax({
+            url: '/nationalities/update', // Replace with your route for updating
+            type: 'POST',
+            data: formData,
+            success: function(response) {
+                $('#editModal').modal('hide');
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+
+
     </script>
 
 </body>

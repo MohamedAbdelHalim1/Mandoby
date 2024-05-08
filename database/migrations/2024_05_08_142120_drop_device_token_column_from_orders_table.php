@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('orders', function (Blueprint $table) {
-            $table->string('name')->after('id')->nullable(); // Change 'any_existing_column' to the column name after which you want to add 'name'
+        Schema::table('members', function (Blueprint $table) {
+            $table->dropColumn('device_token');
 
         });
     }
@@ -22,7 +22,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('orders', function (Blueprint $table) {
+        Schema::table('members', function (Blueprint $table) {
             //
         });
     }

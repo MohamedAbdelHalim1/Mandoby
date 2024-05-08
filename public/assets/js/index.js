@@ -13,18 +13,6 @@ buttonser.onclick = function () {
 
 };
 
-let buttonunv = document.querySelector(".button-unv");
-
-buttonunv.onclick = function () {
-
-    if (buttonunv.classList.contains("click2")) {
-        buttonunv.classList.remove("click2");
-    }
-    else {
-        buttonunv.classList.add("click2");
-    }
-
-};
 
 // Get the button and menu elements by their ids
 var button = document.getElementById("menuButton-ser");
@@ -36,15 +24,6 @@ button.addEventListener("click", function () {
     menu.classList.toggle("active");
 });
 
-
-var button2 = document.getElementById("menuButton-unv");
-var menu2 = document.getElementById("menu-unv");
-
-// Add click event listener to the button
-button2.addEventListener("click", function () {
-    // Toggle the 'active' class on the menu to show/hide it
-    menu2.classList.toggle("active2");
-});
 
 
 // Function to handle file selection
@@ -81,4 +60,3 @@ buttonall.addEventListener('change', function (event) {
         }
     }
 });
-

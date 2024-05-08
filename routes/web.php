@@ -43,8 +43,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/nationality/{id}', [NationalityController::class, 'show'])->name('nationality.show');
     Route::post('/nationality/{id}', [NationalityController::class, 'store_universities'])->name('nationality.university.store');
     Route::get('/nationalities/{id}/edit', [NationalityController::class, 'edit']);
-    Route::put('/nationalities/{id}', [NationalityController::class, 'update']);
+    Route::post('/nationalities/upload', [NationalityController::class, 'update'])->name('nationality.upload');
     Route::delete('/nationalities/{id}', [NationalityController::class, 'delete']);
+    Route::delete('/nationality/university/{nationalityId}/{universityId}', [NationalityController::class, 'delete_university']);
+
 
     //Bacic Services routes
     Route::get('/basic-service', [BasicServiceController::class, 'index'])->name('basic.service.index');

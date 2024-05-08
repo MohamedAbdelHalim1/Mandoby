@@ -96,7 +96,6 @@ header p
 }
 
 .button-ser
-,.button-unv
 {
     background-color: white;
     color: #5B5E81;
@@ -105,8 +104,6 @@ header p
 
 .button-ser.click
 ,.button-ser:hover
-,.button-unv.click2
-,.button-unv:hover
 {
     color: white!important;
     border: rgba(2, 58, 170, 0.8) solid 2px;
@@ -115,24 +112,21 @@ header p
     padding: 0px 13px;
 }
 
-.menu-ser
-,.menu-unv {
+.menu-ser{
     display: none;
 }
 
-.menu-ser.active, 
-.menu-unv.active2{
+.menu-ser.active{
     display: block;
 }
 
 .menu-ser ul li a
-,.menu-unv ul li a
 {
     font-size: 14px;
 }
 
-.menu-ser li:hover a,
-.menu-unv li:hover a{
+.menu-ser li:hover a
+{
     color: #3736AF;
     font-weight: bolder;
 }
@@ -153,7 +147,6 @@ header p
 {
     background-color: #066569;
     color: white;
-    padding: 15px;
 }
 
 
@@ -264,7 +257,6 @@ tbody a:hover
 {
     background-color: #066569;
     color: white;
-    padding: 15px;
     width: 144px!important;
     height: 56px!important;
 }
@@ -285,6 +277,12 @@ tbody a:hover
 {
     display: none;
 }
+
+.nation-details .dropdown-toggle::after
+{
+    margin-right: 180px;
+}
+
 /***************************/
 
 
