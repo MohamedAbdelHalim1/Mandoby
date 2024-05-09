@@ -78,52 +78,25 @@ class BasicServiceController extends Controller
 
     public function edit($id){
         $BasicService = BasicService::find($id);
-        if($BasicService !== null){
-            return response()->json([
-                'status' => 'success',
-                'message' => '',
-                'data' => $BasicService
-            ], 200);
-        }
-        return response()->json([
-            'status' => 'failed',
-            'message' => 'Something went wrong!',
-            'data' => []
-        ], 500);
+        return response()->json($BasicService);        
     }
 
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $BasicService = BasicService::find($id);
-    
-        if ($BasicService == null) {
-            return response()->json([
-                'status' => 'failed',
-                'message' => 'Basic Service not found',
-                'data' => []
-            ], 404);
-        }
-    
+        
+        $BasicService = BasicService::findOrFail($request->basicServiceId);
         $validator = Validator::make($request->all(), [
-            'name' => ['required','string'], 
-            'photo' => ['required','image','mimes:jpeg,png,jpg,gif'], 
-           ]);
-
-        if ($validator->fails()) {
-           return response()->json([
-               'success'=>false,
-               'message'=>"There exist one or more errors",
-               'data'=>$validator->messages(),
-           ],400);
-       }
+            'basicServiceName' => ['required','string'], 
+            'imageName' => ['nullable','image','mimes:jpeg,png,jpg,gif'], 
+        ]);
    
     
-        $BasicService->name = $request->name;
+        $BasicService->name = $request->basicServiceName;
     
-        if ($request->hasFile('photo')) {
-            $photo = $request->file('photo');
+        if ($request->hasFile('imageName')) {
+            $photo = $request->file('imageName');
             $extension = $photo->getClientOriginalExtension();
             $photoPath = $photo->storeAs('Photos', 'basic_service_photo_' . time() . '.' . $extension, 'public');
             $photoUrl = url('storage/' . $photoPath);
@@ -131,18 +104,8 @@ class BasicServiceController extends Controller
         }
     
         $BasicService->save();
-        if ($BasicService->exists){
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Basic Service updated successfully',
-            'data' => $BasicService
-        ], 200);
-        }
-        return response()->json([
-            'status' => 'failed',
-            'message' => 'Something went wrong',
-            'data' => ""
-        ], 500);
+        return redirect()->back();  
+  
     }
 
 

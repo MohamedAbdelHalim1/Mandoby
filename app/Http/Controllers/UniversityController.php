@@ -36,7 +36,7 @@ class UniversityController extends Controller
                 'status' => 'failed',
                 'message' => 'University not found',
                 'data' => []
-            ], 404);
+            ], 200);
         }
         return response()->json([
             'status' => 'success',
@@ -107,51 +107,24 @@ class UniversityController extends Controller
     
     public function edit($id){
         $university = University::find($id);
-        if($university !== null){
-            return response()->json([
-                'status' => 'success',
-                'message' => '',
-                'data' => $university
-            ], 200);
-        }
-        return response()->json([
-            'status' => 'failed',
-            'message' => 'Something went wrong!',
-            'data' => []
-        ], 500);
+        return response()->json($university);
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $university = University::find($id);
-    
-        if ($university == null) {
-            return response()->json([
-                'status' => 'failed',
-                'message' => 'University not found',
-                'data' => []
-            ], 404);
-        }
+        $university = University::find($request->university_id);
+ 
     
         $validator = Validator::make($request->all(), [
             'name' => ['required','string'], 
             'logo' => ['nullable','image','mimes:jpeg,png,jpg,gif'], 
-            'photo' => ['nullable','image','mimes:jpeg,png,jpg,gif'], 
-            'details'=>['nullable'],
            ]);
 
-        if ($validator->fails()) {
-           return response()->json([
-               'success'=>false,
-               'message'=>"There exist one or more errors",
-               'data'=>$validator->messages(),
-           ],400);
-       }
-   
+ 
     
         $university->name = $request->name;
-        $university->details = $request->details;
+        // $university->details = $request->details;
         if ($request->hasFile('logo')) {
             $logo = $request->file('logo');
             $extension = $logo->getClientOriginalExtension();
@@ -159,27 +132,16 @@ class UniversityController extends Controller
             $logoUrl = url('storage/' . $logoPath);
             $university->logo = $logoUrl; 
         }
-        if ($request->hasFile('photo')) {
-            $photo = $request->file('photo');
-            $extension = $photo->getClientOriginalExtension();
-            $photoPath = $photo->storeAs('Photos', 'university_photo_' . time() . '.' . $extension, 'public'); // Store the file in the 'public/photos' directory
-            $photoUrl = url('storage/' . $photoPath);
-            $university->photo = $photoUrl; 
-        }
+        // if ($request->hasFile('photo')) {
+        //     $photo = $request->file('photo');
+        //     $extension = $photo->getClientOriginalExtension();
+        //     $photoPath = $photo->storeAs('Photos', 'university_photo_' . time() . '.' . $extension, 'public'); // Store the file in the 'public/photos' directory
+        //     $photoUrl = url('storage/' . $photoPath);
+        //     $university->photo = $photoUrl; 
+        // }
     
         $university->save();
-        if ($university->exists){
-        return response()->json([
-            'status' => 'success',
-            'message' => 'University updated successfully',
-            'data' => $university
-        ], 200);
-        }
-        return response()->json([
-            'status' => 'failed',
-            'message' => 'Something went wrong',
-            'data' => ""
-        ], 500);
+      return redirect()->back();
     }
 
 
@@ -197,6 +159,12 @@ class UniversityController extends Controller
      public function show($id){
         $university = University::find($id);
         return view('university-details',compact('university'));
+    }
+
+
+    public function create_details($id){
+        $university = University::find($id);
+        return response()->json($university);
     }
 
     //will get this university using id and fill the null data in photo and details
@@ -253,6 +221,31 @@ class UniversityController extends Controller
             'data' => []
         ], 404);
 
+    }
+
+    public function details($id){
+        $university = University::find($id);
+        return response()->json($university);
+    }
+
+    public function details_upload(Request $request){
+      //dd($request);
+        $university = University::find($request->details_id);
+        $validator = Validator::make($request->all(), [
+            'details' => ['required','string'], 
+            'photo' => ['nullable','image','mimes:jpeg,png,jpg,gif'], 
+           ]);
+           $university->details = $request->details; 
+         if ($request->hasFile('photo')) {
+            $photo = $request->file('photo');
+            $extension = $photo->getClientOriginalExtension();
+            $photoPath = $photo->storeAs('Photos', 'university_photo_' . time() . '.' . $extension, 'public'); // Store the file in the 'public/photos' directory
+            $photoUrl = url('storage/' . $photoPath);
+            $university->photo = $photoUrl; 
+        }
+
+        $university->save();
+        return redirect()->back();
     }
 
 }

@@ -80,49 +80,28 @@ class SubServiceController extends Controller
 
     public function edit($id){
         $SubService = SubService::with('BasicService:id,name')->find($id);
-        if($SubService !== null){
-            return response()->json([
-                'status' => 'success',
-                'message' => '',
-                'data' => $SubService
-            ], 200);
-        }
+        $basicService = $SubService->BasicService->name;
+        $selectedBasicServiceId = $SubService->basic_service_id;
         return response()->json([
-            'status' => 'failed',
-            'message' => 'Something went wrong!',
-            'data' => []
-        ], 500);
+            'SubService' => $SubService,
+            'basicService' => $basicService,
+            'selectedBasicServiceId' => $selectedBasicServiceId 
+        ]);
     }
 
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $SubService = SubService::with('BasicService:id,name')->find($id);
-    
-        if ($SubService == null) {
-            return response()->json([
-                'status' => 'failed',
-                'message' => 'sub Service not found',
-                'data' => []
-            ], 404);
-        }
-    
+        $SubService = SubService::with('BasicService:id,name')->find($request->subservice_id);
+     
         $validator = Validator::make($request->all(), [
             'name' => ['required','string'], 
             'photo' => ['nullable','image','mimes:jpeg,png,jpg,gif'], 
             'basic_service' => ['required'],
            ]);
 
-        if ($validator->fails()) {
-           return response()->json([
-               'success'=>false,
-               'message'=>"There exist one or more errors",
-               'data'=>$validator->messages(),
-           ],400);
-       }
-   
-    
+     
         $SubService->name = $request->name;
         $SubService->basic_service_id = $request->basic_service;
         if ($request->hasFile('photo')) {
@@ -134,18 +113,7 @@ class SubServiceController extends Controller
         }
     
         $SubService->save();
-        if ($SubService->exists){
-        return response()->json([
-            'status' => 'success',
-            'message' => 'sub Service updated successfully',
-            'data' => $SubService
-        ], 200);
-        }
-        return response()->json([
-            'status' => 'failed',
-            'message' => 'Something went wrong',
-            'data' => ""
-        ], 500);
+        return redirect()->back();
     }
 
 

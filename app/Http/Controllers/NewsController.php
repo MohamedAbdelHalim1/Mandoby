@@ -11,19 +11,7 @@ class NewsController extends Controller
 {
     public function index(){
         $news = News::all();
-        if(!$news->isEmpty()){
-            return response()->json([
-                'status' => 'success',
-                'message' => 'News retrieved successfully',
-                'data' => $news
-            ], 200);
-        }
-        return response()->json([
-            'status' => 'faild',
-            'message' => 'No News Yet!',
-            'data' => []
-        ], 200);
-        
+        return view('news',compact('news'));
     }
 
 
@@ -32,18 +20,11 @@ class NewsController extends Controller
 
         $validator = Validator::make($request->all(), [
             'title' => ['required','string'], 
-            'description'=>['nullable','string'],
-            'photo' => ['nullable','image','mimes:jpeg,png,jpg,gif'], 
+            'description'=>['required','string'],
+            'photo' => ['required','image','mimes:jpeg,png,jpg,gif'], 
            ]);
 
-        if ($validator->fails()) {
-           return response()->json([
-               'success'=>false,
-               'message'=>"There exist one or more errors",
-               'data'=>$validator->messages(),
-           ],400);
-       }
-    
+       
 
         $news = new News;
         $news->title = $request->title;
@@ -57,66 +38,30 @@ class NewsController extends Controller
         }
         $news->save();
 
-        if ($news->exists){
-            return response()->json([
-                'status' => 'success',
-                'message' => 'News added successfully',
-                'data' => $news
-            ], 201);
-        }
-            return response()->json([
-                'status' => 'failed',
-                'message' => 'Something went wrong , Try Again!',
-                'data' => []
-            ], 500);
-        
+        return redirect()->back();
         
     }
 
 
     public function edit($id){
         $news = News::find($id);
-        if($news !== null){
-            return response()->json([
-                'status' => 'success',
-                'message' => '',
-                'data' => $news
-            ], 200);
-        }
-        return response()->json([
-            'status' => 'failed',
-            'message' => 'Something went wrong!',
-            'data' => []
-        ], 500);
+        return response()->json($news);
     }
 
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $news = News::find($id);
-    
-        if ($news == null) {
-            return response()->json([
-                'status' => 'failed',
-                'message' => 'News not found',
-                'data' => []
-            ], 404);
-        }
-    
+        $news = News::find($request->news_id);
+        
+
         $validator = Validator::make($request->all(), [
             'title' => ['required','string'], 
-            'description'=>['nullable','string'],
+            'description'=>['required','string'],
             'photo' => ['nullable','image','mimes:jpeg,png,jpg,gif'], 
            ]);
 
-        if ($validator->fails()) {
-           return response()->json([
-               'success'=>false,
-               'message'=>"There exist one or more errors",
-               'data'=>$validator->messages(),
-           ],400);
-       }
+       
    
     
         $news->title = $request->title;
@@ -124,45 +69,21 @@ class NewsController extends Controller
         if ($request->hasFile('photo')) {
             $photo = $request->file('photo');
             $extension = $photo->getClientOriginalExtension();
-            $photoPath = $photo->storeAs('Photos', 'News_photo_' . time() . '.' . $extension, 'public');
-            $news->photo = $photoPath;
-        }
+            $photoPath = $photo->storeAs('Photos', 'news_photo_' . time() . '.' . $extension, 'public');
+            $photoUrl = url('storage/' . $photoPath);
+            $news->photo = $photoUrl; 
+                }
     
         $news->save();
-        if ($news->exists){
-        return response()->json([
-            'status' => 'success',
-            'message' => 'News updated successfully',
-            'data' => $news
-        ], 200);
-        }
-        return response()->json([
-            'status' => 'failed',
-            'message' => 'Something went wrong',
-            'data' => ""
-        ], 500);
+        return redirect()->back();
     }
 
 
     public function delete($id)
     {
         $news = News::find($id);
-
-        if ($news == null) {
-            return response()->json([
-                'status' => 'failed',
-                'message' => 'News not found',
-                'data' => []
-            ], 404);
-        }
-
         $news->delete();
 
-        return response()->json([
-            'status' => 'success',
-            'message' => 'News deleted successfully',
-            'data' => []
-        ], 200);
     }
 
     

@@ -76,56 +76,28 @@ class FacultyController extends Controller
 
     public function edit($id){
         $faculty = Faculty::find($id);
-        if($faculty !== null){
-            return response()->json([
-                'status' => 'success',
-                'message' => '',
-                'data' => $faculty
-            ], 200);
-        }
+      
         return response()->json([
-            'status' => 'failed',
-            'message' => 'Something went wrong!',
-            'data' => []
-        ], 500);
+            'faculty' => $faculty,
+        ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $faculty = Faculty::find($id);
-    
-        if ($faculty == null) {
-            return response()->json([
-                'status' => 'failed',
-                'message' => 'faculty not found',
-                'data' => []
-            ], 404);
-        }
+       // dd($request);
+        $faculty = Faculty::find($request->faculty_id);
     
         $validator = Validator::make($request->all(), [
             'name' => ['required','string'], 
-            'degree' => ['nullable'], 
+            'degree' => ['required'], 
+            'university'=>['nullable']
            ]);
-
-        if ($validator->fails()) {
-           return response()->json([
-               'success'=>false,
-               'message'=>"There exist one or more errors",
-               'data'=>$validator->messages(),
-           ],400);
-       }
    
-    
-       $faculty->update([
-        'name' => $request->input('name'),
-        'degree' => $request->input('degree'),
-    ]);
-
-    return response()->json([
-        'status' => 'success',
-        'message' => 'Faculty updated successfully',
-        'data' => $faculty
-    ], 200);
+       $faculty->name = $request->name;
+       $faculty->degree = $request->degree;
+       $faculty->university_id = $request->university;
+           $faculty->save();
+       return redirect()->back();
     
     }
 

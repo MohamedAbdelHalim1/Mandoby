@@ -11,18 +11,7 @@ class UserController extends Controller
 {
     public function index(){
         $users = User::all();
-        if(!$users->isEmpty()){
-            return response()->json([
-                'status' => 'success',
-                'message' => 'Users retrieved successfully',
-                'data' => $users
-            ], 200);
-        }
-        return response()->json([
-            'status' => 'faild',
-            'message' => 'No Users Yet!',
-            'data' => []
-        ], 200);
+        return view('user',compact('users'));
         
     }
 
@@ -36,13 +25,7 @@ class UserController extends Controller
             'password' => ['required','string'], 
            ]);
 
-        if ($validator->fails()) {
-           return response()->json([
-               'status'=>false,
-               'message'=>"There exist one or more errors",
-               'data'=>$validator->messages(),
-           ],400);
-       }
+        
     
 
         $user = new User;
@@ -53,18 +36,7 @@ class UserController extends Controller
       
         $user->save();
 
-        if ($user->exists){
-            return response()->json([
-                'status' => 'success',
-                'message' => 'User added successfully',
-                'data' => $user
-            ], 201);
-        }
-            return response()->json([
-                'status' => 'failed',
-                'message' => 'Something went wrong , Try Again!',
-                'data' => []
-            ], 500);
+      return redirect()->back();
         
         
     }

@@ -41,62 +41,32 @@ public function getMemberById(Request $request)   //for profile
 
     public function index(){
         $members = Member::all();
-        if(!$members->isEmpty()){
-            return response()->json([
-                'status' => 'success',
-                'message' => 'Members retrieved successfully',
-                'data' => $members
-            ], 200);
-        }
-        return response()->json([
-            'status' => 'faild',
-            'message' => 'No Members Yet!',
-            'data' => []
-        ], 200);
-        
+        return view('member',compact('members'));
     }
 
 
     public function store(Request $request)
     {
 
+        //add nationality
+        
         $validator = Validator::make($request->all(), [
-            'name' => ['required','string'], 
-            'email' => ['required','string','email'],
+            'first_name' => ['required','string'], 
+            'last_name' => ['required','string'], 
             'phone' => ['required','string'], 
-            'password' => ['nullable','string'], 
+            'password' => ['required','string'], 
            ]);
 
-        if ($validator->fails()) {
-           return response()->json([
-               'status'=>false,
-               'message'=>"There exist one or more errors",
-               'data'=>$validator->messages(),
-           ],400);
-       }
     
 
         $member = new Member;
-        $member->name = $request->name;
-        $member->email = $request->email;
+        $member->first_name = $request->first_name;
+        $member->last_name = $request->last_name;
         $member->phone = $request->phone;
         $member->password = bcrypt($request->password);
       
         $member->save();
-
-        if ($member->exists){
-            return response()->json([
-                'status' => 'success',
-                'message' => 'Member added successfully',
-                'data' => $member
-            ], 201);
-        }
-            return response()->json([
-                'status' => 'failed',
-                'message' => 'Something went wrong , Try Again!',
-                'data' => []
-            ], 500);
-        
+           return redirect()->back();
         
     }
 

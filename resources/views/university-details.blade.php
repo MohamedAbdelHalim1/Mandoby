@@ -12,6 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
     <script src="https://kit.fontawesome.com/cbcafb1e3c.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -21,7 +23,7 @@
             <div class="row justify-content-between">
                 <nav class="navbar nav-mob" style="background-color: #3736AF;">
                     <div class="container-fluid">
-                        <a class="navbar-brand" href="index.html">
+                        <a class="navbar-brand" href="{{route('dashboard.index')}}">
                             <img src="{{asset('assets/images/logo-white.png')}}" style="width: 140px;">
                         </a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
@@ -54,12 +56,12 @@
                                                 <ul class="me-3">
                                                     <li class="mb-2">
                                                         <a href="{{route('basic.service.index')}}">
-                                                            <i class="fa-solid fa-square ms-2"></i>خدمات رئيسية
+                                                            <i class="fa-solid fa-square ms-1"></i>خدمات رئيسية
                                                         </a>
                                                     </li>
                                                     <li class="mb-4">
                                                         <a href="{{route('sub.service.index')}}">
-                                                            <i class="fa-solid fa-square ms-2"></i>خدمات فرعية
+                                                            <i class="fa-solid fa-square ms-1"></i>خدمات فرعية
                                                         </a>
                                                     </li>
                                                 </ul>
@@ -86,17 +88,17 @@
                                             </a>
                                         </li>
                                         <li class="mb-4">
-                                            <a href="members.html" class="main-nav">
+                                            <a href="{{route('member.index')}}" class="main-nav">
                                                 <i class="fa-solid fa-user-group ms-3 fw-semibold"></i>اعضاء
                                             </a>
                                         </li>
                                         <li class="mb-4">
-                                            <a href="users.html" class="main-nav">
+                                            <a href="{{route('user.index')}}" class="main-nav">
                                                 <i class="fa-solid fa-user-check ms-3 fw-semibold"></i>المستخدمين
                                             </a>
                                         </li>
                                         <li class="mb-4">
-                                            <a href="news.html" class="main-nav">
+                                            <a href="{{route('news.index')}}" class="main-nav">
                                                 <i class="fa-solid fa-envelope-open-text ms-3 fw-semibold"></i>اخبار
                                             </a>
                                         </li>
@@ -108,7 +110,7 @@
                 </nav>
                 <div class="col-xl-2 col-lg-3 col-md-3 p-3 nav-pc" style="background-color: #3736AF;">
                     <div class="d-flex justify-content-center">
-                        <a href="index.html">
+                        <a href="{{route('dashboard.index')}}">
                             <img src="asset('assets/images/logo-white.png')}}" style="width: 140px;">
                         </a>
                     </div>
@@ -149,7 +151,7 @@
                 <div class="col-xl-2 col-lg-3 col-md-3 nav-pc" style="background-color: white;">
                     <small class="fw-semibold" style="color: #22219A; font-size: 12px;">القائمة الرئيسية</small>
                     <div class="d-flex justify-content-center mt-4 mb-4">
-                        <button class="btn button-slidebar w-75">
+                        <button class="btn button-slidebar w-100">
                             <i class="fa-regular fa-compass ms-2"></i> لوحة التحكم
                             <i class="fa-solid fa-caret-down me-3"></i>
                         </button>
@@ -172,12 +174,12 @@
                                         <ul class="me-3">
                                             <li class="mb-2">
                                                 <a href="{{route('basic.service.index')}}">
-                                                    <i class="fa-solid fa-square ms-2"></i>خدمات رئيسية
+                                                    <i class="fa-solid fa-square ms-1"></i>خدمات رئيسية
                                                 </a>
                                             </li>
                                             <li class="mb-4">
                                                 <a href="{{route('sub.service.index')}}">
-                                                    <i class="fa-solid fa-square ms-2"></i>خدمات فرعية
+                                                    <i class="fa-solid fa-square ms-1"></i>خدمات فرعية
                                                 </a>
                                             </li>
                                         </ul>
@@ -204,17 +206,17 @@
                                     </a>
                                 </li>
                                 <li class="mb-4">
-                                    <a href="members.html" class="main-nav">
+                                    <a href="{{route('member.index')}}" class="main-nav">
                                         <i class="fa-solid fa-user-group ms-3 fw-semibold"></i>اعضاء
                                     </a>
                                 </li>
                                 <li class="mb-4">
-                                    <a href="users.html" class="main-nav">
+                                    <a href="{{route('user.index')}}" class="main-nav">
                                         <i class="fa-solid fa-user-check ms-3 fw-semibold"></i>المستخدمين
                                     </a>
                                 </li>
                                 <li class="mb-4">
-                                    <a href="news.html" class="main-nav">
+                                    <a href="{{route('news.index')}}" class="main-nav">
                                         <i class="fa-solid fa-envelope-open-text ms-3 fw-semibold"></i>اخبار
                                     </a>
                                 </li>
@@ -229,7 +231,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="index.html" class="text-decoration-none" style="color: #22219A;">
+                                        <a href="{{route('dashboard.index')}}" class="text-decoration-none" style="color: #22219A;">
                                             <i class="fa-solid fa-house ms-1 pb-1"
                                                 style="font-size: 13px; color: gray;"></i>الرئيسية
                                         </a>
@@ -247,7 +249,7 @@
                             <div>
                                 <!-- Button trigger modal -->
                                 <div class="d-flex justify-content-end ms-xl-5 ms-lg-5 ms-md-5">
-                                    <button type="button" class="btn button-modal2" data-bs-toggle="modal"
+                                    <button type="button" class="btn button-modal2 p-3" data-bs-toggle="modal"
                                         data-bs-target="#staticBackdrop">
                                         <i class="fa-solid fa-plus ms-2"></i>أضافة تفاصيل جامعة
                                     </button>
@@ -324,15 +326,67 @@
                                         <h2 class="text-end fs-6 fw-bolder mb-3">{{$university->name}}</h2>
                                         <h4 class="text-end fs-6 mb-3">{{$university->details}}</h4>
                                         <div class="d-flex justify-content-end">
-                                            <button type="button" class="btn text-white ms-2"
-                                            style="background-color: #066569;">تعديل</button>
-                                        <button type="button" class="btn text-white"
-                                            style="background-color: #7A1C1C;" onclick="deleteUniversity({{ $university->id }})"
-                                            data-bs-dismiss="modal">مسح</button>
+                                        <div class="ms-2">
+                                                        <button type="button" class="btn text-white button-modal2"
+                                                            data-bs-target="#exampleModalToggle" data-bs-toggle="modal" onclick="openEditModal({{ $university->id }})"
+                                                            style="background-color: #1C7A36;">تعديل</button>
+                                                    </div>
+                                         <div>
+                                         <button type="button" class="btn text-white"  onclick="deleteUniversity({{ $university->id }})"
+                                                style="background-color: #7A1C1C;" data-bs-dismiss="modal">مسح</button>
+                                         </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            <form id="editForm" action="{{ route('details.upload')  }}" method="POST" enctype="multipart/form-data">
+                                     @csrf
+                                     <input type="hidden" id="detailsId" name="details_id"> 
+                                <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
+                                    aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-body text-end">
+                                                <div class="container">
+                                           
+                                                    <div class="row justify-content-center">
+                                                        <div class="form col-xl-12 col-lg-12">                                                         
+                                                        <div class="mb-3">
+                                                                <label for="exampleInputEmail1"
+                                                                    class="form-label text-dark">
+                                                                    اكتب تفاصيل الجامعة</label>
+                                                                <textarea class="form-control p-3"
+                                                                    aria-label="With textarea" id="details"
+                                                                    placeholder="اكتب هنا تفاصيل الجامعة...." name="details" required></textarea>
+                                                            </div>
+                                                          
+                                                            <div>
+                                                                <label 
+                                                                    class="form-label text-dark fw-semibold">
+                                                                    اللوجو الخاص بالجامعة
+                                                                     </label>
+                                                                <input type="file" class="form-control" id="imageName"
+                                                                    name="photo">
+                                                            </div>
+                                                            <div class="mt-2 d-flex justify-content-center" id="detailsImagePreview" style="height:150px;"></div>
+
+                                                        </div>
+                                                
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn text-white"
+                                                    style="background-color: #066569;" id="saveButton">حفظ</button>
+                                                <button type="button" class="btn text-white"
+                                                    style="background-color: #7A1C1C;"
+                                                    data-bs-dismiss="modal">الغاء</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                 </form>
                         </div>
                     </div>
                 </div>
@@ -423,6 +477,49 @@ fetch(this.action, {
         });
     }
     }
+
+
+    function openEditModal(universityId) {
+        jQuery.ajax({
+            url: '/details/' + universityId + '/edit', // Replace with your route for fetching nationality data
+            type: 'GET',
+            success: function(response) {
+                console.log(response);
+                //console.log(response.nationality);
+                // Populate form fields with nationality data
+                 $('#detailsId').val(response.id);
+                $('#details').val(response.details);
+                // // Set image source if photo exists
+                if (response.photo) {
+                    $('#detailsImagePreview').html('<img src="' + response.photo + '" class="img-fluid">');
+                } else {
+                    $('#detailsImagePreview').text('No image selected');
+                }
+               // $('#editNationalityModal').modal('show');
+
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+
+    function updateUniversity() {
+        // Send updated data to server via AJAX
+        var formData = $('#editForm').serialize();
+        $.ajax({
+            url: '/details/update', // Replace with your route for updating
+            type: 'POST',
+            data: formData,
+            success: function(response) {
+                $('#editModal').modal('hide');
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+
 </script>
 </body>
 

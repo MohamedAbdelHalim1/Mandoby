@@ -16,6 +16,7 @@ class RegisterController extends Controller
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'phone' => 'required|string',
+            'password'=>'required',
      
         ]);
 
@@ -31,14 +32,15 @@ class RegisterController extends Controller
         $member->first_name = $request->first_name;
         $member->last_name = $request->last_name;
         $member->phone = $request->phone;
+        $member->password = $request->password;
         //nationality id returned from Json
         $member->save();
 
-        $order = new Order();
-        $order->member_id = $member->id;
-        //order name returned from json
-        //major id returned from json
-        $order->save();
+        // $order = new Order();
+        // $order->member_id = $member->id;
+        // //order name returned from json
+        // //major id returned from json
+        // $order->save();
 
         // Generate JWT token for the registered member
         $token = JWTAuth::fromUser($member);

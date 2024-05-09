@@ -45,7 +45,7 @@
             <div class="row justify-content-between">
                 <nav class="navbar nav-mob" style="background-color: #3736AF;">
                     <div class="container-fluid">
-                        <a class="navbar-brand" href="index.html">
+                        <a class="navbar-brand" href="{{route('dashboard.index')}}">
                             <img src="{{asset('assets/images/logo-white.png')}}" style="width: 140px;">
                         </a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
@@ -79,12 +79,12 @@
                                                 <ul class="me-3">
                                                     <li class="mb-2">
                                                         <a href="{{ route('basic.service.index') }}">
-                                                            <i class="fa-solid fa-square ms-2"></i>خدمات رئيسية
+                                                            <i class="fa-solid fa-square ms-1"></i>خدمات رئيسية
                                                         </a>
                                                     </li>
                                                     <li class="mb-4">
                                                         <a href="{{ route('sub.service.index') }}">
-                                                            <i class="fa-solid fa-square ms-2"></i>خدمات فرعية
+                                                            <i class="fa-solid fa-square ms-1"></i>خدمات فرعية
                                                         </a>
                                                     </li>
                                                 </ul>
@@ -111,17 +111,17 @@
                                             </a>
                                         </li>
                                         <li class="mb-4">
-                                            <a href="members.html" class="main-nav">
+                                            <a href="{{route('member.index')}}" class="main-nav">
                                                 <i class="fa-solid fa-user-group ms-3 fw-semibold"></i>اعضاء
                                             </a>
                                         </li>
                                         <li class="mb-4">
-                                            <a href="users.html" class="main-nav">
+                                            <a href="{{route('user.index')}}" class="main-nav">
                                                 <i class="fa-solid fa-user-check ms-3 fw-semibold"></i>المستخدمين
                                             </a>
                                         </li>
                                         <li class="mb-4">
-                                            <a href="news.html" class="main-nav">
+                                            <a href="{{route('news.index')}}" class="main-nav">
                                                 <i class="fa-solid fa-envelope-open-text ms-3 fw-semibold"></i>اخبار
                                             </a>
                                         </li>
@@ -133,7 +133,7 @@
                 </nav>
                 <div class="col-xl-2 col-lg-3 col-md-3 p-3 nav-pc" style="background-color: #3736AF;">
                     <div class="d-flex justify-content-center">
-                        <a href="index.html">
+                        <a href="{{route('dashboard.index')}}">
                             <img src="{{asset('assets/images/logo-white.png')}}" style="width: 140px;">
                         </a>
                     </div>
@@ -175,7 +175,7 @@
                 <div class="col-xl-2 col-lg-3 col-md-3 nav-pc" style="background-color: white;">
                     <small class="fw-semibold" style="color: #22219A; font-size: 12px;">القائمة الرئيسية</small>
                     <div class="d-flex justify-content-center mt-4 mb-4">
-                        <button class="btn button-slidebar w-75">
+                        <button class="btn button-slidebar w-100">
                             <i class="fa-regular fa-compass ms-2"></i> لوحة التحكم
                             <i class="fa-solid fa-caret-down me-3"></i>
                         </button>
@@ -199,12 +199,12 @@
                                         <ul class="me-3">
                                             <li class="mb-2">
                                                 <a href="{{ route('basic.service.index') }}">
-                                                    <i class="fa-solid fa-square ms-2"></i>خدمات رئيسية
+                                                    <i class="fa-solid fa-square ms-1"></i>خدمات رئيسية
                                                 </a>
                                             </li>
                                             <li class="mb-4">
                                                 <a href="{{ route('sub.service.index') }}">
-                                                    <i class="fa-solid fa-square ms-2"></i>خدمات فرعية
+                                                    <i class="fa-solid fa-square ms-1"></i>خدمات فرعية
                                                 </a>
                                             </li>
                                         </ul>
@@ -231,17 +231,17 @@
                                     </a>
                                 </li>
                                 <li class="mb-4">
-                                    <a href="members.html" class="main-nav">
+                                    <a href="{{route('member.index')}}" class="main-nav">
                                         <i class="fa-solid fa-user-group ms-3 fw-semibold"></i>اعضاء
                                     </a>
                                 </li>
                                 <li class="mb-4">
-                                    <a href="users.html" class="main-nav">
+                                    <a href="{{route('user.index')}}" class="main-nav">
                                         <i class="fa-solid fa-user-check ms-3 fw-semibold"></i>المستخدمين
                                     </a>
                                 </li>
                                 <li class="mb-4">
-                                    <a href="news.html" class="main-nav">
+                                    <a href="{{route('news.index')}}" class="main-nav">
                                         <i class="fa-solid fa-envelope-open-text ms-3 fw-semibold"></i>اخبار
                                     </a>
                                 </li>
@@ -257,7 +257,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="index.html" class="text-decoration-none" style="color: #22219A;">
+                                        <a href="{{route('dashboard.index')}}" class="text-decoration-none" style="color: #22219A;">
                                             <i class="fa-solid fa-house ms-1 pb-1"
                                                 style="font-size: 13px; color: gray;"></i>الرئيسية
                                         </a>
@@ -282,13 +282,13 @@
                                         @csrf
                                         <div class="col-xl-6 col-lg-6">
                                                 <div class="dropdown">
-                                                    <button class="btn dropdown-toggle w-50 text-white" style="background-color: rgba(2, 58, 170, 0.8);" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <button class="btn dropdown-toggle text-white" style="background-color: rgba(2, 58, 170, 0.8);" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                     الجامعات
                                                     </button>
                                                     <ul class="dropdown-menu p-3" style="width: 50%;">
                                                     @foreach ($universities as $university)
                                         <li>
-                                        <div class="form-check" style="width: 55%;">
+                                        <div class="form-check text-start" style="width: 60%;">
                                             <input class="form-check-input" type="checkbox" name="universities[]" value="{{ $university->id }}" id="university{{ $university->id }}">
                                             <label for="university{{ $university->id }}" class="form-check-label" >{{ $university->name }}</label>
                                             </div>

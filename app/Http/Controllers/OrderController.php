@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Validator;
 class OrderController extends Controller
 {
 
+public function store_order(Request $request){
+    $order = new Order;
+    $order->name = $request->name;
+    $order->member_id = $request->member_id;
+    $order->major_id = $request->major_id;
+    $order->save();
+}
+
 //for mobile
 public function myorder(){
     $member_id = JWTAuth::parseToken()->getPayload()->get('sub');
@@ -80,7 +88,7 @@ public function uploadrequirements(Request $request){
         if ($successfulInsertions == count($photos)) {
             $order->update(
                 [
-                    'apply_order' => true,
+                    'apply_order' => 1,
                 ]);
         }
 

@@ -37,7 +37,7 @@ class NationalityController extends Controller
                 'status' => 'failed',
                 'message' => 'Nationality not found',
                 'data' => []
-            ], 404);
+            ], 200);
         }
         $universities = $nationality->universities;
         if($universities->isEmpty()){
@@ -141,22 +141,12 @@ class NationalityController extends Controller
 
     public function update(Request $request)
     {
-        $messages = [
-            'name.required' => 'Please enter All Data*',
-        ];
+        
         $nationality = Nationality::findOrFail($request->nationality_id);
         $validator = Validator::make($request->all(), [
             'name' => ['required','string'], 
             'photo' => ['nullable','image','mimes:jpeg,png,jpg,gif'], 
            ]);
-
-        if ($validator->fails()) {
-           return response()->json([
-               'success'=>false,
-               'message'=>"There exist one or more errors",
-               'data'=>$validator->messages(),
-           ],400);
-       }
    
     
         $nationality->name = $request->name;

@@ -26,7 +26,7 @@
             <div class="row justify-content-between">
                 <nav class="navbar nav-mob" style="background-color: #3736AF;">
                     <div class="container-fluid">
-                        <a class="navbar-brand" href="index.html">
+                        <a class="navbar-brand" href="{{route('dashboard.index')}}">
                             <img src="assets/images/logo-white.png" style="width: 140px;">
                         </a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
@@ -59,12 +59,12 @@
                                                 <ul class="me-3">
                                                     <li class="mb-2">
                                                         <a href="{{route('basic.service.index')}}">
-                                                            <i class="fa-solid fa-square ms-2"></i>خدمات رئيسية
+                                                            <i class="fa-solid fa-square ms-1"></i>خدمات رئيسية
                                                         </a>
                                                     </li>
                                                     <li class="mb-4">
                                                         <a href="{{route('sub.service.index')}}">
-                                                            <i class="fa-solid fa-square ms-2"></i>خدمات فرعية
+                                                            <i class="fa-solid fa-square ms-1"></i>خدمات فرعية
                                                         </a>
                                                     </li>
                                                 </ul>
@@ -92,17 +92,17 @@
                                             </a>
                                         </li>
                                         <li class="mb-4">
-                                            <a href="members.html" class="main-nav">
+                                            <a href="{{route('member.index')}}" class="main-nav">
                                                 <i class="fa-solid fa-user-group ms-3 fw-semibold"></i>اعضاء
                                             </a>
                                         </li>
                                         <li class="mb-4">
-                                            <a href="users.html" class="main-nav">
+                                            <a href="{{route('user.index')}}" class="main-nav">
                                                 <i class="fa-solid fa-user-check ms-3 fw-semibold"></i>المستخدمين
                                             </a>
                                         </li>
                                         <li class="mb-4">
-                                            <a href="news.html" class="main-nav">
+                                            <a href="{{route('news.index')}}" class="main-nav">
                                                 <i class="fa-solid fa-envelope-open-text ms-3 fw-semibold"></i>اخبار
                                             </a>
                                         </li>
@@ -114,7 +114,7 @@
                 </nav>
                 <div class="col-xl-2 col-lg-3 col-md-3 p-3 nav-pc" style="background-color: #3736AF;">
                     <div class="d-flex justify-content-center">
-                        <a href="index.html">
+                        <a href="{{route('dashboard.index')}}">
                             <img src="assets/images/logo-white.png" style="width: 140px;">
                         </a>
                     </div>
@@ -156,7 +156,7 @@
                 <div class="col-xl-2 col-lg-3 col-md-3 nav-pc" style="background-color: white;">
                     <small class="fw-semibold" style="color: #22219A; font-size: 12px;">القائمة الرئيسية</small>
                     <div class="d-flex justify-content-center mt-4 mb-4">
-                        <button class="btn button-slidebar w-75">
+                        <button class="btn button-slidebar w-100">
                             <i class="fa-regular fa-compass ms-2"></i> لوحة التحكم
                             <i class="fa-solid fa-caret-down me-3"></i>
                         </button>
@@ -179,12 +179,12 @@
                                         <ul class="me-3">
                                             <li class="mb-2">
                                                 <a href="{{route('basic.service.index')}}">
-                                                    <i class="fa-solid fa-square ms-2"></i>خدمات رئيسية
+                                                    <i class="fa-solid fa-square ms-1"></i>خدمات رئيسية
                                                 </a>
                                             </li>
                                             <li class="mb-4">
                                                 <a href="{{route('sub.service.index')}}">
-                                                    <i class="fa-solid fa-square ms-2"></i>خدمات فرعية
+                                                    <i class="fa-solid fa-square ms-1"></i>خدمات فرعية
                                                 </a>
                                             </li>
                                         </ul>
@@ -212,17 +212,17 @@
                                     </a>
                                 </li>
                                 <li class="mb-4">
-                                    <a href="members.html" class="main-nav">
+                                    <a href="{{route('member.index')}}" class="main-nav">
                                         <i class="fa-solid fa-user-group ms-3 fw-semibold"></i>اعضاء
                                     </a>
                                 </li>
                                 <li class="mb-4">
-                                    <a href="users.html" class="main-nav">
+                                    <a href="{{route('user.index')}}" class="main-nav">
                                         <i class="fa-solid fa-user-check ms-3 fw-semibold"></i>المستخدمين
                                     </a>
                                 </li>
                                 <li class="mb-4">
-                                    <a href="news.html" class="main-nav">
+                                    <a href="{{route('news.index')}}" class="main-nav">
                                         <i class="fa-solid fa-envelope-open-text ms-3 fw-semibold"></i>اخبار
                                     </a>
                                 </li>
@@ -238,7 +238,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="index.html" class="text-decoration-none" style="color: #22219A;">
+                                        <a href="{{route('dashboard.index')}}" class="text-decoration-none" style="color: #22219A;">
                                             <i class="fa-solid fa-house ms-1 pb-1"
                                                 style="font-size: 13px; color: gray;"></i>الرئيسية
                                         </a>
@@ -355,7 +355,7 @@
                                             <td>
                                                 <div class="d-flex justify-content-center">
                                                 <div class="ms-2">
-                                                        <button type="button" class="btn text-white button-modal2"
+                                                        <button type="button" class="btn text-white button-modal2" onclick="openEditModal({{ $faculty->id }} , '{{ $faculty->university_id }}')"
                                                             data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
                                                             style="background-color: #1C7A36;">تعديل</button>
                                                     </div>
@@ -370,6 +370,9 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                                <form id="editForm" action="{{ route('faculty.upload')  }}" method="POST" enctype="multipart/form-data">
+                                     @csrf
+                                     <input type="hidden" id="facultyId" name="faculty_id"> 
                                 <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
                                     aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                                     <div class="modal-dialog modal-dialog-centered">
@@ -383,8 +386,7 @@
                                                                 <label for="disabledSelect"
                                                                     class="form-label text-dark">اختر الجامعة
                                                                      </label>
-                                                                <select id="disabledSelect" class="form-select" name="university">
-                                                                    <option value>اختر الجامعة </option>
+                                                                <select id="facultyUniversity" class="form-select" name="university">
                                                                     @foreach($universities as $university)
                                                                     <option value="{{$university->id}}">{{$university->name}}</option>
                                                                     @endforeach
@@ -394,22 +396,22 @@
                                                                 <label for="exampleInputEmail1"
                                                                     class="form-label text-dark">اكتب الكلية
                                                                      </label>
-                                                                <input type="text" class="form-control"
-                                                                    name="name">
+                                                                <input type="text" class="form-control" id="facultyName"
+                                                                    name="name" required>
                                                             </div>
                                                             <div>
                                                                 <label for="exampleInputEmail1"
                                                                     class="form-label text-dark">اكتب نسبة القبول فى الكلية
                                                                      </label>
-                                                                <input type="text" class="form-control"
-                                                                    name="degree">
+                                                                <input type="text" class="form-control" id="facultyDegree"
+                                                                    name="degree" required>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn text-white"
+                                                <button type="submit" class="btn text-white"
                                                     style="background-color: #066569;" id="saveButton">حفظ</button>
                                                 <button type="button" class="btn text-white"
                                                     style="background-color: #7A1C1C;"
@@ -531,6 +533,45 @@
 
 
 
+    function openEditModal(facultyId,selectedUniversityId) {
+        jQuery.ajax({
+            url: '/faculty/' + facultyId + '/edit', // Replace with your route for fetching subService data
+            type: 'GET',
+            success: function(response) {
+              
+                console.log(response);
+                $('#facultyId').val(response.faculty.id);
+                $('#facultyName').val(response.faculty.name);
+                //$('#subServiceBasic').val(response.basicService.id);
+                // Set the selected option in the select element
+                  $('#facultyUniversity').val(selectedUniversityId);
+                  $('#facultyDegree').val(response.faculty.degree);
+                  
+            
+               // $('#editsubServiceModal').modal('show');
+
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+
+    function updateFaculty() {
+        // Send updated data to server via AJAX
+        var formData = $('#editForm').serialize();
+        $.ajax({
+            url: '/faculty/update', // Replace with your route for updating
+            type: 'POST',
+            data: formData,
+            success: function(response) {
+                $('#editModal').modal('hide');
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
 
     </script>
 

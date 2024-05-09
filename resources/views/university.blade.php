@@ -24,7 +24,7 @@
             <div class="row justify-content-between">
                 <nav class="navbar nav-mob" style="background-color: #3736AF;">
                     <div class="container-fluid">
-                        <a class="navbar-brand" href="index.html">
+                        <a class="navbar-brand" href="{{route('dashboard.index')}}">
                             <img src="assets/images/logo-white.png" style="width: 140px;">
                         </a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
@@ -57,12 +57,12 @@
                                                 <ul class="me-3">
                                                     <li class="mb-2">
                                                         <a href="{{ route('basic.service.index') }}">
-                                                            <i class="fa-solid fa-square ms-2"></i>خدمات رئيسية
+                                                            <i class="fa-solid fa-square ms-1"></i>خدمات رئيسية
                                                         </a>
                                                     </li>
                                                     <li class="mb-4">
                                                         <a href="{{ route('sub.service.index') }}">
-                                                            <i class="fa-solid fa-square ms-2"></i>خدمات فرعية
+                                                            <i class="fa-solid fa-square ms-1"></i>خدمات فرعية
                                                         </a>
                                                     </li>
                                                 </ul>
@@ -90,17 +90,17 @@
                                             </a>
                                         </li>
                                         <li class="mb-4">
-                                            <a href="members.html" class="main-nav">
+                                            <a href="{{route('member.index')}}" class="main-nav">
                                                 <i class="fa-solid fa-user-group ms-3 fw-semibold"></i>اعضاء
                                             </a>
                                         </li>
                                         <li class="mb-4">
-                                            <a href="users.html" class="main-nav">
+                                            <a href="{{route('user.index')}}" class="main-nav">
                                                 <i class="fa-solid fa-user-check ms-3 fw-semibold"></i>المستخدمين
                                             </a>
                                         </li>
                                         <li class="mb-4">
-                                            <a href="news.html" class="main-nav">
+                                            <a href="{{route('news.index')}}" class="main-nav">
                                                 <i class="fa-solid fa-envelope-open-text ms-3 fw-semibold"></i>اخبار
                                             </a>
                                         </li>
@@ -112,7 +112,7 @@
                 </nav>
                 <div class="col-xl-2 col-lg-3 col-md-3 p-3 nav-pc" style="background-color: #3736AF;">
                     <div class="d-flex justify-content-center">
-                        <a href="index.html">
+                        <a href="{{route('dashboard.index')}}">
                             <img src="assets/images/logo-white.png" style="width: 140px;">
                         </a>
                     </div>
@@ -153,7 +153,7 @@
                 <div class="col-xl-2 col-lg-3 col-md-3 nav-pc" style="background-color: white;">
                     <small class="fw-semibold" style="color: #22219A; font-size: 12px;">القائمة الرئيسية</small>
                     <div class="d-flex justify-content-center mt-4 mb-4">
-                        <button class="btn button-slidebar w-75">
+                        <button class="btn button-slidebar w-100">
                             <i class="fa-regular fa-compass ms-2"></i> لوحة التحكم
                             <i class="fa-solid fa-caret-down me-3"></i>
                         </button>
@@ -176,12 +176,12 @@
                                         <ul class="me-3">
                                             <li class="mb-2">
                                                 <a href="{{ route('basic.service.index') }}">
-                                                    <i class="fa-solid fa-square ms-2"></i>خدمات رئيسية
+                                                    <i class="fa-solid fa-square ms-1"></i>خدمات رئيسية
                                                 </a>
                                             </li>
                                             <li class="mb-4">
                                                 <a href="{{ route('sub.service.index') }}">
-                                                    <i class="fa-solid fa-square ms-2"></i>خدمات فرعية
+                                                    <i class="fa-solid fa-square ms-1"></i>خدمات فرعية
                                                 </a>
                                             </li>
                                         </ul>
@@ -209,17 +209,17 @@
                                     </a>
                                 </li>
                                 <li class="mb-4">
-                                    <a href="members.html" class="main-nav">
+                                    <a href="{{route('member.index')}}" class="main-nav">
                                         <i class="fa-solid fa-user-group ms-3 fw-semibold"></i>اعضاء
                                     </a>
                                 </li>
                                 <li class="mb-4">
-                                    <a href="users.html" class="main-nav">
+                                    <a href="{{route('user.index')}}" class="main-nav">
                                         <i class="fa-solid fa-user-check ms-3 fw-semibold"></i>المستخدمين
                                     </a>
                                 </li>
                                 <li class="mb-4">
-                                    <a href="news.html" class="main-nav">
+                                    <a href="{{route('news.index')}}" class="main-nav">
                                         <i class="fa-solid fa-envelope-open-text ms-3 fw-semibold"></i>اخبار
                                     </a>
                                 </li>
@@ -234,7 +234,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="index.html" class="text-decoration-none" style="color: #22219A;">
+                                        <a href="{{route('dashboard.index')}}" class="text-decoration-none" style="color: #22219A;">
                                             <i class="fa-solid fa-house ms-1 pb-1"
                                                 style="font-size: 13px; color: gray;"></i>الرئيسية
                                         </a>
@@ -349,7 +349,7 @@
                                                         </div>
                                                         <div class="ms-2">
                                                         <button type="button" class="btn text-white button-modal2"
-                                                            data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
+                                                            data-bs-target="#exampleModalToggle" data-bs-toggle="modal" onclick="openEditModal({{ $university->id }})"
                                                             style="background-color: #1C7A36;">تعديل</button>
                                                     </div>
 
@@ -363,6 +363,9 @@
                                             @endforeach
                                         </tbody>
                                     </table>
+                                    <form id="editForm" action="{{ route('university.upload')  }}" method="POST" enctype="multipart/form-data">
+                                     @csrf
+                                     <input type="hidden" id="universityId" name="university_id"> 
                                     <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
                                     aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                                     <div class="modal-dialog modal-dialog-centered">
@@ -376,31 +379,35 @@
                                                                         class="form-label text-dark">اسم
                                                                         الجامعة </label>
                                                                     <input type="text" class="form-control"
-                                                                       name="name" required>
+                                                                       id="universityName" name="name" required>
                                                                 </div>
                                                             <div>
                                                                 <label for="imageNational"
                                                                     class="form-label text-dark fw-semibold">
-                                                                    ارفاق اللوجو الخاص بالجامعة
+                                                                     اللوجو الخاص بالجامعة
                                                                      </label>
                                                                 <input type="file" class="form-control" id="imageName"
-                                                                    name="imageName">
+                                                                    name="logo">
                                                             </div>
+                                                            <div class="mt-2 d-flex justify-content-center" id="universityImagePreview" style="height:150px;"></div>
+
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn text-white"
+                                                <button type="submit" class="btn text-white"
                                                     style="background-color: #066569;" id="saveButton">حفظ</button>
                                                 <button type="button" class="btn text-white"
                                                     style="background-color: #7A1C1C;"
                                                     data-bs-dismiss="modal">الغاء</button>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
                                 </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -479,6 +486,48 @@
             });
         }
         }
+
+
+        function openEditModal(universityId) {
+        jQuery.ajax({
+            url: '/university/' + universityId + '/edit', // Replace with your route for fetching university data
+            type: 'GET',
+            success: function(response) {
+                //console.log(response.university);
+                // Populate form fields with university data
+                $('#universityId').val(response.id);
+                $('#universityName').val(response.name);
+                // Set image source if photo exists
+                if (response.logo) {
+                    $('#universityImagePreview').html('<img src="' + response.logo + '" class="img-fluid">');
+                } else {
+                    $('#universityImagePreview').text('No image selected');
+                }
+               // $('#edituniversityModal').modal('show');
+
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+
+    function updateUniversity() {
+        // Send updated data to server via AJAX
+        var formData = $('#editForm').serialize();
+        $.ajax({
+            url: '/university/update', // Replace with your route for updating
+            type: 'POST',
+            data: formData,
+            success: function(response) {
+                $('#editModal').modal('hide');
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+
 </script>
 
 </body>

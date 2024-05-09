@@ -37,7 +37,7 @@ class MajorController extends Controller
                 'status' => 'failed',
                 'message' => 'Major Not Found',
                 'data' => []
-            ], 404);
+            ], 200);
         }
         $qualificationsArray = explode(',', $major->qualification);
 
@@ -179,65 +179,31 @@ class MajorController extends Controller
 
        public function edit($id){
         $major = Major::find($id);
-        if($major == null){
-            return response()->json([
-                'status' => 'failed',
-                'message' => 'Something went wrong!',
-                'data' => []
-            ], 500);
-        }
-        return response()->json([
-            'status' => 'success',
-            'message' => '',
-            'data' => $major
-        ], 200);
+        return response()->json($major);
        }
 
-       public function update(Request $request , $id){
-        $major = Major::find($id);
-        if($major == null){
-            return response()->json([
-                'status' => 'failed',
-                'message' => 'Something went wrong!',
-                'data' => []
-            ], 500);
-        }
+       public function update(Request $request){
+        $major = Major::find($request->major_id);
+        
         $validator = Validator::make($request->all(), [
             'name' => ['required','string'], 
-            'qualification' => ['nullable','array'],
-            'requirement' =>['nullable','string'], 
            ]);
 
-        if ($validator->fails()) {
-           return response()->json([
-               'success'=>false,
-               'message'=>"There exist one or more errors",
-               'data'=>$validator->messages(),
-           ],400);
-       }
 
        try{
-            $qualificationString = is_array($request->qualification) ? implode(',', $request->qualification) : $request->qualification;
 
 
             $major->update([
                 'name' => $request->name,
-                'qualificarion' => $qualificationString,
-                'requirement' => $request->requirement,
+                
             ]);
+            return redirect()->back();
 
-            return response()->json([
-                'success' => true,
-                'message' => 'Major Updated successfully',
-            ], 200);
         }catch (\Exception $e) {
           
             \Log::error($e);
     
-            return response()->json([
-                'success' => false,
-                'message' => 'An error occurred while inserting data',
-            ], 500);
+           
         }
     
 

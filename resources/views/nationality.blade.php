@@ -26,7 +26,7 @@
             <div class="row justify-content-between">
                 <nav class="navbar nav-mob" style="background-color: #3736AF;">
                     <div class="container-fluid">
-                        <a class="navbar-brand" href="index.html">
+                        <a class="navbar-brand" href="{{route('dashboard.index')}}">
                             <img src="assets/images/logo-white.png" style="width: 140px;">
                         </a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
@@ -60,12 +60,12 @@
                                                 <ul class="me-3">
                                                     <li class="mb-2">
                                                         <a href="{{ route('basic.service.index') }}">
-                                                            <i class="fa-solid fa-square ms-2"></i>خدمات رئيسية
+                                                            <i class="fa-solid fa-square ms-1"></i>خدمات رئيسية
                                                         </a>
                                                     </li>
                                                     <li class="mb-4">
                                                         <a href="{{ route('sub.service.index') }}">
-                                                            <i class="fa-solid fa-square ms-2"></i>خدمات فرعية
+                                                            <i class="fa-solid fa-square ms-1"></i>خدمات فرعية
                                                         </a>
                                                     </li>
                                                 </ul>
@@ -92,17 +92,17 @@
                                             </a>
                                         </li>
                                         <li class="mb-4">
-                                            <a href="members.html" class="main-nav">
+                                            <a href="{{route('member.index')}}" class="main-nav">
                                                 <i class="fa-solid fa-user-group ms-3 fw-semibold"></i>اعضاء
                                             </a>
                                         </li>
                                         <li class="mb-4">
-                                            <a href="users.html" class="main-nav">
+                                            <a href="{{route('user.index')}}" class="main-nav">
                                                 <i class="fa-solid fa-user-check ms-3 fw-semibold"></i>المستخدمين
                                             </a>
                                         </li>
                                         <li class="mb-4">
-                                            <a href="news.html" class="main-nav">
+                                            <a href="{{route('news.index')}}" class="main-nav">
                                                 <i class="fa-solid fa-envelope-open-text ms-3 fw-semibold"></i>اخبار
                                             </a>
                                         </li>
@@ -114,7 +114,7 @@
                 </nav>
                 <div class="col-xl-2 col-lg-3 col-md-3 p-3 nav-pc" style="background-color: #3736AF;">
                     <div class="d-flex justify-content-center">
-                        <a href="index.html">
+                        <a href="{{route('dashboard.index')}}">
                             <img src="assets/images/logo-white.png" style="width: 140px;">
                         </a>
                     </div>
@@ -156,7 +156,7 @@
                 <div class="col-xl-2 col-lg-3 col-md-3 nav-pc" style="background-color: white;">
                     <small class="fw-semibold" style="color: #22219A; font-size: 12px;">القائمة الرئيسية</small>
                     <div class="d-flex justify-content-center mt-4 mb-4">
-                        <button class="btn button-slidebar w-75">
+                        <button class="btn button-slidebar w-100">
                             <i class="fa-regular fa-compass ms-2"></i> لوحة التحكم
                             <i class="fa-solid fa-caret-down me-3"></i>
                         </button>
@@ -180,12 +180,12 @@
                                         <ul class="me-3">
                                             <li class="mb-2">
                                                 <a href="{{ route('basic.service.index') }}">
-                                                    <i class="fa-solid fa-square ms-2"></i>خدمات رئيسية
+                                                    <i class="fa-solid fa-square ms-1"></i>خدمات رئيسية
                                                 </a>
                                             </li>
                                             <li class="mb-4">
                                                 <a href="{{ route('sub.service.index') }}">
-                                                    <i class="fa-solid fa-square ms-2"></i>خدمات فرعية
+                                                    <i class="fa-solid fa-square ms-1"></i>خدمات فرعية
                                                 </a>
                                             </li>
                                         </ul>
@@ -212,17 +212,17 @@
                                     </a>
                                 </li>
                                 <li class="mb-4">
-                                    <a href="members.html" class="main-nav">
+                                    <a href="{{route('member.index')}}" class="main-nav">
                                         <i class="fa-solid fa-user-group ms-3 fw-semibold"></i>اعضاء
                                     </a>
                                 </li>
                                 <li class="mb-4">
-                                    <a href="users.html" class="main-nav">
+                                    <a href="{{route('user.index')}}" class="main-nav">
                                         <i class="fa-solid fa-user-check ms-3 fw-semibold"></i>المستخدمين
                                     </a>
                                 </li>
                                 <li class="mb-4">
-                                    <a href="news.html" class="main-nav">
+                                    <a href="{{route('news.index')}}" class="main-nav">
                                         <i class="fa-solid fa-envelope-open-text ms-3 fw-semibold"></i>اخبار
                                     </a>
                                 </li>
@@ -238,7 +238,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="index.html" class="text-decoration-none" style="color: #22219A;">
+                                        <a href="{{route('dashboard.index')}}" class="text-decoration-none" style="color: #22219A;">
                                             <i class="fa-solid fa-house ms-1 pb-1"
                                                 style="font-size: 13px; color: gray;"></i>الرئيسية
                                         </a>
@@ -384,7 +384,7 @@
                                         <div class="modal-content">
                                             <div class="modal-body text-end">
                                                 <div class="container">
-                                                  
+                                           
                                                     <div class="row justify-content-center">
                                                         <div class="form col-xl-12 col-lg-12">                                                         
                                                             <div class="mb-3">
@@ -392,17 +392,17 @@
                                                                     class="form-label text-dark fw-semibold">اسم
                                                                     الجنسية</label>
                                                                 <input type="text" class="form-control"
-                                                                id="nationalityName" name="name">
+                                                                id="nationalityName" name="name" required>
                                                             </div>
                                                             <div>
                                                                 <label for="imageNational"
-                                                                    class="form-label text-dark fw-semibold">ارفاق
+                                                                    class="form-label text-dark fw-semibold">
                                                                     صورة
                                                                     علم البلد</label>
                                                                 <input type="file" class="form-control" id="imageName"
                                                                     name="photo">
                                                             </div>
-                                                            <div id="nationalityImagePreview" style="width:150px; height:150px;"></div>
+                                                            <div class="mt-2 d-flex justify-content-center" id="nationalityImagePreview" style="height:150px;"></div>
                                                         </div>
                                                 
                                                     </div>
@@ -432,13 +432,14 @@
     <script src="assets/js/index.js"></script>
 
     <script>
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
 
-document.getElementById('nationalityForm').addEventListener('submit', function(event) {
+    document.getElementById('nationalityForm').addEventListener('submit', function(event) {
         event.preventDefault();
         var formData = new FormData(this);
 
@@ -476,7 +477,8 @@ document.getElementById('nationalityForm').addEventListener('submit', function(e
         });
     });
 
-
+    
+   
 
        function deleteNationality(nationality_id) {
 
@@ -506,30 +508,30 @@ document.getElementById('nationalityForm').addEventListener('submit', function(e
     }
 
     function openEditModal(nationalityId) {
-    jQuery.ajax({
-        url: '/nationalities/' + nationalityId + '/edit', // Replace with your route for fetching nationality data
-        type: 'GET',
-        success: function(response) {
-            //console.log(response.nationality);
-            // Populate form fields with nationality data
-            $('#nationalityId').val(response.id);
-            $('#nationalityName').val(response.name);
-             // Set image source if photo exists
-             if (response.photo) {
-                $('#nationalityImagePreview').html('<img src="' + response.photo + '" class="img-fluid">');
-            } else {
-                $('#nationalityImagePreview').text('No image selected');
+        jQuery.ajax({
+            url: '/nationalities/' + nationalityId + '/edit', // Replace with your route for fetching nationality data
+            type: 'GET',
+            success: function(response) {
+                //console.log(response.nationality);
+                // Populate form fields with nationality data
+                $('#nationalityId').val(response.id);
+                $('#nationalityName').val(response.name);
+                // Set image source if photo exists
+                if (response.photo) {
+                    $('#nationalityImagePreview').html('<img src="' + response.photo + '" class="img-fluid">');
+                } else {
+                    $('#nationalityImagePreview').text('No image selected');
+                }
+               // $('#editNationalityModal').modal('show');
+
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
             }
-            $('#editNationalityModal').modal('show');
+        });
+    }
 
-        },
-        error: function(xhr, status, error) {
-            console.error(error);
-        }
-    });
-}
-
-function updateNationality() {
+    function updateNationality() {
         // Send updated data to server via AJAX
         var formData = $('#editForm').serialize();
         $.ajax({
