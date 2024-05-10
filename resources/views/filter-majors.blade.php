@@ -25,11 +25,12 @@
                                             <td>
                                                 <div class="d-flex justify-content-center">
                                                     <div class="ms-2">
-                                                        <button type="button" class="btn text-white" onclick="openEditModal({{ $major->id }})"
+                                                    <button type="button" class="btn text-white button-modal2"
+                                                            data-bs-target="#exampleModalToggle" data-bs-toggle="modal" onclick="openEditModal({{ $major->id }})"
                                                             style="background-color: #1C7A36;">تعديل</button>
                                                     </div>
                                                     <div>
-                                                        <button type="button" class="btn text-white" onclick="deleteMajor({{ $major->id }})"
+                                                    <button type="button" class="btn text-white" onclick="deleteMajor({{ $major->id }})"
                                                             style="background-color: #7A1C1C;">مسح</button>
                                                     </div>
                                                 </div>
