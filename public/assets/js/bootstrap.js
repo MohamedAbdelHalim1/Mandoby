@@ -2515,12 +2515,18 @@
 
     // Private
     _initializeBackDrop() {
-      return new Backdrop({
-        isVisible: Boolean(this._config.backdrop),
-        // 'static' option will be translated to true, and booleans will keep their value,
-        isAnimated: this._isAnimated()
-      });
-    }
+      if (this._config && typeof this._config.backdrop !== 'undefined') {
+          return new Backdrop({
+              isVisible: Boolean(this._config.backdrop),
+              isAnimated: this._isAnimated()
+          });
+      } else {
+          // Handle case where this._config.backdrop is undefined
+          console.error('Backdrop configuration is not defined.');
+          return null; // Or any other fallback mechanism
+      }
+  }
+  
     _initializeFocusTrap() {
       return new FocusTrap({
         trapElement: this._element
