@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mandoby</title>
-    <link rel="website icon" type="png" href="{{asset('assets/website/images/logoo.png')}}">
-    <link rel="stylesheet" href="{{asset('assets/website/css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/website/css/index.css')}}">
+    <link rel="website icon" type="png" href="{{ asset('assets/images/logoo.png') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/index2.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
@@ -16,106 +16,152 @@
 </head>
 
 <body>
-
-    <header>
+    <!--
+<header>
         <nav class="p-4">
             <div class="container">
                 <div class="d-flex justify-content-center">
                     <a class="navbar-brand" href="#">
-                        <img src="{{asset('assets/website/images/logo-white.png')}}" style="width: 160px; height: 50px;">
+                        <img src="{{ asset('assets/images/logo-white.png') }}" style="width: 160px; height: 50px;">
                     </a>
-                </div>             
+                </div>
             </div>
         </nav>
     </header>
 
-    <section class="mt-5 rtl">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-5 col-lg-5 col-md-6 mx-auto my-auto">
+-->
+
+
+    <header class="rtl">
+        <a class="text-decoration-none" href="#sec1">
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-5 header-content">
                     <h1 class="mb-4">
-                        ما هو تطبيق مندوبى؟
+                        ما هو تطبيق مندوبي؟
                     </h1>
                     <p>تطبيق "مندوبي" هو منصة إلكترونية شاملة تهدف إلى تسهيل عملية التقديم للطلاب المغتربين الراغبين في
                         الدراسة في الجامعات العالمية كما ان التطبيق منصة تواصل بين الجامعات و مندوبين متخصصين في مجالات
-                        مختلفه
+                        مختلفه .
                     </p>
                 </div>
-                <div class="col-xl-6">
-                    <img src="{{asset('assets/website/images/02.jpg')}}" class="rounded-3" style="width: 100%;">
+            </div>
+            <div class="row">
+                <div class="col-12 mob-view">
+                    <img src="{{ asset('assets/images/header-mob.jpeg') }}" style="width: 100%;">
+                </div>
+                <div class="col-12 pc-view">
+                    <img src="{{ asset('assets/images/header-pc.jpeg') }}" style="width: 100%;">
                 </div>
             </div>
-        </div>
-    </section>
+        </a>
+    </header>
 
-    <section class="mt-5 rtl">
-        <div class="container text-center">
-            <div class="row justify-content-center">
-                <div class="col-xl-10 col-lg-10 col-md-12">
-                    <h3>
-                        الهدف الأساسي من تطبيق مندوبي هو تيسير التواصل بين الطلاب من مختلف الجنسيات في مختلف الدول، دون
-                        تمييز أو تحديد لجنسية محددة.
-                    </h3>
+
+    <section class="mt-5 rtl" id="sec1">
+        <a href="#sec2" class="text-decoration-none">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-4 col-lg-4 col-md-12 my-auto mx-auto">
+                        <h3 class="mb-3">مندوبي يتعامل مع جميع الجنسيات</h3>
+                        <p>
+                            الهدف الأساسي من تطبيق مندوبي هو تيسير التواصل بين الطلاب من مختلف الجنسيات في مختلف الدول،
+                            دون
+                            تمييز أو تحديد لجنسية محددة.
+                        </p>
+                    </div>
+                    <div class="col-xl-6 col-lg-6">
+                        <img src="{{ asset('assets/images/arab-map.png') }}" style="width: 100%;">
+                    </div>
                 </div>
             </div>
-        </div>
+        </a>
     </section>
 
-
-    <section class="mt-5 rtl">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-5 col-lg-5 col-md-6 mx-auto my-auto">
-                    <h2 class="mb-4">
-                        ماذا يقدم تطبيق مندوبى؟
-                    </h2>
-                    <p>
-                        تطبيق <span class="fw-bolder text-dark"> "مندوبي" </span> يقدم معلومات شاملة ومحدثة حول مختلف
-                        الجامعات، بما في ذلك البرامج الدراسية المتاحة
-                        ومتطلبات القبول ، مما يمكن الطلاب من اتخاذ قراراتهم بشكل مستنير ومدروس .
-                    </p>
+    <section class="mt-xl-5 mt-lg-5 mt-md-5 rtl services" id="sec2">
+        <a class="text-decoration-none" href="#sec3">
+            <div class="container">
+                <div class="row justify-content-center text-center mb-2">
+                    <div class="col-xl-7 col-lg-7">
+                        <h2 class="mb-3 mt-2"> يوفر التطبيق مجموعة واسعة من الخدمات </h2>
+                        <p>تطبيق "مندوبي" هو منصة إلكترونية شاملة تهدف إلى تسهيل عملية التقديم للطلاب المغتربين الراغبين
+                            في
+                            الدراسة في الجامعات العالمية<br>
+                        </p>
+                    </div>
                 </div>
-                <div class="col-xl-6">
-                    <img src="{{asset('assets/website/images/03.jpg')}}" class="rounded-3" style="width: 100%;">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-center">
+                            <div style="width: 30%;" class="ms-3">
+                                <img src="{{ asset('assets/images/0166.jpg') }}" class="rounded-1" style="width: 100%;">
+                                <br>
+                                <h3 class="text-center mt-3">ثانوية عامة</h3>
+                            </div>
+                            <div style="width: 30%;" class="ms-3">
+                                <img src="{{ asset('assets/images/0266.jpg') }}" class="rounded-1" style="width: 100%;">
+                                <br>
+                                <h3 class="text-center mt-3">تعليم جامعي</h3>
+                            </div>
+                            <div style="width: 30%;">
+                                <img src="{{ asset('assets/images/0377.jpg') }}" class="rounded-1" style="width: 100%;">
+                                <br>
+                                <h3 class="text-center mt-3">دراسات عليا</h3>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </a>
     </section>
 
-    <section class="mt-5 rtl">
-        <div class="container">
-            <div class="row justify-content-center box">
-                <div class="col-xl-6">
-                    <img src="{{asset('assets/website/images/01.jpg')}}" class="rounded-3" style="width: 100%;">
-                </div>
-                <div class="col-xl-5 col-lg-5 col-md-6 mx-auto my-auto">
-                    <h2 class="mb-4">خدمات مندوبي</h2>
-                    <p>تطبيق "مندوبي" هو منصة إلكترونية شاملة تهدف إلى تسهيل عملية التقديم للطلاب المغتربين الراغبين في
-                        الدراسة في الجامعات العالمية .<br>
-                        <span class="fw-bolder text-dark">
-                            يوفر التطبيق مجموعة واسعة من الخدمات التي تشمل :
-                        </span>
-                    </p>
-                    <ul>
-                        <li>
-                            تعليم جامعي
-                        </li>
-                        <li>
-                            دراسات عليا
-                        </li>
-                        <li>
-                            ثانوية عامة
-                        </li>
-                    </ul>
+
+    <section class="mt-5 rtl" id="sec3">
+        <a class="text-decoration-none" href="#sec4">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-5 col-lg-5 col-md-6 mx-auto my-auto">
+                        <h2>
+                            يتوفر على مندوبي جميع الجامعات والكليات
+                        </h2>
+                        <p>
+                            تطبيق <span class="fw-bolder text-dark"> "مندوبي" </span> يقدم معلومات شاملة ومحدثة حول
+                            مختلف
+                            الجامعات، بما في ذلك البرامج الدراسية المتاحة
+                            ومتطلبات القبول ، مما يمكن الطلاب من اتخاذ قراراتهم بشكل مستنير ومدروس .
+                        </p>
+                    </div>
+                    <div class="col-xl-6">
+                        <img src="{{ asset('assets/images/Un.png') }}" class="rounded-3" style="width: 100%;">
+                    </div>
                 </div>
             </div>
-        </div>
+        </a>
+    </section>
+
+    <section class="mt-5 rtl orders" id="sec4">
+        <a class="text-decoration-none" href="#sec5">
+            <div class="container">
+                <div class="row justify-content-center box">
+                    <div class="col-xl-5 image-ord">
+                        <img src="{{ asset('assets/images/76354.jpg') }}" class="rounded-3" style="width: 100%;">
+                    </div>
+                    <div class="col-xl-4 col-lg-5 col-md-6 mx-auto my-auto">
+                        <h2>
+                            من خلال مندوبي
+                        </h2>
+                        <p>
+                            هتقدر تتابع خطوات طلبك خطوة بخطوة و بعد انتهاء الخطوات كاملة، هيوصلك مندوبنا بالكارنيه
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </a>
     </section>
 
 
-    <section class="mt-5 rtl">
+    <section class="mt-5 rtl" id="sec5">
         <div class="container client-say rounded-5">
-            <h4 class="text-center mb-4">
+            <h4 class="text-center mb-3">
                 أراء العملاء
             </h4>
             <div class="row justify-content-center">
@@ -167,14 +213,14 @@
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
                         data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true">
-                            <img src="{{asset('assets/website/images/prev2.png')}}">
+                            <img src="{{ asset('assets/images/prev2.png') }}">
                         </span>
                         <span class="visually-hidden">Previous</span>
                     </button>
                     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
                         data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true">
-                            <img src="{{asset('assets/website/images/next2.png')}}">
+                            <img src="{{ asset('assets/images/next2.png') }}">
                         </span>
                         <span class="visually-hidden">Next</span>
                     </button>
@@ -183,11 +229,11 @@
         </div>
     </section>
 
-    <footer class="mt-5 bg-white rtl">
+    <footer class="mt-5 rtl">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-4">
-                    <img src="{{asset('assets/website/images/logo-footer.png')}}" style="width: 160px; height: 50px;">
+                    <img src="{{ asset('assets/images/logo-footer.png') }}" style="width: 160px; height: 50px;">
                 </div>
                 <div class="col-xl-3 mt-5">
                     <h6>خدامتنا الرئيسية</h6>
@@ -214,13 +260,15 @@
                     <ul>
                         <li>
                             <a>
-                                <span class="ms-1" style="color: #54c86b;"><i class="fa-brands fa-square-whatsapp"></i></span>
+                                <span class="ms-1" style="color: #54c86b;"><i
+                                        class="fa-brands fa-square-whatsapp"></i></span>
                                 عن طريق الواتس اب
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                <span class="ms-1" style="color: #22219A;"><i class="fa-solid fa-envelope-open"></i></span>
+                                <span class="ms-1" style="color: #22219A;"><i
+                                        class="fa-solid fa-envelope-open"></i></span>
                                 قم بأرسال ايميل
                             </a>
                         </li>
@@ -242,16 +290,16 @@
 
     <!--button-Up-->
     <div class="button-up shadow-lg rounded-3">
-        <button type="button" class="btn text-white"> <span class="me-2"><i
-                    class="fa-solid fa-circle-down"></i></span>حمل التطبيق الان
+        <button type="button" class="btn text-white">
+            حمل مندوبي الان
         </button>
     </div>
 
 
 
     <!-- script tags -->
-    <script src="{{asset('assets/website/js/bootstrap.js')}}"></script>
-    <script src="{{asset('assets/website/js/index.js')}}"></script>
+    <script src="{{ asset('assets/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('assets/js/index2.js') }}"></script>
 
 </body>
 

@@ -13,39 +13,39 @@ use Illuminate\Support\Facades\Validator;
 
 class OrderController extends Controller
 {
-
-public function store_order(Request $request){
-    $order = new Order;
-    $order->name = $request->name;
-    $order->member_id = $request->member_id;
-    $order->major_id = $request->major_id;
-    $order->save();
-}
-
 //for mobile
-public function myorder(){
+public function myorder() {
     $member_id = JWTAuth::parseToken()->getPayload()->get('sub');
-    $order = Order::where('member_id','=',$member_id)->get();
-    if(!$order->isEmpty()){
+    
+    $orders = Order::where('member_id', '=', $member_id)
+                    ->orderBy('created_at', 'desc')
+                    ->get();
+    
+    if (!$orders->isEmpty()) {
         return response()->json([
             'status' => 'success',
-            'message' => 'order retrieved successfully',
-            'data' => $order
+            'message' => 'Orders retrieved successfully',
+            'data' => $orders
         ], 200);
     }
+    
     return response()->json([
-        'status' => 'faild',
-        'message' => 'No order Yet!',
+        'status' => 'failed',
+        'message' => 'No orders yet!',
         'data' => []
     ], 200);
 }
 
-public function uploadrequirements(Request $request){
-    $member_id = JWTAuth::parseToken()->getPayload()->get('sub');
-    $order = Order::where('member_id','=',$member_id)->first();
 
+public function uploadRequirements(Request $request) {
+    // Extract member_id from the JWT token
+    $member_id = JWTAuth::parseToken()->getPayload()->get('sub');
+
+    // Validate request data including major_id
     $validator = Validator::make($request->all(), [
-        'photos.*' => ['required', 'image', 'max:2048'], 
+        'major_id' => 'required', 
+        'basic_service' => 'required',
+        'photos.*' => ['required', 'image', 'max:2048'],
     ]);
 
     if ($validator->fails()) {
@@ -56,59 +56,64 @@ public function uploadrequirements(Request $request){
         ], 400);
     }
 
-    $photos = $request->file('photos');
+    // Extract major_id from the request
+    $major_id = $request->input('major_id');
+    $basic_service = $request->input('basic_service');
+    // Begin a database transaction
+    DB::beginTransaction();
 
-    if (!$photos) {
-        return response()->json([
-            'status' => 'error',
-            'message' => 'No photos uploaded',
-        ], 400);
-    }
+    try {
+        $order = new Order();
+        $order->member_id = $member_id;
+        $order->major_id = $major_id;
+        $order->name = $basic_service;
+        $order->apply_order = 1;
+        $order->save();
 
-    if (!is_array($photos)) {
-        $photos = [$photos];
-    }
-
-        $successfulInsertions = 0;
+        // Save photos associated with the order
+        $photos = $request->file('photos');
 
         foreach ($photos as $photo) {
             $filename = 'requirement_photo_' . time() . '_' . uniqid() . '.' . $photo->getClientOriginalExtension();
-    
             $path = $photo->storeAs('Photos', $filename, 'public');
-    
+
             $orderRequirementPhoto = new OrderRequirementPhoto();
-            $orderRequirementPhoto->order_id = $order->id; 
+            $orderRequirementPhoto->order_id = $order->id;
             $photoUrl = url('storage/' . $path);
-            $orderRequirementPhoto->photo = $photoUrl; 
-            if ($orderRequirementPhoto->save()) {
-                $successfulInsertions++;
-            }
+            $orderRequirementPhoto->photo = $photoUrl;
+            $orderRequirementPhoto->save();
         }
 
-        if ($successfulInsertions == count($photos)) {
-            $order->update(
-                [
-                    'apply_order' => 1,
-                ]);
-        }
+        // Commit the transaction
+        DB::commit();
 
         return response()->json([
             'status' => 'success',
             'message' => 'Photos uploaded successfully',
         ], 200);
+    } catch (\Exception $e) {
+        DB::rollback();
 
+        return response()->json([
+            'status' => 'error',
+            'message' => 'Failed to upload photos',
+            'error' => $e->getMessage(),
+        ], 500);
+    }
 }
 
 
 
-public function updatepackage(Request $request, $id)
+public function updatepackage(Request $request)
 {
+    $member_id = JWTAuth::parseToken()->getPayload()->get('sub');
+
     $request->validate([
         'package' => ['required', 'string', 'in:silver,premium,gold'],
     ]);
 
     try {
-        $order = Order::findOrFail($id);
+        $order = Order::findOrFail($member_id);
 
         $order->update([
             'package' => $request->package,
