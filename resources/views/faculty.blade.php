@@ -539,7 +539,7 @@
             type: 'GET',
             success: function(response) {
               
-                console.log(response);
+                //console.log(response);
                 $('#facultyId').val(response.faculty.id);
                 $('#facultyName').val(response.faculty.name);
                 //$('#subServiceBasic').val(response.basicService.id);
