@@ -24,7 +24,7 @@
                             <td>
                                 <div class="d-flex justify-content-center">
                                     <div class="ms-2">
-                                        <button type="button" class="btn text-white" 
+                                        <button type="button" class="btn text-white" onclick="openEditModal({{ $faculty->id }} , '{{ $faculty->university_id }}')"
                                             style="background-color: #1C7A36;">تعديل</button>
                                     </div>
                                     <div>
