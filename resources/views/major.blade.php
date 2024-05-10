@@ -664,7 +664,7 @@ function openEditModal(majorId) {
             url: '/major/' + majorId + '/edit', // Replace with your route for fetching subService data
             type: 'GET',
             success: function(response) {
-                console.log(response);
+                //console.log(response);
                 //console.log(response.subService);
                 // Populate form fields with subService data
                  $('#majorId').val(response.id);
