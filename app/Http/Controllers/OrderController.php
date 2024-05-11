@@ -57,9 +57,8 @@ public function uploadRequirements(Request $request) {
     }
 
     // Extract major_id from the request
-    if ($major_id != null) {
-        $major_id = $request->input('major_id');
-    }
+    
+    $major_id = $request->input('major_id');
     $basic_service = $request->input('basic_service');
     // Begin a database transaction
     DB::beginTransaction();
@@ -67,7 +66,9 @@ public function uploadRequirements(Request $request) {
     try {
         $order = new Order();
         $order->member_id = $member_id;
+        if($major_id != null){
         $order->major_id = $major_id;
+        }
         $order->name = $basic_service;
         $order->apply_order = 1;
         $order->save();
@@ -92,6 +93,7 @@ public function uploadRequirements(Request $request) {
         return response()->json([
             'status' => 'success',
             'message' => 'Photos uploaded successfully',
+            'data' => $order->id
         ], 200);
     } catch (\Exception $e) {
         DB::rollback();
