@@ -219,7 +219,7 @@ class UniversityController extends Controller
             'status' => 'failed',
             'message' => 'No Universities Found!',
             'data' => []
-        ], 404);
+        ], 200);
 
     }
 
