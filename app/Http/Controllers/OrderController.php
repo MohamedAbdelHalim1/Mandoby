@@ -108,7 +108,7 @@ public function uploadRequirements(Request $request) {
 
 
 
-public function updatepackage(Request $request)
+public function updatepackage(Request $request , $id)
 {
     $member_id = JWTAuth::parseToken()->getPayload()->get('sub');
 
@@ -117,7 +117,9 @@ public function updatepackage(Request $request)
     ]);
 
     try {
-        $order = Order::findOrFail($member_id);
+        $order = Order::where('id','=',$id)
+                        ->where('member_id','=',$member_id)
+                        ->get();
 
         $order->update([
             'package' => $request->package,

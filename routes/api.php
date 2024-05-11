@@ -59,7 +59,7 @@ Route::get('/f/major/{id}', [MajorController::class, 'show_major_requirement_and
 //Order Apis
 Route::get('/order', [OrderController::class, 'myorder'])->middleware('auth:api');
 Route::post('/order-requirement-photos', [OrderController::class, 'uploadrequirements'])->middleware('auth:api');
-Route::post('/order-package', [OrderController::class, 'updatepackage'])->middleware('auth:api');
+Route::post('/order-package/{id}', [OrderController::class, 'updatepackage'])->middleware('auth:api');
 
 
 
