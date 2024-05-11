@@ -266,7 +266,7 @@
                                         <tr>
                                             <th scope="row">{{$loop->index+1}}</th>
                                             <td>
-                                                <a class="text-decoration-none" href="{{route('order.show' , ['id'=>$order->id])}}">{{$order->major->qualification}}</a>
+                                                <a class="text-decoration-none" href="{{route('order.show' , ['id'=>$order->id])}}">{{$order->name}}</a>
                                             </td>
                                             <td>{{ \Carbon\Carbon::parse($order->created_at)->format('j-n-Y') }}</td>
                                             <td>
