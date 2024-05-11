@@ -57,9 +57,9 @@ Route::get('/f/{id}/major', [MajorController::class, 'get_majors']);
 Route::get('/f/major/{id}', [MajorController::class, 'show_major_requirement_and_qualification']);
 
 //Order Apis
-Route::get('/order', [OrderController::class, 'myorder'])->middleware('auth:api');
-Route::post('/order-requirement-photos', [OrderController::class, 'uploadrequirements'])->middleware('auth:api');
-Route::post('/order-package/{id}', [OrderController::class, 'updatepackage'])->middleware('auth:api');
+Route::get('/order', [OrderController::class, 'myorder']);
+Route::post('/order-requirement-photos', [OrderController::class, 'uploadrequirements']);
+Route::post('/order-package/{id}', [OrderController::class, 'updatepackage']);
 
 
 
