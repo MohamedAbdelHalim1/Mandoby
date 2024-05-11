@@ -43,7 +43,7 @@ public function uploadRequirements(Request $request) {
 
     // Validate request data including major_id
     $validator = Validator::make($request->all(), [
-        'major_id' => 'required', 
+        'major_id' => 'nullable', 
         'basic_service' => 'required',
         'photos.*' => ['required', 'image', 'max:2048'],
     ]);
@@ -57,7 +57,9 @@ public function uploadRequirements(Request $request) {
     }
 
     // Extract major_id from the request
-    $major_id = $request->input('major_id');
+    if ($major_id != null) {
+        $major_id = $request->input('major_id');
+    }
     $basic_service = $request->input('basic_service');
     // Begin a database transaction
     DB::beginTransaction();
