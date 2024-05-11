@@ -66,7 +66,7 @@ public function uploadRequirements(Request $request) {
     try {
         $order = new Order();
         $order->member_id = $member_id;
-        if($major_id != null){
+        if($major_id !== null){
         $order->major_id = $major_id;
         }
         $order->name = $basic_service;
