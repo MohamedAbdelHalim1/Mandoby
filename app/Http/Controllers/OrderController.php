@@ -119,7 +119,7 @@ public function updatepackage(Request $request , $id)
     try {
         $order = Order::where('id','=',$id)
                         ->where('member_id','=',$member_id)
-                        ->get();
+                        ->first();
 
         $order->update([
             'package' => $request->package,
