@@ -18,19 +18,19 @@ class LoginController extends Controller
 
         if ($validator->fails()) {
             return response()->json([
-                'status' => 'error',
+                'status' => 'failed',
                 'message' => 'Validation failed',
                 'errors' => $validator->errors(),
-            ], 400);
+            ], 200);
         }
 
         // Attempt to authenticate the user with phone and password
         if (!Auth::guard('api')->attempt(['phone' => $request->phone, 'password' => $request->password])) {
             // If authentication fails, return error response
             return response()->json([
-                'status' => 'error',
+                'status' => 'failed',
                 'message' => 'Invalid phone number or password',
-            ], 401);
+            ], 200);
         }
 
         // Get the authenticated member

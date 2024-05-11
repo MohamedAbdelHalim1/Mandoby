@@ -28,7 +28,7 @@ public function getMemberById(Request $request)   //for profile
         ], 200);
     } catch (\Exception $e) {
         return response()->json([
-            'status' => 'error',
+            'status' => 'failed',
             'message' => 'Failed to retrieve member data',
             'error' => $e->getMessage(),
         ], 500);

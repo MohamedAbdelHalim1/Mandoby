@@ -21,10 +21,10 @@ class RegisterController extends Controller
     
         if ($validator->fails()) {
             return response()->json([
-                'status' => 'error',
+                'status' => 'failed',
                 'message' => 'Validation failed',
                 'errors' => $validator->errors(),
-            ], 400);
+            ], 200);
         }
     
         $member = new Member();

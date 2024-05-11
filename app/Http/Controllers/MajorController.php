@@ -23,7 +23,7 @@ class MajorController extends Controller
             ], 200);
         }
         return response()->json([
-            'status' => 'faild',
+            'status' => 'failed',
             'message' => 'No majors Yet!',
             'data' => []
         ], 200);

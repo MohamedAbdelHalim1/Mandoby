@@ -8,6 +8,9 @@ use App\Models\OrderRequirementPhoto;
 use Illuminate\Support\Facades\DB;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Support\Facades\Validator;
+use Tymon\JWTAuth\Exceptions\TokenExpiredException;
+use Tymon\JWTAuth\Exceptions\TokenInvalidException;
+
 
 
 
@@ -15,6 +18,28 @@ class OrderController extends Controller
 {
 //for mobile
 public function myorder() {
+
+    try {
+        // Check if the token is valid
+        JWTAuth::parseToken()->checkOrFail();
+    } catch (TokenExpiredException $e) {
+        return response()->json([
+            'status' => 'failed',
+            'message' => 'Token expired',
+        ], 401);
+    } catch (TokenInvalidException $e) {
+        return response()->json([
+            'status' => 'failed',
+            'message' => 'Token invalid',
+        ], 401);
+    } catch (\Exception $e) {
+        return response()->json([
+            'status' => 'failed',
+            'message' => 'Unauthorized',
+        ], 401);
+    }
+
+
     $member_id = JWTAuth::parseToken()->getPayload()->get('sub');
     
     $orders = Order::where('member_id', '=', $member_id)
@@ -38,6 +63,28 @@ public function myorder() {
 
 
 public function uploadRequirements(Request $request) {
+
+    try {
+        // Check if the token is valid
+        JWTAuth::parseToken()->checkOrFail();
+    } catch (TokenExpiredException $e) {
+        return response()->json([
+            'status' => 'failed',
+            'message' => 'Token expired',
+        ], 401);
+    } catch (TokenInvalidException $e) {
+        return response()->json([
+            'status' => 'failed',
+            'message' => 'Token invalid',
+        ], 401);
+    } catch (\Exception $e) {
+        return response()->json([
+            'status' => 'failed',
+            'message' => 'Unauthorized',
+        ], 401);
+    }
+
+
     // Extract member_id from the JWT token
     $member_id = JWTAuth::parseToken()->getPayload()->get('sub');
 
@@ -50,10 +97,10 @@ public function uploadRequirements(Request $request) {
 
     if ($validator->fails()) {
         return response()->json([
-            'status' => 'error',
+            'status' => 'failed',
             'message' => 'Validation failed',
             'errors' => $validator->errors(),
-        ], 400);
+        ], 200);
     }
 
     // Extract major_id from the request
@@ -99,7 +146,7 @@ public function uploadRequirements(Request $request) {
         DB::rollback();
 
         return response()->json([
-            'status' => 'error',
+            'status' => 'failed',
             'message' => 'Failed to upload photos',
             'error' => $e->getMessage(),
         ], 500);
@@ -110,6 +157,28 @@ public function uploadRequirements(Request $request) {
 
 public function updatepackage(Request $request , $id)
 {
+
+    try {
+        // Check if the token is valid
+        JWTAuth::parseToken()->checkOrFail();
+    } catch (TokenExpiredException $e) {
+        return response()->json([
+            'status' => 'failed',
+            'message' => 'Token expired',
+        ], 401);
+    } catch (TokenInvalidException $e) {
+        return response()->json([
+            'status' => 'failed',
+            'message' => 'Token invalid',
+        ], 401);
+    } catch (\Exception $e) {
+        return response()->json([
+            'status' => 'failed',
+            'message' => 'Unauthorized',
+        ], 401);
+    }
+
+
     $member_id = JWTAuth::parseToken()->getPayload()->get('sub');
 
     $request->validate([
