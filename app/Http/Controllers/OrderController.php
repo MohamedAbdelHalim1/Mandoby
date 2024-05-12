@@ -84,7 +84,7 @@ public function uploadRequirements(Request $request) {
         ], 401);
     }
 
-dd($request);
+//dd($request);
     // Extract member_id from the JWT token
     $member_id = JWTAuth::parseToken()->getPayload()->get('sub');
 
