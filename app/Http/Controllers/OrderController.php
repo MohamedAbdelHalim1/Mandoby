@@ -92,7 +92,7 @@ public function uploadRequirements(Request $request) {
     $validator = Validator::make($request->all(), [
         'major_id' => 'nullable', 
         'basic_service' => 'required',
-        'photos.*' => ['required', 'image', 'max:2048'],
+        'photos[].*' => ['required', 'image', 'max:2048'],
     ]);
 
     if ($validator->fails()) {
@@ -124,7 +124,7 @@ public function uploadRequirements(Request $request) {
         $photos = $request->file('photos');
 
         foreach ($photos as $photo) {
-            $filename = 'requirement_photo_' . time() . '_' . uniqid() . '.' . $photo->getClientOriginalExtension();
+            $filename = 'requirement_photo_' . date('Ymd').'_'.date('his') . '_' . uniqid() . '.' . $photo->getClientOriginalExtension();
             $path = $photo->storeAs('Photos', $filename, 'public');
 
             $orderRequirementPhoto = new OrderRequirementPhoto();
