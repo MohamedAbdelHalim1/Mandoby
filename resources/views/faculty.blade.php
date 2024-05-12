@@ -330,6 +330,57 @@
                             </div>
                         </div>
                     </div>
+                    <form id="editForm" action="{{ route('faculty.upload')  }}" method="POST" enctype="multipart/form-data">
+                                     @csrf
+                                     <input type="hidden" id="facultyId" name="faculty_id"> 
+                                    <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
+                                        aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-body text-end">
+                                                    <div class="container">
+                                                        <div class="row justify-content-center">
+                                                            <div class="form col-xl-12 col-lg-12">                                                         
+                                                            
+                                                            <div class="mb-3">
+                                                                    <label for="disabledSelect"
+                                                                        class="form-label text-dark">اختر الجامعة
+                                                                        </label>
+                                                                    <select id="facultyUniversity" class="form-select" name="university">
+                                                                        @foreach($universities as $university)
+                                                                        <option value="{{$university->id}}">{{$university->name}}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="exampleInputEmail1"
+                                                                        class="form-label text-dark">اكتب الكلية
+                                                                        </label>
+                                                                    <input type="text" class="form-control" id="facultyName"
+                                                                        name="name" required>
+                                                                </div>
+                                                                <div>
+                                                                    <label for="exampleInputEmail1"
+                                                                        class="form-label text-dark">اكتب نسبة القبول فى الكلية
+                                                                        </label>
+                                                                    <input type="text" class="form-control" id="facultyDegree"
+                                                                        name="degree" required>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn text-white"
+                                                        style="background-color: #066569;" id="saveButton">حفظ</button>
+                                                    <button type="button" class="btn text-white"
+                                                        style="background-color: #7A1C1C;"
+                                                        data-bs-dismiss="modal">الغاء</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>  
                     <div class="container text-center mt-4" id="table-container">
                         <div class="row justify-content-center">
                             <div class="col-xl-10 col-lg-10 table-responsive bg-white rounded-3 pt-3 pb-3">
@@ -356,7 +407,7 @@
                                                 <div class="d-flex justify-content-center">
                                                 <div class="ms-2">
                                                         <button type="button" class="btn text-white button-modal2" onclick="openEditModal({{ $faculty->id }} , '{{ $faculty->university_id }}')"
-                                                            data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
+                                                             data-bs-toggle="modal"
                                                             style="background-color: #1C7A36;">تعديل</button>
                                                     </div>
 
@@ -370,56 +421,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                                <form id="editForm" action="{{ route('faculty.upload')  }}" method="POST" enctype="multipart/form-data">
-                                     @csrf
-                                     <input type="hidden" id="facultyId" name="faculty_id"> 
-                                <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
-                                    aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-body text-end">
-                                                <div class="container">
-                                                    <div class="row justify-content-center">
-                                                        <div class="form col-xl-12 col-lg-12">                                                         
-                                                          
-                                                        <div class="mb-3">
-                                                                <label for="disabledSelect"
-                                                                    class="form-label text-dark">اختر الجامعة
-                                                                     </label>
-                                                                <select id="facultyUniversity" class="form-select" name="university">
-                                                                    @foreach($universities as $university)
-                                                                    <option value="{{$university->id}}">{{$university->name}}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="exampleInputEmail1"
-                                                                    class="form-label text-dark">اكتب الكلية
-                                                                     </label>
-                                                                <input type="text" class="form-control" id="facultyName"
-                                                                    name="name" required>
-                                                            </div>
-                                                            <div>
-                                                                <label for="exampleInputEmail1"
-                                                                    class="form-label text-dark">اكتب نسبة القبول فى الكلية
-                                                                     </label>
-                                                                <input type="text" class="form-control" id="facultyDegree"
-                                                                    name="degree" required>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="submit" class="btn text-white"
-                                                    style="background-color: #066569;" id="saveButton">حفظ</button>
-                                                <button type="button" class="btn text-white"
-                                                    style="background-color: #7A1C1C;"
-                                                    data-bs-dismiss="modal">الغاء</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                  
                             </div>
                         </div>
                     </div>
@@ -522,6 +524,7 @@
                 university_id: selectedUniversityId
             },
             success: function(response) {
+                
                 // Replace the table with the filtered view
                 $('#table-container').html(response);
             },
@@ -539,7 +542,7 @@
             type: 'GET',
             success: function(response) {
               
-                //console.log(response);
+                console.log(response);
                 $('#facultyId').val(response.faculty.id);
                 $('#facultyName').val(response.faculty.name);
                 //$('#subServiceBasic').val(response.basicService.id);
@@ -548,7 +551,7 @@
                   $('#facultyDegree').val(response.faculty.degree);
                   
             
-               // $('#editsubServiceModal').modal('show');
+               $('#exampleModalToggle').modal('show');
 
             },
             error: function(xhr, status, error) {

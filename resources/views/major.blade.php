@@ -389,6 +389,42 @@
                         </div>
                     </div>
 
+                    <form id="editForm" action="{{ route('major.upload')  }}" method="POST" enctype="multipart/form-data">
+                                     @csrf
+                                     <input type="hidden" id="majorId" name="major_id"> 
+                                    <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
+                                        aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-body text-end">
+                                                    <div class="container">
+                                                        <div class="row justify-content-center">
+                                                            <div class="form col-xl-12 col-lg-12">                                                         
+                                                        
+                                                                <div class="mb-3">
+                                                                    <label for="exampleInputEmail1"
+                                                                        class="form-label text-dark">اكتب التخصص
+                                                                    </label>
+                                                                    <input type="text" class="form-control" id="major"
+                                                                        placeholder="اكتب اسم التخصص " name="name" required>
+                                                                </div>
+                                                
+                                                            </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn text-white"
+                                                            style="background-color: #066569;" id="saveButton">حفظ</button>
+                                                        <button type="button" class="btn text-white"
+                                                            style="background-color: #7A1C1C;"
+                                                            data-bs-dismiss="modal">الغاء</button>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
                     <div class="container text-center mt-4" id="table-container">
                         <div class="row justify-content-center">
                             <div class="col-xl-10 col-lg-10 table-responsive bg-white rounded-3 pt-3 pb-3">
@@ -431,41 +467,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                                <form id="editForm" action="{{ route('major.upload')  }}" method="POST" enctype="multipart/form-data">
-                                     @csrf
-                                     <input type="hidden" id="majorId" name="major_id"> 
-                                <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
-                                    aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-body text-end">
-                                                <div class="container">
-                                                    <div class="row justify-content-center">
-                                                        <div class="form col-xl-12 col-lg-12">                                                         
-                                                    
-                                               <div class="mb-3">
-                                                    <label for="exampleInputEmail1"
-                                                        class="form-label text-dark">اكتب التخصص
-                                                    </label>
-                                                    <input type="text" class="form-control" id="major"
-                                                        placeholder="اكتب اسم التخصص " name="name" required>
-                                                </div>
-                                               
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="submit" class="btn text-white"
-                                                    style="background-color: #066569;" id="saveButton">حفظ</button>
-                                                <button type="button" class="btn text-white"
-                                                    style="background-color: #7A1C1C;"
-                                                    data-bs-dismiss="modal">الغاء</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                           
                 </div>
             </div>
         </div>
