@@ -121,19 +121,20 @@ public function uploadRequirements(Request $request) {
         $order->save();
 
         // Save photos associated with the order
-        $photos = $request->file('photos');
+        if($request->hasFile('photos')){
+            $photos = $request->file('photos');
 
-        foreach ($photos as $photo) {
-            $filename = 'requirement_photo_' . date('Ymd').'_'.date('his') . '_' . uniqid() . '.' . $photo->getClientOriginalExtension();
-            $path = $photo->storeAs('Photos', $filename, 'public');
+            foreach ($photos as $photo) {
+                $filename = 'requirement_photo_' . date('Ymd').'_'.date('his') . '_' . uniqid() . '.' . $photo->getClientOriginalExtension();
+                $path = $photo->storeAs('Photos', $filename, 'public');
 
-            $orderRequirementPhoto = new OrderRequirementPhoto();
-            $orderRequirementPhoto->order_id = $order->id;
-            $photoUrl = url('storage/' . $path);
-            $orderRequirementPhoto->photo = $photoUrl;
-            $orderRequirementPhoto->save();
+                $orderRequirementPhoto = new OrderRequirementPhoto();
+                $orderRequirementPhoto->order_id = $order->id;
+                $photoUrl = url('storage/' . $path);
+                $orderRequirementPhoto->photo = $photoUrl;
+                $orderRequirementPhoto->save();
+            }
         }
-
         // Commit the transaction
         DB::commit();
 
