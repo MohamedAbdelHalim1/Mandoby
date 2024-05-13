@@ -13,9 +13,8 @@ class RegisterController extends Controller
 {
     public function user_register(Request $request) {
         $validator = Validator::make($request->all(), [
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'phone' => 'required|string',
+            'name' => 'required|string|max:255',
+            'phone' => ['required', 'string', 'unique:members'], // Add unique rule here
             'password' => 'required|string', 
         ]);
     
@@ -28,8 +27,7 @@ class RegisterController extends Controller
         }
     
         $member = new Member();
-        $member->first_name = $request->first_name;
-        $member->last_name = $request->last_name;
+        $member->name = $request->name;
         $member->phone = $request->phone;
         $member->password = bcrypt($request->password); 
         $member->save();
