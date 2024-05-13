@@ -257,7 +257,7 @@
                             <div class="col-xl-10 col-lg-10 bg-white rounded-3 p-4">
                                 <h2 class="fw-bold mb-3" style="color: #22219A; font-size: 20px;">{{$order->name}}</h2>
                                 @if($order->sub_service != null)
-                                <h3 class="fw-bold mb-3" style="color: #22219A; font-size: 20px;">{{$order->sub_service}}</h3>
+                                <h3 class="fw-bold mb-3" style="color: #22219A; font-size: 12px;">{{$order->sub_service}}</h3>
                                 @endif
                                 <div class="me-5 mb-1">
                                     <span class="ms-2 fw-bolder">اسم الطالبه: </span>
