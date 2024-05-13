@@ -92,6 +92,7 @@ public function uploadRequirements(Request $request) {
     $validator = Validator::make($request->all(), [
         'major_id' => 'nullable', 
         'basic_service' => 'required',
+        'sub_service'=>'nullable',
         'photos[].*' => ['required', 'image', 'max:2048'],
     ]);
 
@@ -107,6 +108,8 @@ public function uploadRequirements(Request $request) {
     
     $major_id = $request->input('major_id');
     $basic_service = $request->input('basic_service');
+    $sub_service = $request->input('sub_service');
+
     // Begin a database transaction
     DB::beginTransaction();
 
@@ -117,6 +120,7 @@ public function uploadRequirements(Request $request) {
         $order->major_id = $major_id;
         }
         $order->name = $basic_service;
+        $order->sub_service = $sub_service;
         $order->apply_order = 1;
         $order->save();
 
