@@ -284,6 +284,13 @@
                                                                 @error('name')
                                                                     <span class="text-danger">{{ $message }}</span>
                                                                 @enderror
+                                                                <div class="mb-3">
+                                                                    <label for="exampleInputEmail1"
+                                                                        class="form-label text-dark fw-semibold">ترتيب
+                                                                        الجنسية</label>
+                                                                    <input type="text" class="form-control"
+                                                                        placeholder="اكتب هنا ترتيب ظهور الجنسية" name="order" requried>
+                                                                </div>
                                                                 <!-- Dropzone area -->
                                                                 <div>
                                                                     <label for="exampleInputEmail1"
@@ -335,6 +342,7 @@
                                             <th scope="col">#</th>
                                             <th scope="col">الجنسية</th>
                                             <th scope="col">صورة البلد</th>
+                                            <th scope="col">ترتيب البلد</th>
                                             <th scope="col">اخري</th>
                                             
                                         </tr>
@@ -352,6 +360,8 @@
                                                         style="width: 68px; height: 41px;">
                                                 @endif
                                             </td>
+                                            <td>{{$nationality->order}}</td>
+
                                             <td>
                                                 <div class="d-flex justify-content-center">
                                                          <div class="ms-2">
@@ -393,6 +403,13 @@
                                                                     الجنسية</label>
                                                                 <input type="text" class="form-control"
                                                                 id="nationalityName" name="name" required>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="nationalName"
+                                                                    class="form-label text-dark fw-semibold">ترتيب
+                                                                    الجنسية</label>
+                                                                <input type="text" class="form-control"
+                                                                id="nationalityOrder" name="order" required>
                                                             </div>
                                                             <div>
                                                                 <label for="imageNational"
@@ -516,6 +533,8 @@
                 // Populate form fields with nationality data
                 $('#nationalityId').val(response.id);
                 $('#nationalityName').val(response.name);
+                $('#nationalityOrder').val(response.order);
+
                 // Set image source if photo exists
                 if (response.photo) {
                     $('#nationalityImagePreview').html('<img src="' + response.photo + '" class="img-fluid">');

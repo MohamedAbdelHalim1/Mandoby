@@ -10,7 +10,7 @@ class Nationality extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'photo',
+        'name', 'photo', 'order'
     ];
 
     public function members(){

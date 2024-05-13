@@ -15,7 +15,7 @@ class NationalityController extends Controller
 {
     //for mobile
     public function get_nationalities(){
-        $nationalities = Nationality::all();
+        $nationalities = Nationality::orderBy('order', 'asc')->get();
         if(!$nationalities->isEmpty()){
             return response()->json([
                 'status' => 'success',
@@ -57,7 +57,7 @@ class NationalityController extends Controller
 //////////////////////////////////////////
 
     public function index(){
-        $nationalities = Nationality::all();
+        $nationalities = Nationality::orderBy('order', 'asc')->get();
         return view('nationality' , compact('nationalities'));
     }
 
