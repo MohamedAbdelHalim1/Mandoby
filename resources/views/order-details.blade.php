@@ -258,7 +258,7 @@
                                 <h2 class="fw-bold mb-3" style="color: #22219A; font-size: 20px;">{{$order->name}}</h2>
                                 <div class="me-5 mb-1">
                                     <span class="ms-2 fw-bolder">اسم الطالبه: </span>
-                                    <span>{{$order->member->first_name}} {{$order->member->last_name}}</span>
+                                    <span>{{$order->member->name}}</span>
                                 </div>
                                 <div class="me-5 mb-1">
                                     <span class="ms-2 fw-bolder"> التليفون: </span>

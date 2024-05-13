@@ -51,8 +51,7 @@ public function getMemberById(Request $request)   //for profile
         //add nationality
         
         $validator = Validator::make($request->all(), [
-            'first_name' => ['required','string'], 
-            'last_name' => ['required','string'], 
+            'name' => ['required','string'], 
             'phone' => ['required','string'], 
             'password' => ['required','string'], 
            ]);
@@ -60,8 +59,7 @@ public function getMemberById(Request $request)   //for profile
     
 
         $member = new Member;
-        $member->first_name = $request->first_name;
-        $member->last_name = $request->last_name;
+        $member->name = $request->name;
         $member->phone = $request->phone;
         $member->password = bcrypt($request->password);
       

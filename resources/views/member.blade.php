@@ -272,18 +272,12 @@
                                                         <div class="form col-xl-12 col-lg-12">
                                                             <div class="mb-3">
                                                                 <label for="exampleInputEmail1"
-                                                                    class="form-label text-dark">  الاسم الاول
+                                                                    class="form-label text-dark">  الاسم ثلاثي
                                                                      </label>
                                                                 <input type="text" class="form-control"
-                                                                    placeholder="اكتب الاسم الاول" name="first_name" required>
+                                                                    placeholder="اكتب الاسم ثلاثي" name="name" required>
                                                             </div>
-                                                            <div class="mb-3">
-                                                                <label for="exampleInputEmail1"
-                                                                    class="form-label text-dark">   الاسم الثاني
-                                                                     </label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="اكتب الاسم الثاني" name="last_name" required>
-                                                            </div>
+                                                           
                                                             <div class="mb-3">
                                                                 <label for="exampleInputEmail1"
                                                                     class="form-label text-dark">   الرقم السري
@@ -339,7 +333,7 @@
                                                         <a href=""></a>
                                                     <label class="form-check-label"
                                                         for="flexCheckDefault">
-                                                        {{$member->first_name}} {{$member->last_name}}
+                                                        {{$member->name}}
                                                     </label>
                                                 </div>
                                             </td>

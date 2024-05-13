@@ -270,7 +270,7 @@
                                             </td>
                                             <td>{{ \Carbon\Carbon::parse($order->created_at)->format('j-n-Y') }}</td>
                                             <td>
-                                                {{$order->member->first_name}} {{$order->member->last_name}}
+                                                {{$order->member->name}}
                                             </td>
                                             <td>
                                                 {{$order->member->phone}}
