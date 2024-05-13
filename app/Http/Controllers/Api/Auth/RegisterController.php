@@ -14,17 +14,37 @@ class RegisterController extends Controller
     public function user_register(Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'phone' => ['required', 'string', 'unique:members'], // Add unique rule here
+            'phone' => ['required', 'string', 'unique:members,phone'], // Add unique rule here
             'password' => 'required|string', 
         ]);
     
         if ($validator->fails()) {
+            $errors = $validator->errors();
+        
+             // Check if phone number is required
+             if ($errors->has('phone') && $validator->errors()->first('phone') === "The phone field is required.") {
+                return response()->json([
+                    'status' => 'failed',
+                    'message' => 'Phone number is required',
+                ], 200);
+            }
+            // Check if phone number is not unique
+            if ($errors->has('phone')) {
+                return response()->json([
+                    'status' => 'failed',
+                    'message' => 'Phone number is already taken',
+                ], 200);
+            }
+        
+        
+            // If none of the above conditions are met, return generic validation failed message
             return response()->json([
                 'status' => 'failed',
                 'message' => 'Validation failed',
-                'errors' => $validator->errors(),
+                'errors' => $errors,
             ], 200);
         }
+        
     
         $member = new Member();
         $member->name = $request->name;
