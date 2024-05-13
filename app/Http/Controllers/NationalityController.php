@@ -70,6 +70,7 @@ class NationalityController extends Controller
 
         $validator = Validator::make($request->all(), [
             'name' => ['required','string'], 
+            'order'=>['required','integer'],
             'photo' => ['required','image','mimes:jpeg,png,jpg,gif'], 
            ],$messages);
 
@@ -84,6 +85,7 @@ class NationalityController extends Controller
 
         $nationality = new Nationality;
         $nationality->name = $request->name;
+        $nationality->order = $request->order;
         if ($request->hasFile('photo')) {
             $photo = $request->file('photo');
             $extension = $photo->getClientOriginalExtension();
@@ -145,11 +147,13 @@ class NationalityController extends Controller
         $nationality = Nationality::findOrFail($request->nationality_id);
         $validator = Validator::make($request->all(), [
             'name' => ['required','string'], 
+            'order'=>['required','integer'],
             'photo' => ['nullable','image','mimes:jpeg,png,jpg,gif'], 
            ]);
    
     
         $nationality->name = $request->name;
+        $nationality->order = $request->order;
     
         if ($request->hasFile('photo')) {
             $photo = $request->file('photo');
