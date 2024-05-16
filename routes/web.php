@@ -121,6 +121,14 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/news/upload', [NewsController::class, 'update'])->name('news.upload');
     Route::delete('/news/{id}', [NewsController::class, 'delete']);
 
+
+    Route::get('/nationality-faculty-degree/{faculty_id}', [NationalityController::class, 'show_faculties_nationalities_degree'])->name('faculty.nationality.degree');
+    Route::post('/nationality-faculty-degree/{faculty_id}', [NationalityController::class, 'add_degree_to_nationalities'])->name('add.faculty.nationality.degree');
+    Route::delete('/nationality-faculty-degree/{faculty_id}/{nationality_id}', [NationalityController::class, 'deleteNationalityFromFaculty'])->name('deleteNationalityDegree');
+
+
+
+
 });
 
 

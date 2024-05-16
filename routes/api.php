@@ -50,7 +50,7 @@ Route::get('/university-search', [UniversityController::class, 'search']);
 
 
 //faculty Apis
-Route::get('u/{id}/faculty', [FacultyController::class, 'get_faculties']);
+Route::get('n/{nationality_id}/u/{university_id}/faculty', [FacultyController::class, 'get_faculties']);
 
 //Major Apis
 Route::get('/f/{id}/major', [MajorController::class, 'get_majors']);
@@ -60,8 +60,6 @@ Route::get('/f/major/{id}', [MajorController::class, 'show_major_requirement_and
 Route::get('/order', [OrderController::class, 'myorder']);
 Route::post('/order-requirement-photos', [OrderController::class, 'uploadrequirements']);
 Route::post('/order-package/{id}', [OrderController::class, 'updatepackage']);
-
-
 
 
 

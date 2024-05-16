@@ -21,4 +21,9 @@ class Nationality extends Model
     {
         return $this->belongsToMany(University::class , 'nationality_universities' , 'nationality_id' , 'university_id');
     }
+
+    public function faculties()
+    {
+        return $this->belongsToMany(Faculty::class , 'faculty_nationality_grades' , 'faculty_id' , 'nationality_id')->withPivot('degree');
+    }
 }

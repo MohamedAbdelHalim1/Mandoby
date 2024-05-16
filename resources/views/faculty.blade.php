@@ -292,14 +292,7 @@
                                                                      </label>
                                                                 <input type="text" class="form-control"
                                                                     placeholder="اكتب اسم الكلية " name="name">
-                                                            </div>
-                                                            <div>
-                                                                <label for="exampleInputEmail1"
-                                                                    class="form-label text-dark">اكتب نسبة القبول فى الكلية
-                                                                     </label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="اكتب نسبة القبول هنا " name="degree">
-                                                            </div>
+                                                            </div>                                                        
                                                         </div>
                                                     </div>
                                                 </div>
@@ -359,13 +352,6 @@
                                                                     <input type="text" class="form-control" id="facultyName"
                                                                         name="name" required>
                                                                 </div>
-                                                                <div>
-                                                                    <label for="exampleInputEmail1"
-                                                                        class="form-label text-dark">اكتب نسبة القبول فى الكلية
-                                                                        </label>
-                                                                    <input type="text" class="form-control" id="facultyDegree"
-                                                                        name="degree" required>
-                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -390,7 +376,6 @@
                                             <th scope="col">#</th>
                                             <th scope="col">اسم الكلية</th>
                                             <th scope="col">اسم الجامعه</th>
-                                            <th scope="col">نسبة القبول</th>
                                             <th scope="col">اخري</th>
                                         </tr>
                                     </thead>
@@ -398,11 +383,8 @@
                                         @foreach($faculties as $faculty)
                                         <tr>
                                             <th scope="row">{{$loop->index+1}}</th>
-                                            <td>{{$faculty->name}} </td>
+                                            <td><a class="text-decoration-none" href="{{route('faculty.nationality.degree' , ['faculty_id'=>$faculty->id])}}">{{$faculty->name}}</a></td>
                                             <td>{{$faculty->university->name}} </td>
-                                            <td>
-                                                {{$faculty->degree}} %
-                                            </td>
                                             <td>
                                                 <div class="d-flex justify-content-center">
                                                 <div class="ms-2">
@@ -548,7 +530,6 @@
                 //$('#subServiceBasic').val(response.basicService.id);
                 // Set the selected option in the select element
                   $('#facultyUniversity').val(selectedUniversityId);
-                  $('#facultyDegree').val(response.faculty.degree);
                   
             
                $('#exampleModalToggle').modal('show');

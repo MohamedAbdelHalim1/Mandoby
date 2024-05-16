@@ -12,21 +12,29 @@ class FacultyController extends Controller
 
 
     //for mobile
-    public function get_faculties($id){
-        $faculties = Faculty::where('university_id','=',$id)->get();
-        if(!$faculties->isEmpty()){
+    public function get_faculties($nationality_id, $university_id)
+    {
+        $faculties = Faculty::with(['nationalities' => function ($query) use ($nationality_id) {
+            $query->where('nationality_id', $nationality_id)->withPivot('degree');
+        }])
+        ->where('university_id', $university_id)
+        ->get();
+    
+        if (!$faculties->isEmpty()) {
             return response()->json([
                 'status' => 'success',
-                'message' => 'faculties retrieved successfully',
+                'message' => 'Faculties retrieved successfully',
                 'data' => $faculties
             ], 200);
         }
+    
         return response()->json([
-            'status' => 'faild',
-            'message' => 'No faculties Yet!',
+            'status' => 'failed',
+            'message' => 'No faculties found',
             'data' => []
         ], 200);
-       }
+    }
+    
 
 
 
@@ -52,7 +60,6 @@ class FacultyController extends Controller
 
         $validator = Validator::make($request->all(), [
             'name' => ['required','string'], 
-            'degree' => ['required'], 
             'university' => ['required'],
            ], $messages);
 
@@ -68,7 +75,6 @@ class FacultyController extends Controller
         $faculty = new Faculty;
         $faculty->name = $request->name;
         $faculty->university_id = $request->university;
-        $faculty->degree = $request->degree;     
         $faculty->save();
 
       return redirect()->back();
@@ -89,12 +95,10 @@ class FacultyController extends Controller
     
         $validator = Validator::make($request->all(), [
             'name' => ['required','string'], 
-            'degree' => ['required'], 
             'university'=>['nullable']
            ]);
    
        $faculty->name = $request->name;
-       $faculty->degree = $request->degree;
        $faculty->university_id = $request->university;
            $faculty->save();
        return redirect()->back();

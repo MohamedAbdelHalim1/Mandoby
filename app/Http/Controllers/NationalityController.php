@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\University;
+use App\Models\Faculty;
 use App\Models\Nationality;
 use App\Models\NationalityUniversity;
 use Illuminate\Support\Facades\Validator;
@@ -174,5 +175,40 @@ class NationalityController extends Controller
         $nationality->delete();
     }
 
+
+
+    public function show_faculties_nationalities_degree($faculty_id){
+        $faculty = Faculty::with(['nationalities' => function ($query) {
+            $query->withPivot('degree');
+        }])->find($faculty_id);
+        $nationalities = Nationality::all();
+        return view('faculty_details',compact('faculty','nationalities'));
+    }
+
+    public function add_degree_to_nationalities(Request $request , $faculty_id){
+        $validator = Validator::make($request->all(), [
+            'degree' => 'required', 
+            'nationality'=>'required'
+        ]);
+
+        // Find the faculty and nationality
+        $faculty = Faculty::findOrFail($faculty_id);
+        $nationality = Nationality::findOrFail($request->nationality);
+
+        $faculty->nationalities()->attach($nationality, ['degree' => $request->degree]);
+
+        return redirect()->back();
+
+
+    }
+
+    public function deleteNationalityFromFaculty($faculty_id, $nationality_id)
+    {
+        $faculty = Faculty::findOrFail($faculty_id);
+        $faculty->nationalities()->detach($nationality_id);
+
+        // Optionally, redirect back with a success message
+        return redirect()->back()->with('success', 'تم المسح.');
+    }
     
 }
