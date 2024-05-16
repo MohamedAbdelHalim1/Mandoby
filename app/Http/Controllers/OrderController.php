@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Member;
 use App\Models\Order;
 use App\Models\OrderRequirementPhoto;
 use Illuminate\Support\Facades\DB;
@@ -93,6 +94,7 @@ public function uploadRequirements(Request $request) {
         'major_id' => 'nullable', 
         'basic_service' => 'required',
         'sub_service'=>'nullable',
+        'nationality_id' => 'required',
         'photos[].*' => ['required', 'image', 'max:2048'],
     ]);
 
@@ -109,6 +111,7 @@ public function uploadRequirements(Request $request) {
     $major_id = $request->input('major_id');
     $basic_service = $request->input('basic_service');
     $sub_service = $request->input('sub_service');
+    $nationality_id = $request->input('nationality_id');
 
     // Begin a database transaction
     DB::beginTransaction();
@@ -123,6 +126,10 @@ public function uploadRequirements(Request $request) {
         $order->sub_service = $sub_service;
         $order->apply_order = 1;
         $order->save();
+
+        $member = Member::find($member_id);
+        $member->nationality_id = $nationality_id;
+        $member->save(); 
 
         // Save photos associated with the order
         if($request->hasFile('photos')){
