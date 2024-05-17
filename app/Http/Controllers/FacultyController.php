@@ -21,6 +21,15 @@ class FacultyController extends Controller
         ->get();
     
         if (!$faculties->isEmpty()) {
+            // Modify the structure of the faculties
+            $faculties = $faculties->map(function ($faculty) {
+                // Change 'nationalities' to 'nationality' and make it an object
+                $faculty->nationality = $faculty->nationalities->isEmpty() ? null : $faculty->nationalities->first();
+                unset($faculty->nationalities); // Remove the 'nationalities' array
+    
+                return $faculty;
+            });
+    
             return response()->json([
                 'status' => 'success',
                 'message' => 'Faculties retrieved successfully',
@@ -34,6 +43,7 @@ class FacultyController extends Controller
             'data' => []
         ], 200);
     }
+    
     
 
 
