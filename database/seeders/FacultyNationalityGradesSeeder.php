@@ -18,7 +18,7 @@ class FacultyNationalityGradesSeeder extends Seeder
             'كليه الطب البيطري', 
             'كليه الهندسه', 
             'كليه الفنون الجميله', 
-            'كليه الحاسبات والمعلومات'
+            'كليه الحسابات والمعلومات'
         ];
         $universityIds = [9, 13, 17, 18, 29];
 
