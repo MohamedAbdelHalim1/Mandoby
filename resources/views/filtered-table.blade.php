@@ -15,7 +15,7 @@
                         @foreach($filteredData as $faculty)
                         <tr>
                             <th scope="row">{{$loop->index+1}}</th>
-                            <td>{{$faculty->name}} </td>
+                            <td><a class="text-decoration-none" href="{{route('faculty.nationality.degree' , ['faculty_id'=>$faculty->id])}}">{{$faculty->name}}</a></td>
                             <td>{{$faculty->university->name}} </td>
                             
                             <td>
