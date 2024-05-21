@@ -167,7 +167,7 @@
                                 <a href="{{route('dashboard.logout')}}"> خروج</a>
                                 </div>
                             @else
-                                <img src="assets/images/IMG_default.png" alt="Example Image" class="circle-image" id="dropdownImage">
+                                <img src="{{asset('assets/images/IMG_default.png')}}" alt="Example Image" class="circle-image" id="dropdownImage">
                                 <div class="dropdown-content rounded-2" id="dropdownContent">
                                 <a href="{{route('dashboard.user')}}">الصفحه الشخصية</a>
                                 <a href="{{route('dashboard.logout')}}"> خروج</a>
