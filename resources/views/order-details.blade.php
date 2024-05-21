@@ -339,7 +339,7 @@
     <script src="{{asset('assets/js/bootstrap.js')}}"></script>
     <script src="{{asset('assets/js/order-details.js')}}"></script>
     <script src="{{asset('assets/js/index.js')}}"></script>
-    <script src="{{asset('assets/js/nav.js')}}"></script>
+    <script src="assets/js/nav.js"></script>
 
     <script type="text/javascript">
         $.ajaxSetup({
