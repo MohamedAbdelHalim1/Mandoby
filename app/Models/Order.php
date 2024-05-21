@@ -23,4 +23,7 @@ class Order extends Model
         return $this->belongsTo(Major::class , 'major_id');
     }
 
+    public function images(){
+        return $this->hasMany(OrderRequirementPhoto::class , 'order_id');
+    }
 }

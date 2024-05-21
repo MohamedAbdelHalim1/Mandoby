@@ -133,15 +133,27 @@
                             </div>
                         </div>
                         <div class="text-white ms-2 mt-3">
-                            <h3>وداد اشرف
+                            <h3>{{Auth::user()->name}}
                                 <br>
                                 <span class="fw-lighter">
-                                    @wedad.ash
+                                    {{Auth::user()->email}}
                                 </span>
                             </h3>
                         </div>
-                        <div class="circle mt-2">
-                            <img src="assets/images/IMG_20220205_105633_659.jpg">
+                        <div class="circle mt-2 dropdown">
+                            @if(Auth::user()->photo)
+                                <img src="{{Auth::user()->photo}}" alt="Example Image" class="circle-image" id="dropdownImage">
+                                <div class="dropdown-content rounded-2" id="dropdownContent">
+                                <a href="{{route('dashboard.user')}}">الصفحه الشخصية</a>
+                                <a href="{{route('dashboard.logout')}}"> خروج</a>
+                                </div>
+                            @else
+                                <img src="assets/images/IMG_default.png" alt="Example Image" class="circle-image" id="dropdownImage">
+                                <div class="dropdown-content rounded-2" id="dropdownContent">
+                                <a href="{{route('dashboard.user')}}">الصفحه الشخصية</a>
+                                <a href="{{route('dashboard.logout')}}"> خروج</a>
+                                </div>
+                            @endif 
                         </div>
                     </div>
                 </div>
@@ -447,6 +459,8 @@
     <!-- script tags -->
     <script src="assets/js/bootstrap.js"></script>
     <script src="assets/js/index.js"></script>
+    <script src="assets/js/nav.js"></script>
+
 
     <script>
 

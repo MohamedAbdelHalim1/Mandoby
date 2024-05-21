@@ -12,4 +12,9 @@ class OrderRequirementPhoto extends Model
     protected $fillable = [
         'photo', 'order_id',
     ];
+
+    
+    public function order(){
+        return $this->belongsTo(Order::class , 'order_id');
+    }
 }

@@ -136,8 +136,20 @@
                                 </span>
                             </h3>
                         </div>
-                        <div class="circle mt-2">
-                            <img src="assets/images/IMG_20220205_105633_659.jpg">
+                        <div class="circle mt-2 dropdown">
+                            @if(Auth::user()->photo)
+                                <img src="{{Auth::user()->photo}}" alt="Example Image" class="circle-image" id="dropdownImage">
+                                <div class="dropdown-content rounded-2" id="dropdownContent">
+                                <a href="{{route('dashboard.user')}}">الصفحه الشخصية</a>
+                                <a href="{{route('dashboard.logout')}}"> خروج</a>
+                                </div>
+                            @else
+                                <img src="assets/images/IMG_default.png" alt="Example Image" class="circle-image" id="dropdownImage">
+                                <div class="dropdown-content rounded-2" id="dropdownContent">
+                                <a href="{{route('dashboard.user')}}">الصفحه الشخصية</a>
+                                <a href="{{route('dashboard.logout')}}"> خروج</a>
+                                </div>
+                            @endif 
                         </div>
                     </div>
                 </div>
@@ -233,7 +245,7 @@
                                 <span class="text-white fw-bold fs-5">
                                     <i class="fa-solid fa-house text-white ms-1"></i> لوحة التحكم
                                 </span>
-                                <small class="text-white fw-lighter me-1">مرحبا بعودتك, وداد اشرف!</small>
+                                <small class="text-white fw-lighter me-1">مرحبا بعودتك, {{Auth::user()->name}}!</small>
                             </p>
                         </div>
                     </div>
@@ -254,58 +266,65 @@
                                     </div>
 
 
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
-                                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                        aria-hidden="true">
-                                        <div class=" modal-dialog modal-dialog-centered">
-                                            <div class="modal-content p-3">
-                                                <div class="modal-body">
-                                                    <div class="container">
-                                                        <div class="row justify-content-center">
-                                                            <div class="form col-xl-12 col-lg-12">
-                                                                <div class="mb-3">
-                                                                    <label for="exampleInputEmail1"
-                                                                        class="form-label text-dark">اسم
-                                                                        الخدمة الرئيسية</label>
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="اكتب هنا اسم الخدمة">
-                                                                </div>
-                                                                <!-- Dropzone area -->
-                                                                <div>
-                                                                    <label for="exampleInputEmail1"
-                                                                        class="form-label text-dark ">ارفاق
-                                                                        الايقون الخاصة بخدمة</label>
-                                                                </div>
-                                                                <!-- Input for selecting images -->
-                                                                <input type="file" id="fileInput" accept="image/*"
-                                                                    style="display: none;">
-                                                                <div class="dropzone" id="previewContainer"
-                                                                    onclick="document.getElementById('fileInput').click();">
-                                                                    <div class="mt-3"
-                                                                        style="overflow-y: hidden !important;">
-                                                                        <span><i class="fa-solid fa-cloud-arrow-up"
-                                                                                style="color: rgba(2, 58, 170, 0.8);"></i></span>
-                                                                        <br>
-                                                                        <span
-                                                                            class="my-auto mx-auto text-dark fw-semibold">قم
-                                                                            بإسقاط الصورة هنا أو انقر للتحميل .</span>
-                                                                    </div>
+                                    <form id="basicServiceForm" action="{{ route('basic.service.store') }}" method="POST" enctype="multipart/form-data">
+                                     @csrf
+                                <!-- Modal -->
+                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                    aria-hidden="true">
+                                    <div class=" modal-dialog modal-dialog-centered">
+                                        <div class="modal-content p-3">
+                                            <div class="modal-body">
+                                                <div class="container">
+                                                    <div class="row justify-content-center">
+                                                        <div class="form col-xl-12 col-lg-12">
+                                                        <span id="nameError" class="text-danger"></span>
+                                                            <div class="mb-3">
+                                                                <label for="exampleInputEmail1"
+                                                                    class="form-label text-dark">اسم
+                                                                    الخدمة الرئيسية</label>
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="اكتب هنا اسم الخدمة" name="name" required>
+                                                            </div>
+                                                            <!-- Dropzone area -->
+                                                            <div>
+                                                                <label for="exampleInputEmail1"
+                                                                    class="form-label text-dark ">ارفاق
+                                                                    الايقون الخاصة بخدمة</label>
+                                                            </div>
+                                                            <!-- Input for selecting images -->
+                                                            <input type="file" id="fileInput" accept="image/*"
+                                                                style="display: none;"  name="photo" required>
+                                                            <div class="dropzone" id="previewContainer"
+                                                                onclick="document.getElementById('fileInput').click();">
+                                                                <div class="mt-3">
+                                                                    <span><i class="fa-solid fa-cloud-arrow-up"
+                                                                            style="color: rgba(2, 58, 170, 0.8);"></i></span>
+                                                                    <br>
+                                                                    <span
+                                                                        class="my-auto mx-auto text-dark fw-semibold">قم
+                                                                        بإسقاط الصورة هنا أو انقر للتحميل .</span>
                                                                 </div>
                                                             </div>
+                                                              <!-- Display error message if exists -->
+                                                              @error('photo')
+                                                                    <span class="text-danger">{{ $message }}</span>
+                                                                @enderror
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn text-white"
-                                                        style="background-color: #066569;">اضافة</button>
-                                                    <button type="button" class="btn text-white"
-                                                        style="background-color: #7A1C1C;"
-                                                        data-bs-dismiss="modal">الغاء</button>
-                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn text-white"
+                                                    style="background-color: #066569;">اضافة</button>
+                                                <button type="button" class="btn text-white"
+                                                    style="background-color: #7A1C1C;"
+                                                    data-bs-dismiss="modal">الغاء</button>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                </form>
                                 </div>
                             </div>
                             <div class="col-xl-4 col-lg-6 col-md-6 bg-white rounded-3 p-4">
@@ -404,6 +423,7 @@
     <!-- script tags -->
     <script src="assets/js/bootstrap.js"></script>
     <script src="assets/js/index.js"></script>
+    <script src="assets/js/nav.js"></script>
 
 </body>
 

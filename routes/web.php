@@ -36,7 +36,15 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
+
     Route::get('/dashboard',[HomeController::class , 'index'])->name('dashboard.index');
+    Route::get('/user-profile',[HomeController::class , 'get_user'])->name('dashboard.user');
+    Route::post('/user-profile',[HomeController::class , 'update_user'])->name('update.dashboard.user');
+    Route::post('/user-profile-photo',[HomeController::class , 'update_user_photo'])->name('dashboard.user.photo.upload');
+    Route::get('/user-logout',[HomeController::class , 'logout'])->name('dashboard.logout');
+
+    
+
     //Nationalities routes
     Route::get('/nationalities', [NationalityController::class, 'index'])->name('nationalities.index');
     Route::post('/nationalities', [NationalityController::class, 'store'])->name('nationality.store');
@@ -99,6 +107,10 @@ Route::middleware(['auth'])->group(function () {
 
     //Member routes
     Route::get('/member', [MemberController::class, 'index'])->name('member.index');
+    Route::get('/member/{member_id}', [MemberController::class, 'show'])->name('member.details');
+    Route::delete('/delete-photo/{id}', [MemberController::class, 'delete_photo'])->name('deletePhoto');
+    Route::delete('/delete-order/{order_id}', [MemberController::class, 'delete_order'])->name('deleteOrder');
+    Route::post('/member/{order_id}', [MemberController::class, 'store_photo'])->name('member.photo.store');
     Route::post('/member', [MemberController::class, 'store']);
     Route::get('/member/{id}/edit', [MemberController::class, 'edit']);
     Route::put('/member', [MemberController::class, 'update'])->name('member.store');
