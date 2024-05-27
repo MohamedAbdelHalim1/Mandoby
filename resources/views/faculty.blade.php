@@ -406,9 +406,9 @@
                                             <td><a class="text-decoration-none" href="{{route('faculty.nationality.degree' , ['faculty_id'=>$faculty->id])}}">{{$faculty->name}}</a></td>
                                             <td>{{$faculty->university->name}} </td>
                                             <td>@if($faculty->is_active == 0)
-                                                    نعم
-                                                @else
                                                     لا
+                                                @else
+                                                    نعم
                                                 @endif 
                                             </td>
                                             <td>

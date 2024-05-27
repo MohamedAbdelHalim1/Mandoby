@@ -24,9 +24,9 @@
                                                 {{$major->qualification}}
                                             </td>
                                             <td>@if($major->is_active == 0)
-                                                    نعم
-                                                @else
                                                     لا
+                                                @else
+                                                    نعم
                                                 @endif 
                                             </td>
                                             <td>
