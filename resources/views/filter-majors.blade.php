@@ -8,7 +8,7 @@
                                             <th scope="col">الكليه</th>
                                             <th scope="col">الجامعه</th>
                                             <th scope="col">المؤهلات</th>
-                                            <th scope="col">متوقفه حاليا</th>
+                                            <th scope="col">متوفره حاليا</th>
                                             <th scope="col">اخري</th>
                                         </tr>
                                     </thead>

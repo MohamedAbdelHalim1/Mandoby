@@ -395,7 +395,7 @@
                                             <th scope="col">#</th>
                                             <th scope="col">اسم الكلية</th>
                                             <th scope="col">اسم الجامعه</th>
-                                            <th scope="col">متوقفه حاليا</th>
+                                            <th scope="col">متوفره حاليا</th>
                                             <th scope="col">اخري</th>
                                         </tr>
                                     </thead>
