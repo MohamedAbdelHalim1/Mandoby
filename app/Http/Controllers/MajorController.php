@@ -13,21 +13,26 @@ class MajorController extends Controller
 {
 
     //for mobile
-    public function get_majors($id){
-        $majors = Major::where('faculty_id','=',$id)->get();
-        if(!$majors->isEmpty()){
+    public function get_majors($id) {
+        $majors = Major::where('faculty_id', '=', $id)
+                       ->where('is_active', 1)
+                       ->get();
+    
+        if (!$majors->isEmpty()) {
             return response()->json([
                 'status' => 'success',
-                'message' => 'majors retrieved successfully',
+                'message' => 'Majors retrieved successfully',
                 'data' => $majors
             ], 200);
         }
+    
         return response()->json([
             'status' => 'failed',
-            'message' => 'No majors Yet!',
+            'message' => 'No majors yet!',
             'data' => []
         ], 200);
     }
+    
 
 
     public function show_major_requirement_and_qualification($id){
@@ -183,10 +188,12 @@ class MajorController extends Controller
        }
 
        public function update(Request $request){
+        
         $major = Major::find($request->major_id);
         
         $validator = Validator::make($request->all(), [
             'name' => ['required','string'], 
+            'is_active' => 'required|in:0,1',
            ]);
 
 
@@ -195,6 +202,7 @@ class MajorController extends Controller
 
             $major->update([
                 'name' => $request->name,
+                'is_active'=>$request->is_active,
                 
             ]);
             return redirect()->back();

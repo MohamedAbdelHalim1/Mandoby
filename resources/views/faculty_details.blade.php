@@ -318,7 +318,7 @@
                                                                 <label for="disabledSelect"
                                                                     class="form-label text-dark">اختر الجنسية
                                                                      </label>
-                                                                <select id="disabledSelect" class="form-select" name="nationality">
+                                                                <select id="disabledSelect" class="form-select" name="nationality" required>
                                                                     <option value>اختر الجنسية </option>
                                                                     @foreach($nationalities as $nationality)
                                                                     <option value="{{$nationality->id}}">{{$nationality->name}}</option>
@@ -330,7 +330,7 @@
                                                                     class="form-label text-dark">اكتب نسبة القبول فى الكلية
                                                                      </label>
                                                                 <input type="text" class="form-control"
-                                                                    placeholder="اكتب نسبة القبول هنا " name="degree">
+                                                                    placeholder="اكتب نسبة القبول هنا " name="degree" required>
                                                             </div>
                                                         </div>
                                                     </div>

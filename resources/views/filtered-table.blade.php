@@ -7,6 +7,7 @@
                             <th scope="col">#</th>
                             <th scope="col">اسم الكلية</th>
                             <th scope="col">اسم الجامعه</th>
+                            <th scope="col">متوقفه حاليا</th>
                             <th scope="col">اخري</th>
                         </tr>
                     </thead>
@@ -17,7 +18,12 @@
                             <th scope="row">{{$loop->index+1}}</th>
                             <td><a class="text-decoration-none" href="{{route('faculty.nationality.degree' , ['faculty_id'=>$faculty->id])}}">{{$faculty->name}}</a></td>
                             <td>{{$faculty->university->name}} </td>
-                            
+                            <td>@if($faculty->is_active == 0)
+                                                    نعم
+                                                @else
+                                                    لا
+                                                @endif 
+                                            </td>
                             <td>
                                 <div class="d-flex justify-content-center">
                                     <div class="ms-2">

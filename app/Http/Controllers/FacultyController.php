@@ -18,6 +18,7 @@ class FacultyController extends Controller
             $query->where('nationality_id', $nationality_id)->withPivot('degree');
         }])
         ->where('university_id', $university_id)
+        ->where('is_active', 1)
         ->get();
     
         if (!$faculties->isEmpty()) {
@@ -105,10 +106,12 @@ class FacultyController extends Controller
     
         $validator = Validator::make($request->all(), [
             'name' => ['required','string'], 
-            'university'=>['nullable']
-           ]);
+            'university'=>['nullable'],
+            'is_active' => 'required|in:0,1'
+            ]);
    
        $faculty->name = $request->name;
+       $faculty->is_active = $request->is_active;
        $faculty->university_id = $request->university;
            $faculty->save();
        return redirect()->back();

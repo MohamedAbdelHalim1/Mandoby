@@ -8,6 +8,7 @@
                                             <th scope="col">الكليه</th>
                                             <th scope="col">الجامعه</th>
                                             <th scope="col">المؤهلات</th>
+                                            <th scope="col">متوقفه حاليا</th>
                                             <th scope="col">اخري</th>
                                         </tr>
                                     </thead>
@@ -21,6 +22,12 @@
                                             <td>{{$major->faculty->university->name}}</td>
                                             <td>
                                                 {{$major->qualification}}
+                                            </td>
+                                            <td>@if($major->is_active == 0)
+                                                    نعم
+                                                @else
+                                                    لا
+                                                @endif 
                                             </td>
                                             <td>
                                                 <div class="d-flex justify-content-center">

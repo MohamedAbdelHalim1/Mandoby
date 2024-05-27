@@ -10,7 +10,7 @@ class Faculty extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name' ,'photo', 'university_id'
+        'name' ,'photo', 'university_id','is_active'
     ];
 
     public function university(){

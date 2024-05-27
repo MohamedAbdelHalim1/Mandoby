@@ -9,7 +9,7 @@ class Major extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name', 'faculty_id','qualification','requirement'
+        'name', 'faculty_id','qualification','requirement','is_active'
     ];
 
     public function faculty(){
