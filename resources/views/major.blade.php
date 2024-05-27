@@ -423,7 +423,7 @@
 
                                                                 <div class="mb-3">
                                                                     <label for="exampleInputEmail1"
-                                                                        class="form-label text-dark">موقوف حاليا
+                                                                        class="form-label text-dark">متوفره حاليا
                                                                     </label>
                                                                     <input type="text" class="form-control" id="majorActivation"
                                                                         name="is_active" required>
