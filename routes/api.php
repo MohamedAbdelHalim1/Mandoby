@@ -32,7 +32,7 @@ Route::get('/test-mode', function () {
     return response()->json(
         [
             'status' => 'success',
-            'message' => 'Nationalities retrieved successfully',
+            'message' => 'we are in test mode',
             'data' => true
         ]);
 });
