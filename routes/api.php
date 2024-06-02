@@ -27,6 +27,16 @@ use App\Http\Controllers\Api\Auth\RegisterController;
 |
 */
 
+//test mode Api
+Route::get('/test-mode', function () {
+    return response()->json(
+        [
+            'status' => 'success',
+            'message' => 'Nationalities retrieved successfully',
+            'data' => true
+        ]);
+});
+
 
 // Authentication Apis
 Route::post('register', [RegisterController::class, 'user_register']);
