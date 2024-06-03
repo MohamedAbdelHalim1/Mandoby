@@ -33,7 +33,7 @@ Route::get('/test-mode', function () {
         [
             'status' => 'success',
             'message' => 'we are in test mode',
-            'data' => true
+            'data' => false
         ]);
 });
 
